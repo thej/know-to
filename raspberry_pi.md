@@ -178,6 +178,8 @@ Add new partitions to */etc/fstab*:
 /dev/sda2       /var            ext4    defaults,noatime  0       1
 /dev/sda3       /tmp            ext4    defaults,noatime  0       1
 /dev/sda6       /srv            ext4    defaults,noatime  0       1
+/dev/sda5       none            swap    sw                0       0
+tmpfs           /tmp            tmpfs   defaults,noatime,mode=1777 0   0
 ```
 
 Reboot.
