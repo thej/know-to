@@ -188,6 +188,86 @@ Reboot.
 
 ## TCP/IP Stack Hardening
 
+Edit the configuration file for setting system variables */etc/sysctl.conf*:
+
+```
+# Prevent SYN attack.
+net.ipv4.tcp_syncookies = 1
+net.ipv4.tcp_syn_retries = 5
+net.ipv4.tcp_synack_retries = 2
+net.ipv4.tcp_max_syn_backlog = 1024
+
+# Disables packet forwarding.
+net.ipv4.ip_forward = 0
+net.ipv4.conf.all.forwarding = 0
+net.ipv4.conf.default.forwarding = 0
+net.ipv6.conf.all.forwarding = 0
+net.ipv6.conf.default.forwarding = 0
+
+# Disables IP source routing.
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.send_redirects = 0
+net.ipv4.conf.all.accept_source_route = 0
+net.ipv4.conf.default.accept_source_route = 0
+net.ipv6.conf.all.accept_source_route = 0
+net.ipv6.conf.default.accept_source_route = 0
+
+# Do not accept ICMP redirects (prevent MITM attacks).
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+net.ipv6.conf.all.accept_redirects = 0
+net.ipv6.conf.default.accept_redirects = 0
+
+# Enable Spoof protection (reverse-path filter).
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.all.rp_filter = 1
+
+# Disable Log Spoofed Packets, Source Routed Packets, Redirect Packets.
+net.ipv4.conf.all.log_martians = 0
+net.ipv4.conf.default.log_martians = 0
+
+# Decrease the time default value for tcp_fin_timeout connection.
+net.ipv4.tcp_fin_timeout = 15
+
+# Decrease the time default value for connections to keep alive.
+net.ipv4.tcp_keepalive_time = 300
+net.ipv4.tcp_keepalive_probes = 5
+net.ipv4.tcp_keepalive_intvl = 15
+
+# Don't relay bootp.
+net.ipv4.conf.all.bootp_relay = 0
+
+# Don't proxy arp for anyone.
+net.ipv4.conf.all.proxy_arp = 0
+
+# Turn on SACK.
+net.ipv4.tcp_dsack = 1
+net.ipv4.tcp_sack = 1
+net.ipv4.tcp_fack = 1
+
+# Turn on the tcp_timestamps.
+net.ipv4.tcp_timestamps = 1
+
+# Don't ignore directed pings.
+net.ipv4.icmp_echo_ignore_all = 0
+
+# Enable ignoring broadcasts request.
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+
+# Enable bad error message Protection.
+net.ipv4.icmp_ignore_bogus_error_responses = 1
+
+# Specify the allowed local port range.
+net.ipv4.ip_local_port_range = 2000 65535
+
+# Protect Against TCP Time-Wait.
+net.ipv4.tcp_rfc1337 = 1
+
+# Specify the minimum of free memory in KB.
+vm.min_free_kbytes = 8192
+```
+
+Apply the changes to sysctl: `sysctl -p`
 
 ## DNS Server
 
