@@ -13,6 +13,14 @@ wpa_passphrase <essid> <passphrase> >> /etc/wpa_supplicant/wpa_supplicant.conf
 reboot
 ```
 
+
+## Set timezone
+
+```
+timedatectl set-timezone Europe/Berlin
+```
+
+
 ## SSH Server
 
 Add public key to ~/.ssh/authorized_keys.
@@ -115,7 +123,7 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get dist-upgrade
 reboot
-sudo apt-get install screen vim rpi-update
+sudo apt-get install screen vim rpi-update git git-core
 ```
 
 
