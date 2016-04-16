@@ -1,3 +1,3 @@
 # Know-To
 
-- [[raspberry_pi|Raspberry Pi]]
+- [Raspberry Pi](raspberry_pi.md)
