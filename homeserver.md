@@ -37,7 +37,7 @@
 - Detailed Homeserver tut based on slackware: http://www.mbse.eu/linux/homeserver/
 - How to install arch linux server: http://www.linuxveda.com/2015/03/27/how-to-install-arch-linux-server-tutorial/
 - Arch Server doc: https://wiki.archlinux.org/index.php/Server
-- 
+- http://mein.homelinux.com/wiki/wiki/10_schritte
 
 
 
