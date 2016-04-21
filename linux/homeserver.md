@@ -1,29 +1,16 @@
 # Homeserver
 
-## /etc/default/grub
-```
-GRUB_TIMEOUT=5
-GRUB_DISTRIBUTOR="Arch"
-#GRUB_CMDLINE_LINUX_DEFAULT="quiet"
-GRUB_CMDLINE_LINUX_DEFAULT="quiet"
-#GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda3:vgroup:allow-discards"
-GRUB_CMDLINE_LINUX="cryptdevice=/dev/disk/by-uuid/e626917d-7cde-492d-81df-f70a572d4fbf:vgroup:allow-discards"
-#GRUB_HIDDEN_TIMEOUT_QUIET=true
-```
-
-## /etc/mkinitcpio.conf
-
-```
-MODULES="dm_mod dm_crypt ext4 aes_x86_64 sha256 sha512 i915"
-HOOKS="base udev autodetect modconf block mdadm encrypt lvm2 resume filesystems keyboard fsck"
-```
 
 ## Encrypting system HD
 
-```
-cryptsetup -c aes-xts-plain --key-size 256 -y -h sha256 --align-payload=8192 luksFormat /dev/sda3
-...
-```
+See [Encrypt SSD with LUKS and LVM](linux/encrypt_system_ssd)
+
+
+## RAID1 encrypted data partition with LVM
+
+See [RAID + LVM](linux/raid+lvm.md)
+
+
 
 ## Change LAN device name
 
@@ -34,21 +21,51 @@ SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="<YOUR MAC ADDRESS GOES HERE>", 
 ```
 
 
+## Remote SSH shell into initram to unlock encrypted devices
+
+Requirements: install *yaourt* package from AUR
+
+Install the following packages:
+- dropbear
+- [https://aur.archlinux.org/packages/mkinitcpio-netconf/](mkinitcpio-netconf) (AUR)
+- [https://aur.archlinux.org/packages/mkinitcpio-dropbear/](mkinitcpio-dropbear) (AUR)
+- [https://aur.archlinux.org/packages/mkinitcpio-utils/](mkinitcpio-utils) (AUR)
+
+Copy your SSH pubkey to */etc/dropbear/root_key*.
+
+Add the *netconf*, *dropbear* and *encryptssh* hooks before filesystems within the "HOOKS" array in */etc/mkinitcpio.conf* (the encryptssh can be used to replace the encrypt hook).
+```
+# /etc/mkinitcpio.conf
+MODULES="dm_mod dm_crypt ext4 aes_x86_64 sha256 sha512 r8169 i915"
+HOOKS="base udev autodetect modconf block mdadm lvm2 netconf dropbear encryptssh filesystems keyboard fsck"
+```
+
+Rebuild with `mkinitcpio -p linux`.
+
+Provide networking by adding *ip* kernel parameter to GRUB config */etc/default/grub*:
+```
+GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda3:vgroup:allow-discards ip=:::::eth0:dhcp"
+```
+
+Rebuild grub config:
+`grub-mkconfig -o /boot/grub/grub.cfg`
+
+Reboot and login as root user to unlock encrypted devices.
+
+> Source: https://wiki.archlinux.org/index.php/Dm-crypt/Specialties
+
 
 ## List of applications and services
 
 ### Required
 - GitLab 
 - Mail: IMAP, SMTP, spamassassin...
+- DNS/dnsec
+- firewall / DMZ
 
 ### Optional
 - ownCloud
 
-
-## Brainstorming
-- Use containers for services and apps: docker vs systemd-nspawn
-- Define network plan
-- Firewall? DMZ?
 
 ## Containers: Docker vs LXC vs systemd-nspawn
 
