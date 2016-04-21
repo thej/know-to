@@ -3,7 +3,7 @@
 
 ## Encrypting system HD
 
-See [Encrypt SSD with LUKS and LVM](linux/encrypt_system_ssd)
+See [Encrypt SSD with LUKS and LVM](linux/encrypt_system_ssd.md)
 
 
 ## RAID1 encrypted data partition with LVM
