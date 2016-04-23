@@ -60,6 +60,8 @@ Reboot and login as root user to unlock encrypted devices.
 See [Netowrk Plan](homeserver/networl_plan.md).
 
 
+## Power management
+
 
 
 ## List of applications and services
@@ -67,35 +69,18 @@ See [Netowrk Plan](homeserver/networl_plan.md).
 ### Required
 - GitLab 
 - Mail: IMAP, SMTP, spamassassin...
-- DNS/dnsec
+- DHCP, DNS/dnsec
 - firewall / DMZ
 
 ### Optional
 - ownCloud
 
 
-## Containers: Docker vs LXC vs systemd-nspawn
+## Containers: Docker, LXC, systemd-nspawn
 
-### Docker
-- just for apps
-- uses NAT
 
-### systemd-nspawn
-- "chroot on steroids"
-- can (deb)botstrap a system in a directory, isolate it inside a container and boot it
-- does only full systems, not single apps
-
-### LXS
-
-## Distributions
-- CoreOS?
-- Slackware?
-- 
-
-## Links
+## Usefull links
 - Detailed Homeserver tut based on slackware: http://www.mbse.eu/linux/homeserver/
-- How to install arch linux server: http://www.linuxveda.com/2015/03/27/how-to-install-arch-linux-server-tutorial/
-- Arch Server doc: https://wiki.archlinux.org/index.php/Server
 - http://mein.homelinux.com/wiki/wiki/10_schritte
 
 
