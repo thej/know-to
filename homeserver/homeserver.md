@@ -55,6 +55,13 @@ Reboot and login as root user to unlock encrypted devices.
 > Source: https://wiki.archlinux.org/index.php/Dm-crypt/Specialties
 
 
+## Network Plan
+
+See [Netowrk Plan](homeserver/networl_plan.md).
+
+
+
+
 ## List of applications and services
 
 ### Required
