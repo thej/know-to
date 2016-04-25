@@ -57,7 +57,7 @@ Reboot and login as root user to unlock encrypted devices.
 
 ## Network Plan
 
-See [Netowrk Plan](homeserver/networl_plan.md).
+See [Netowrk Plan](network_plan.md).
 
 
 ## Power management
