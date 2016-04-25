@@ -55,6 +55,15 @@ Reboot and login as root user to unlock encrypted devices.
 > Source: https://wiki.archlinux.org/index.php/Dm-crypt/Specialties
 
 
+<<<<<<< HEAD
+# Network
+
+Install packages:
+`pacman -S bridge-utils net-tools iproute2`
+
+
+=======
+>>>>>>> 6e7558a252abc7df339be5ea11a2d59d02136cd7
 ## Network Plan
 
 See [Netowrk Plan](homeserver/networl_plan.md).
