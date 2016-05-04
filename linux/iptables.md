@@ -49,6 +49,15 @@ Routing decision                                                  |
 
 ## Example basic configuration
 
+### Interfaces used:
+
+- lan0: internal network
+- wan0: external network/internet
+- lxcbr0: DMZ
+ 
+
+### Firewall Script
+
 ```sh
 #!/bin/sh
 
