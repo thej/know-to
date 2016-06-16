@@ -68,6 +68,8 @@ IPT=/sbin/iptables
 
 SERVER_IP="192.168.222.28"
 
+LXC_LOCAL_IP="10.200.200.222"
+
 WAN_IF="wan0"
 LAN_IF="lan0"
 
@@ -112,10 +114,24 @@ $IPT -A INPUT -i $WAN_IF -s $CLASS_B -j DROP
 $IPT -A INPUT -i $WAN_IF -s $CLASS_C -j DROP
 $IPT -A INPUT -i $WAN_IF -s $LOOPBACK -j DROP
 
-# Allow SSH
+# Allow SSH to $SERVER_IP
 $IPT -A INPUT -p tcp -s $LAN_NET -d $SERVER_IP --dport 22 -i $LAN_IF -j ACCEPT
 $IPT -A INPUT -p tcp -s 0/0 -d $SERVER_IP --dport 22 -i $WAN_IF -j ACCEPT
 
+# Enable masquerading for lan0
+#$IPT -t nat -A POSTROUTING -o $LAN_IF -j MASQUERADE
+
+# Route SSH on port 2345 to LXC_LOCAL_IP
+$IPT -A INPUT -i $LAN_IF -p tcp --dport 2345 -m state --state NEW,ESTABLISHED -j ACCEPT
+#$IPT -A OUTPUT -o $LAN_IF -p tcp --sport 2345 -m state --state ESTABLISHED -j ACCEPT
+$IPT -t nat -A PREROUTING -p tcp -i $LAN_IF --dport 2345 -j DNAT --to-dest $LXC_LOCAL_IP:22
+
+
+
+
+
+
+# 
 
 ```
 
