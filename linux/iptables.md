@@ -67,13 +67,16 @@ Routing decision                                                  |
 IPT=/sbin/iptables
 
 SERVER_IP="192.168.222.28"
-
-LXC_LOCAL_IP="10.200.200.222"
+WAN_IP="192.168.188.84"
+DMZ_IP="10.200.200.222"
 
 WAN_IF="wan0"
 LAN_IF="lan0"
+DMZ_IF="br0"
 
 LAN_NET="192.168.222.0/24"
+WAN_NET="192.168.188.0/24"
+DMZ_NET="10.0.0.0/8"
 
 # Private, multicast, loopback and reserved networks
 LOOPBACK="127.0.0.0/8"
@@ -96,7 +99,7 @@ $IPT -P FORWARD DROP
 
 # Allow lo interface
 $IPT -A INPUT -i lo -j ACCEPT
-$IPT -A OUTPUT -o lo -j ACCEPT 
+$IPT -A OUTPUT -o lo -j ACCEPT
 
 # Allow already established sessions
 $IPT -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
@@ -118,20 +121,40 @@ $IPT -A INPUT -i $WAN_IF -s $LOOPBACK -j DROP
 $IPT -A INPUT -p tcp -s $LAN_NET -d $SERVER_IP --dport 22 -i $LAN_IF -j ACCEPT
 $IPT -A INPUT -p tcp -s 0/0 -d $SERVER_IP --dport 22 -i $WAN_IF -j ACCEPT
 
-# Enable masquerading for lan0
-#$IPT -t nat -A POSTROUTING -o $LAN_IF -j MASQUERADE
+# Enable masquerading for lan0/br0
+$IPT -t nat -A POSTROUTING -o $LAN_IF -j MASQUERADE
+$IPT -t nat -A POSTROUTING -s $DMZ_NET -j MASQUERADE
 
-# Route SSH on port 2345 to LXC_LOCAL_IP
-$IPT -A INPUT -i $LAN_IF -p tcp --dport 2345 -m state --state NEW,ESTABLISHED -j ACCEPT
-#$IPT -A OUTPUT -o $LAN_IF -p tcp --sport 2345 -m state --state ESTABLISHED -j ACCEPT
-$IPT -t nat -A PREROUTING -p tcp -i $LAN_IF --dport 2345 -j DNAT --to-dest $LXC_LOCAL_IP:22
+# Allow forwarding on bridge interface
+$IPT -A FORWARD -p all -i $DMZ_IF -j ACCEPT
+
+# allow traffic from internal ($LAN_IF) to DMZ ($DMZ_IF)
+$IPT -t filter -A FORWARD -i $LAN_IF -o $DMZ_IF -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+$IPT -t filter -A FORWARD -i $DMZ_IF -o $LAN_IF -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# allow traffic from internet ($WAN_IF) to DMZ ($DMZ_IF)
+$IPT -t filter -A FORWARD -i $WAN_IF -o $DMZ_IF -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+$IPT -t filter -A FORWARD -i $DMZ_IF -o $WAN_IF -m state --state ESTABLISHED,RELATED -j ACCEPT
 
 
+########################
+### PORT FORWARDING ####
+########################
 
+# redirect incoming web requests (port 80,443) at $WAN_IF ($WAN_IP) of FIREWALL to web server at $DMZ_IP
+$IPT -t nat -A PREROUTING -p tcp -i $WAN_IF -d $WAN_IP --dport 80 -j DNAT --to-dest $DMZ_IP
+$IPT -t nat -A PREROUTING -p tcp -i $WAN_IF -d $WAN_IP --dport 443 -j DNAT --to-dest $DMZ_IP
 
+# redirect port 2345 to $DMZ_IP
+$IPT -t nat -A PREROUTING -p tcp -i $LAN_IF -d $SERVER_IP --dport 2345 -j DNAT --to-dest $DMZ_IP:22
+#$IPT -t nat -A PREROUTING -p tcp -i $WAN_IF -d $WAN_IP --dport 2345 -j DNAT --to-dest $DMZ_IP:22
 
+# redirect incoming mail (SMTP) requests at $WAN_IF ($WAN_IP) of FIREWALL to Mail server at 192.168.20.3
+#iptables -t nat -A PREROUTING -p tcp -i $WAN_IF -d $WAN_IP --dport 25 -j DNAT --to-dest 192.168.20.3
 
-# 
+# redirect incoming DNS requests at $WAN_IF ($WAN_IP) of FIREWALL to DNS server at 192.168.20.4
+#iptables -t nat -A PREROUTING -p udp -i $WAN_IF -d $WAN_IP --dport 53 -j DNAT --to-dest 192.168.20.4
+#iptables -t nat -A PREROUTING -p tcp -i $WAN_IF -d $WAN_IP --dport 53 -j DNAT --to-dest 192.168.20.4
 
 ```
 
