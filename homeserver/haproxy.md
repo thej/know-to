@@ -1,6 +1,7 @@
 # haproxy.cfg
 
 ```
+# /etc/haproxy/haproxy.cfg 
 global
         maxconn 256
         chroot /var/lib/haproxy
@@ -33,10 +34,13 @@ frontend http-in
         bind *:80
         acl host_ri hdr(host) -i rbserv.mooo.com
         acl host_jg hdr(host) -i kpserv.mooo.com
+        acl host_jg hdr(host) -i tzuiop.net
+        acl host_jg hdr(host) -i www.tzuiop.net
+ 
         use_backend ri_http_server if host_ri
         use_backend jg_http_server if host_jg
 
-frontend ssl_relay
+frontend ssl_relay 
       bind *:443
       mode tcp
       option socket-stats
@@ -46,6 +50,8 @@ frontend ssl_relay
 
       use_backend ssl_domain_ri if { req_ssl_sni -i rbserv.mooo.com }
       use_backend ssl_domain_jg if { req_ssl_sni -i kpserv.mooo.com }
+      use_backend ssl_domain_jg if { req_ssl_sni -i tzuiop.net }
+      use_backend ssl_domain_jg if { req_ssl_sni -i www.tzuiop.net }
 
       default_backend ssl_domain_jg
 
@@ -76,12 +82,12 @@ backend ssl_domain_jg
       # Learn on response if server hello.
       stick store-response payload_lv(43,1) if serverhello
 
-      server s_jo 192.168.188.45:443
+      server s_jo 192.168.188.84:443
 
 
 backend ssl_domain_ri
         mode tcp
-        option tcplog
+        #option tcplog
         balance roundrobin
         hash-type consistent
         option srvtcpka
@@ -124,5 +130,5 @@ backend jg_http_server
         balance roundrobin
         option httpclose
         option forwardfor
-        server s2 192.168.188.45 maxconn 32
+        server s2 192.168.188.84 maxconn 32
 ```
