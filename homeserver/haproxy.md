@@ -25,11 +25,11 @@ defaults
 
 frontend http-in
     bind *:80
-    #acl host_jg hdr(host) -i kpserv.mooo.com
+    acl host_jg hdr(host) -i kpserv.mooo.com
     acl host_jg hdr(host) -m end .tzuiop.net
 
     acl host_ri hdr(host) -i rbserv.mooo.com
-#    acl host_ri hdr(host) -m end .richardbeyer.org
+    acl host_ri hdr(host) -m end .richardbeyer.org
 
     use_backend ri_http_server if host_ri
     use_backend jg_http_server if host_jg
@@ -59,10 +59,8 @@ backend bk_ssl_default
     acl app_ri_1 req_ssl_sni -i rbserv.mooo.com
     acl app_ri req_ssl_sni -m end .richardbeyer.org
 
-    use-server server_jo if app_jo
-    use-server server_jo if app_jo_1
-    use-server server_ri if app_ri
-    use-server server_ri if app_ri_1
+    use-server server_jo if app_jo or app_jo_1
+    use-server server_ri if app_ri or app_ri_1
 
     option ssl-hello-chk
     server server_jo 192.168.188.84:443 check id 1 weight 0
