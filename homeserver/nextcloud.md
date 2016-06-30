@@ -27,7 +27,7 @@ zend_extension=opcache.so
 Add open_basedir
 
 ```
-open_basedir = /srv/http/:/var/www/:/home/nextcloud/:/tmp/:/usr/share/pear/:/usr/share/webapps/
+open_basedir = /srv/http/:/var/www/:/home/nextcloud/:/tmp/:/usr/share/pear/:/usr/share/webapps/:/dev/urandom
 ```
 
 ## Install mariadb
@@ -111,6 +111,12 @@ pm.start_servers = 2
 pm.min_spare_servers = 1
 pm.max_spare_servers = 3
 pm.max_requests = 500
+env[HOSTNAME] = $HOSTNAME
+env[PATH] = /usr/local/bin:/usr/bin:/bin
+env[TMP] = /tmp
+env[TMPDIR] = /tmp
+env[TEMP] = /tmp
+
 ;chroot = /home/nextcloud
 ;chdir = /nextcloud_current
 ```
@@ -240,4 +246,16 @@ sudo systemctl enable php-fpm
 sudo systemctl start php-fpm
 sudo systemctl enable nginx
 sudo systemctl start nginx
+```
+
+## Post installation
+
+### Enable cron
+
+1. Enable cron in admin settings
+2. Edit crontab:
+
+```
+# crontab -u nextcloud -e
+*/15  *  *  *  * php -f /home/nextcloud/nextcloud_current/cron.php
 ```
