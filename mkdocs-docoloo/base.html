@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<head>
+  <title>{% if page_title %}{{ page_title }} - {% endif %}{{ site_name }}</title>
+  <meta charset="UTF-8" />
+  {% if favicon %}
+    <link rel="shortcut icon" href="{{ favicon }}">
+  {% else %}
+    <link rel="shortcut icon" href="{{ base_url }}/img/favicon.ico">
+  {% endif %}
+  <link rel="stylesheet" href="{{ base_url }}/css/theme.css">
+  {% for path in extra_css %}
+    <link href="{{ path }}" rel="stylesheet">
+  {% endfor %}
+
+  <script src="{{ base_url }}/js/jquery-3.0.0.min.js"></script>
+  <script src="{{ base_url }}/js/theme.js"></script>
+  {% for path in extra_javascript %}
+    <script src="{{ path }}"></script>
+  {% endfor %}
+  {% block extrahead %}
+  {% endblock %}
+  <meta name="viewport" content="width = device-width, initial-scale = 1.0, user-scalable = no" />
+</head>
+
+<body class="docoloo">
+
+  <div class="wide header">
+    <div class="narrow">
+      <div class="row">
+        <div class="col1-2">
+          <a href="{{ base_url }}">{{ site_name }}</a>
+        </div>
+        <div class="col1-2 right">
+          Erstellt von <a href="https://opoloo.com">Opoloo</a>, <a href="https://www.opoloo.com/de/imprint">Impressum</a>
+        </div>
+      </div>
+    
+      {% if next_page or previous_page %}
+        <div class="pagination">
+          {% if previous_page %}
+            <a href="{{ previous_page.url }}" title="{{ previous_page.title }}">&#8592; Previous Page</a>
+          {% else %}
+            &#8592; Previous Page
+          {% endif %}
+          -
+          {% if next_page %}
+            <a href="{{ next_page.url }}" title="{{ next_page.title }}"/>Next Page &#8594;</a>
+          {% else %}
+            Next Page &#8594;
+          {% endif %}
+        </div>
+      {% endif %}
+    
+      <div class="nav-toggle">Menü</div>
+    </div>
+  </div>
+
+  <div class="narrow">
+    <div class="row">
+      <div class="col1-4">
+
+
+        <ul class="navigation">
+          <div role="search">
+            <form action="{{ base_url }}/search.html" method="get">
+              <input type="text" name="q" placeholder="Search docs" />
+            </form>
+          </div>
+          {% for nav_item in nav %}
+            {% include "nav.html" %}
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col3-4">
+        <ol class="toc">
+          {% for toc_item in toc %}
+            <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
+            {% for toc_item in toc_item.children %}
+              <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
+            {% endfor %}
+          {% endfor %}          
+        </ol>
+      
+        {% block content %}
+          {{ content }}
+        {% endblock %}
+        
+        <!--
+          Support repo URL
+        -->
+        <h2>Link to the source</h2>
+        {% if repo_url %}
+          {% if repo_name == 'GitHub' %}
+            <a href="{{ repo_url }}"> Edit on GitHub</a>
+          {% elif repo_name == 'Bitbucket' %}
+            <a href="{{ repo_url }}"> Edit on BitBucket</a>
+          {% else %}
+            <a href="{{ repo_url }}"> Edit in Repository</a>
+          {% endif %}
+        {% endif %}
+      
+      </div>
+    </div>
+  </div>
+
+  <!--
+  MkDocs version      : {{ mkdocs_version }}
+  Docs Build Date UTC : {{ build_date_utc }}
+  -->
+
+</body>
+</html>

@@ -11,3 +11,5 @@ bower_components
 
 # OSX metadata
 *.DS_Store
+
+site/
