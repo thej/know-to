@@ -1,3 +1,4 @@
 site_name: KnowTo
-theme: material
+theme_dir: docoloo
+#theme: material
 #theme_dir: mkdocs-docoloo
