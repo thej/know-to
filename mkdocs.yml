@@ -1,4 +1,6 @@
 site_name: KnowTo
-theme_dir: docoloo
+# theme_dir: docoloo
 #theme: material
-#theme_dir: mkdocs-docoloo
+theme_dir: mkdocs-docoloo
+markdown_extensions:
+  - admonition
