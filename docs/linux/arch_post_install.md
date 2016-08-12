@@ -1,4 +1,4 @@
-# After installation steps for Arch Linux
+# Post-installation tips for Arch/Antergos Linux
 
 
 ## Packages to install
