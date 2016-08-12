@@ -51,6 +51,8 @@ localectl --no-convert set-x11-keymap de pc105 nodeadkeys
 
 ## Dark theme for GIMP and Inkscape
 
+### Inkscape
+
 Install either Vertex or FlatStudioDark Theme:
 
 ```
@@ -92,4 +94,8 @@ X-Ayatana-Desktop-Shortcuts=Drawing
 
 Replace <USERNAME> with your username ;)
 
-### Inkscape
+### GIMP
+
+Just place your desired theme inside the _~/.gimp-2.8/themes_ directory. Start Gimp and Select yout theme under the "Theme" tab.
+
+Example Theme: https://www.gnome-look.org/content/show.php?content=160952
