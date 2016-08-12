@@ -117,4 +117,6 @@ Example Theme: https://www.gnome-look.org/content/show.php?content=160952
 'workspaces-to-dock@passingthru67.gmail.com'/
 ```
 
-Download as tarball and extract into _~/.local/share/gnome-shell/extensions/_: [gnome-shell-extensions.tar.gz] 
+Download as tarball and extract into _~/.local/share/gnome-shell/extensions/_:
+
+[gnome-shell-extensions.tar.gz](gnome-shell-extensions.tar.gz)
