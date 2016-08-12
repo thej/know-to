@@ -14,7 +14,7 @@ yaourt -S profile-sync-daemon
 ## Watson 
 
 - Copy or symlink _~.watson.cfg_ from owncloud
-- `watson restore`
+- `watson restore` 
 
 
 ## Locale settings
@@ -99,3 +99,22 @@ Replace <USERNAME> with your username ;)
 Just place your desired theme inside the _~/.gimp-2.8/themes_ directory. Start Gimp and Select yout theme under the "Theme" tab.
 
 Example Theme: https://www.gnome-look.org/content/show.php?content=160952
+
+## Gnome-shell extensions
+
+```
+# ~/.local/share/gnome-shell/extensions/
+
+'hide-legacy-tray@shell-extensions.jonnylamb.com'/
+'maximus@luis.pabon.auronconsulting.co.uk'/
+'mediaplayer@patapon.info'/
+'openweather-extension@jenslody.de'/
+'scroll-workspaces@gfxmonk.net'/
+'shellshape@gfxmonk.net'/
+'shell-volume-mixer@derhofbauer.at'/
+'TeaTime@oleid.mescharet.de'/
+'topIcons@adel.gadllah@gmail.com'/
+'workspaces-to-dock@passingthru67.gmail.com'/
+```
+
+Download as tarball and extract into _~/.local/share/gnome-shell/extensions/_: [gnome-shell-extensions.tar.gz] 
