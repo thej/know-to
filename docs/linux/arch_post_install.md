@@ -31,7 +31,30 @@ LC_NAME=de_DE.UTF-8
 LC_ADDRESS=de_DE.UTF-8
 LC_TELEPHONE=de_DE.UTF-8
 LC_MEASUREMENT=de_DE.UTF-8
+LC_MESSAGES=en_US.utf8
 ```
+
+If using GNOME3, these variables also have to be set in the _~/.profile_.startup.
+
+!!! hint
+- bash doesn't read .profile if a .bash_profile is found
+- Therefore created a .bash_profile which reads .profile and .bashrc afterwards, so gnome can read .profile without interfering with bash.
+- If a .bash_profile exists, nash won't read .profile -> source .profile from .bash_profile
+
+```
+export LANG=en_US.UTF-8
+export LC_NUMERIC=de_DE.UTF-8
+export LC_TIME=de_DE.UTF-8
+export LC_COLLATE=de_DE.UTF-8
+export LC_MONETARY=de_DE.UTF-8
+export LC_NAME=de_DE.UTF-8
+export LC_ADDRESS=de_DE.UTF-8
+export LC_TELEPHONE=de_DE.UTF-8
+export LC_MEASUREMENT=de_DE.UTF-8
+export LC_MESSAGES=en_US.utf8
+```
+
+
 
 Activate nodeadkeys:
 
@@ -39,7 +62,8 @@ Activate nodeadkeys:
 
 ```
 localectl --no-convert set-keymap de-latin1-nodeadkeys
-localectl --no-convert set-x11-keymap de pc105 nodeadkeys
+#localectl --no-convert set-x11-keymap de pc105 nodeadkeys
+localectl set-x11-keymap de pc105 nodeadkeys
 ```
 
 
