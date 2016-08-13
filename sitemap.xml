@@ -3,7 +3,7 @@
 
     
     <url>
-     <loc>None/</loc>
+     <loc>https://thej.github.io/know-to//</loc>
      <lastmod>2016-08-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -11,7 +11,7 @@
 
     
     <url>
-     <loc>None/security_of_networked_cars/</loc>
+     <loc>https://thej.github.io/know-to//security_of_networked_cars/</loc>
      <lastmod>2016-08-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -20,95 +20,31 @@
     
         
     <url>
-     <loc>None/homeserver/haproxy/</loc>
+     <loc>https://thej.github.io/know-to//homeserver/haproxy/</loc>
      <lastmod>2016-08-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/homeserver/haproxy_old/</loc>
+     <loc>https://thej.github.io/know-to//homeserver/haproxy_old/</loc>
      <lastmod>2016-08-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/homeserver/homeserver/</loc>
+     <loc>https://thej.github.io/know-to//homeserver/homeserver/</loc>
      <lastmod>2016-08-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/homeserver/network_plan/</loc>
+     <loc>https://thej.github.io/know-to//homeserver/network_plan/</loc>
      <lastmod>2016-08-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/homeserver/samba/</loc>
-     <lastmod>2016-08-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>None/linux/arch_post_install/</loc>
-     <lastmod>2016-08-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/linux/docker/</loc>
-     <lastmod>2016-08-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/linux/encrypt_system_ssd/</loc>
-     <lastmod>2016-08-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/linux/iptables/</loc>
-     <lastmod>2016-08-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/linux/linux_on_dell_xps_13/</loc>
-     <lastmod>2016-08-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/linux/lxc/</loc>
-     <lastmod>2016-08-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/linux/raid+lvm/</loc>
-     <lastmod>2016-08-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/linux/raspberry_pi/</loc>
-     <lastmod>2016-08-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/linux/sync_configs_with_mackup/</loc>
-     <lastmod>2016-08-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/linux/ubuntu_touch_on_nexus_5/</loc>
+     <loc>https://thej.github.io/know-to//homeserver/samba/</loc>
      <lastmod>2016-08-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -118,7 +54,71 @@
     
         
     <url>
-     <loc>None/rails/snippet_flash_messages/</loc>
+     <loc>https://thej.github.io/know-to//linux/arch_post_install/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://thej.github.io/know-to//linux/docker/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://thej.github.io/know-to//linux/encrypt_system_ssd/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://thej.github.io/know-to//linux/iptables/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://thej.github.io/know-to//linux/linux_on_dell_xps_13/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://thej.github.io/know-to//linux/lxc/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://thej.github.io/know-to//linux/raid+lvm/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://thej.github.io/know-to//linux/raspberry_pi/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://thej.github.io/know-to//linux/sync_configs_with_mackup/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://thej.github.io/know-to//linux/ubuntu_touch_on_nexus_5/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>https://thej.github.io/know-to//rails/snippet_flash_messages/</loc>
      <lastmod>2016-08-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
