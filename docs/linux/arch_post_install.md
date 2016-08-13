@@ -21,7 +21,7 @@ yaourt -S profile-sync-daemon
 
 _/etc/locale.conf_:
 
-```
+```bash
 LANG=en_US.UTF-8
 LC_NUMERIC=de_DE.UTF-8
 LC_TIME=de_DE.UTF-8
@@ -37,11 +37,11 @@ LC_MESSAGES=en_US.utf8
 If using GNOME3, these variables also have to be set in the _~/.profile_.startup.
 
 !!! hint
-- bash doesn't read .profile if a .bash_profile is found
-- Therefore created a .bash_profile which reads .profile and .bashrc afterwards, so gnome can read .profile without interfering with bash.
-- If a .bash_profile exists, nash won't read .profile -> source .profile from .bash_profile
+    - bash doesn't read .profile if a .bash_profile is found
+    - Therefore created a .bash_profile which reads .profile and .bashrc afterwards, so gnome can read .profile without interfering with bash.
+    - If a .bash_profile exists, nash won't read .profile -> source .profile from .bash_profile
 
-```
+```bash
 export LANG=en_US.UTF-8
 export LC_NUMERIC=de_DE.UTF-8
 export LC_TIME=de_DE.UTF-8
@@ -60,7 +60,7 @@ Activate nodeadkeys:
 
 `echo KEYMAP=de-latin1-nodeadkeys > /etc/vconsole.conf`
 
-```
+```bash
 localectl --no-convert set-keymap de-latin1-nodeadkeys
 #localectl --no-convert set-x11-keymap de pc105 nodeadkeys
 localectl set-x11-keymap de pc105 nodeadkeys
@@ -79,24 +79,25 @@ localectl set-x11-keymap de pc105 nodeadkeys
 
 Install either Vertex or FlatStudioDark Theme:
 
-```
+```sh
 yaourt -S gtk-theme-flatstudio
 yaourt -S vertex-themes
 ```
 
 Create custom launcher script _~/bin/inkscape_:
 
-```
+```bash
 #!/bin/bash
 export GTK2_RC_FILES=/usr/share/themes/FlatStudioDark/gtk-2.0/gtkrc 
 /usr/bin/inkscape
 ```
 
+
 `chmod u+x ~/bin/inkscape`
 
 Create an application launcher _~/.local/share/applications/inkscape.desktop_:
 
-```
+```bash
 #!/usr/bin/env xdg-open
 
 [Desktop Entry]
@@ -126,7 +127,7 @@ Example Theme: https://www.gnome-look.org/content/show.php?content=160952
 
 ## Gnome-shell extensions
 
-```
+```bash
 # ~/.local/share/gnome-shell/extensions/
 
 'hide-legacy-tray@shell-extensions.jonnylamb.com'/
