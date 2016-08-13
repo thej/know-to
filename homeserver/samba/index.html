@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    
+      
+        <title>Samba - KnowTo</title>
+      
+      
+      
+      
+        <meta name="author" content="Jochen Greif">
+      
+    
+    <meta property="og:url" content="None">
+    <meta property="og:title" content="KnowTo">
+    <meta property="og:image" content="None/../../None">
+    <meta name="apple-mobile-web-app-title" content="KnowTo">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon-e565ddfa3b.ico">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon-e565ddfa3b.ico">
+    <style>
+      @font-face {
+      	font-family: 'Icon';
+      	src: url('../../assets/fonts/icon.eot?52m981');
+      	src: url('../../assets/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+      		   url('../../assets/fonts/icon.woff?52m981')
+               format('woff'),
+      		   url('../../assets/fonts/icon.ttf?52m981')
+               format('truetype'),
+      		   url('../../assets/fonts/icon.svg?52m981#icon')
+               format('svg');
+      	font-weight: normal;
+      	font-style: normal;
+      }
+    </style>
+    <link rel="stylesheet" href="../../assets/stylesheets/application-e576885f03.css">
+    
+    
+      
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu+Mono">
+      <style>
+        body, input {
+          font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+        }
+        pre, code {
+          font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+        }
+      </style>
+    
+    
+    <script src="../../assets/javascripts/modernizr-2216498cab.js"></script>
+    
+  </head>
+  
+  
+  
+  <body class=" ">
+    
+      
+      
+    
+    <div class="backdrop">
+      <div class="backdrop-paper"></div>
+    </div>
+    <input class="toggle" type="checkbox" id="toggle-drawer">
+    <input class="toggle" type="checkbox" id="toggle-search">
+    <label class="toggle-button overlay" for="toggle-drawer"></label>
+    <header class="header">
+      <nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        
+          <span class="path">
+            
+              
+                Homeserver <i class="icon icon-link"></i>
+              
+            
+          </span>
+        
+        Samba
+      </div>
+    </div>
+    
+      
+      <div class="button button-twitter" role="button" aria-label="Twitter">
+        <a href="https://twitter.com/squirroloo" title="@squirroloo on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+      </div>
+    
+    
+      
+      <div class="button button-github" role="button" aria-label="GitHub">
+        <a href="https://github.com/thej" title="@thej on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+      </div>
+    
+    <div class="button button-search" role="button" aria-label="Search">
+      <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
+    </div>
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+    </header>
+    <main class="main">
+      
+      <div class="drawer">
+        <nav aria-label="Navigation">
+  
+  <a href="https://github.com/thej/know-to" class="project">
+    <div class="banner">
+      
+      <div class="name">
+        <strong>
+          KnowTo
+          <span class="version">
+            0.1.0
+          </span>
+        </strong>
+        
+          <br>
+          thej/know-to
+        
+      </div>
+    </div>
+  </a>
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            
+              
+              <a href="https://github.com/thej/know-to/releases/tag/0.1.0" target="_blank" title="Download" data-action="download">
+                <i class="icon icon-download"></i> Download
+              </a>
+            
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/thej/know-to/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+      <div class="toc">
+        <ul>
+          
+            
+  <li>
+    <a class="" title="Home" href="../..">
+      Home
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="Security of networked cars" href="../../security_of_networked_cars/">
+      Security of networked cars
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Homeserver</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Haproxy" href="../haproxy/">
+      Haproxy
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Haproxy old" href="../haproxy_old/">
+      Haproxy old
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Homeserver" href="../homeserver/">
+      Homeserver
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Network plan" href="../network_plan/">
+      Network plan
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="current" title="Samba" href="./">
+      Samba
+    </a>
+    
+      
+        
+      
+      
+        <ul>
+          
+            <li class="anchor">
+              <a title="/etc/samba/smb.conf" href="#etcsambasmbconf">
+                /etc/samba/smb.conf
+              </a>
+            </li>
+          
+        </ul>
+      
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Linux</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Arch post install" href="../../linux/arch_post_install/">
+      Arch post install
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Docker" href="../../linux/docker/">
+      Docker
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Encrypt system ssd" href="../../linux/encrypt_system_ssd/">
+      Encrypt system ssd
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Iptables" href="../../linux/iptables/">
+      Iptables
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Linux on dell xps 13" href="../../linux/linux_on_dell_xps_13/">
+      Linux on dell xps 13
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Lxc" href="../../linux/lxc/">
+      Lxc
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Raid+lvm" href="../../linux/raid+lvm/">
+      Raid+lvm
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Raspberry pi" href="../../linux/raspberry_pi/">
+      Raspberry pi
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sync configs with mackup" href="../../linux/sync_configs_with_mackup/">
+      Sync configs with mackup
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Ubuntu touch on nexus 5" href="../../linux/ubuntu_touch_on_nexus_5/">
+      Ubuntu touch on nexus 5
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Rails</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Snippet flash messages" href="../../rails/snippet_flash_messages/">
+      Snippet flash messages
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+        </ul>
+        
+          <hr>
+          <span class="section">The author</span>
+          <ul>
+            
+              
+              <li>
+                <a href="https://twitter.com/squirroloo" target="_blank" title="@squirroloo on Twitter">
+                  @squirroloo on Twitter
+                </a>
+              </li>
+            
+            
+              
+              <li>
+                <a href="https://github.com/thej" target="_blank" title="@thej on GitHub">
+                  @thej on GitHub
+                </a>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+      </div>
+      <article class="article">
+        <div class="wrapper">
+          
+          <h1 id="samba">Samba<a class="headerlink" href="#samba" title="Permanent link">#</a></h1>
+<h2 id="etcsambasmbconf"><em>/etc/samba/smb.conf</em><a class="headerlink" href="#etcsambasmbconf" title="Permanent link">#</a></h2>
+<div class="code"><pre><span></span><span class="k">[global]</span>
+  <span class="na">workgroup</span> <span class="o">=</span> <span class="s">OLYMPUS</span>
+<span class="s">  server string = HEPHAISTOS</span>
+<span class="s">  netbios name = HEPHAISTOS</span>
+<span class="s">  hosts allow = 192.168.222. 127.</span>
+<span class="s">  deadtime = 60</span>
+<span class="s">  disable netbios = yes</span>
+<span class="s">  dns proxy = no</span>
+<span class="s">  invalid users = root </span>
+<span class="s">  security = user </span>
+<span class="s">  map to guest = Bad User</span>
+<span class="s">  max connections = 100</span>
+<span class="s">  log file = /var/log/samba/%m.log</span>
+<span class="s">  max log size = 50</span>
+<span class="s">  encrypt passwords = yes</span>
+<span class="s">  smb passwd file = /etc/samba/smbpasswd</span>
+<span class="s">  unix password sync = no</span>
+<span class="s">  preserve case = yes</span>
+<span class="s">  short preserve case = yes</span>
+
+  <span class="c1"># Interfaces to listen on</span>
+  <span class="c1">; interfaces = 192.168.222.28/24 192.168.188.84/24 </span>
+  <span class="na">interfaces</span> <span class="o">=</span> <span class="s">192.168.222.28/24</span>
+
+  <span class="c1"># Disable printer support</span>
+  <span class="na">load printers</span> <span class="o">=</span> <span class="s">no</span>
+<span class="s">  printing = bsd</span>
+<span class="s">  printcap name = /dev/null</span>
+<span class="s">  disable spoolss = yes</span>
+<span class="s">  show add printer wizard = no</span>
+<span class="s">  print notify backchannel = no</span>
+
+  <span class="c1"># Unix users can map to different SMB User names</span>
+  <span class="c1">;  username map = /etc/samba/smbusers</span>
+
+  <span class="c1"># Default permissions for all shares  </span>
+  <span class="na">inherit owner</span> <span class="o">=</span> <span class="s">yes </span>
+<span class="s">  create mask = 0660 </span>
+<span class="s">  directory mask = 0770</span>
+<span class="s">  force create mode = 0660</span>
+<span class="s">  force directory mode = 0770</span>
+
+  <span class="c1"># Performance tuning</span>
+  <span class="na">socket options</span> <span class="o">=</span> <span class="s">TCP_NODELAY IPTOS_LOWDELAY</span>
+<span class="s">  write cache size = 262144</span>
+<span class="s">  use sendfile = true</span>
+<span class="s">  getwd cache = yes</span>
+<span class="s">  min receivefile size = 16384</span>
+<span class="s">  max xmit = 65536</span>
+</pre></div>
+          <aside class="copyright" role="note">
+            
+              Copyright (c) 2016 Jochen Greif &ndash;
+            
+            Documentation built with
+            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
+            using the
+            <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">
+              Material
+            </a>
+            theme.
+          </aside>
+          
+            <footer class="footer">
+              
+  <nav class="pagination" aria-label="Footer">
+    <div class="previous">
+      
+        <a href="../network_plan/" title="Network plan">
+          <span class="direction">
+            Previous
+          </span>
+          <div class="page">
+            <div class="button button-previous" role="button" aria-label="Previous">
+              <i class="icon icon-back"></i>
+            </div>
+            <div class="stretch">
+              <div class="title">
+                Network plan
+              </div>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+    <div class="next">
+      
+        <a href="../../linux/arch_post_install/" title="Arch post install">
+          <span class="direction">
+            Next
+          </span>
+          <div class="page">
+            <div class="stretch">
+              <div class="title">
+                Arch post install
+              </div>
+            </div>
+            <div class="button button-next" role="button" aria-label="Next">
+              <i class="icon icon-forward"></i>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+  </nav>
+
+            </footer>
+          
+        </div>
+      </article>
+      <div class="results" role="status" aria-live="polite">
+        <div class="scrollable">
+          <div class="wrapper">
+            <div class="meta"></div>
+            <div class="list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      var base_url = '../..';
+      var repo_id  = 'thej/know-to';
+    </script>
+    <script src="../../assets/javascripts/application-d10e0693ea.js"></script>
+    
+    
+  </body>
+</html>

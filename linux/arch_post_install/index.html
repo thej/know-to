@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    
+      
+        <title>Arch post install - KnowTo</title>
+      
+      
+      
+      
+        <meta name="author" content="Jochen Greif">
+      
+    
+    <meta property="og:url" content="None">
+    <meta property="og:title" content="KnowTo">
+    <meta property="og:image" content="None/../../None">
+    <meta name="apple-mobile-web-app-title" content="KnowTo">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon-e565ddfa3b.ico">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon-e565ddfa3b.ico">
+    <style>
+      @font-face {
+      	font-family: 'Icon';
+      	src: url('../../assets/fonts/icon.eot?52m981');
+      	src: url('../../assets/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+      		   url('../../assets/fonts/icon.woff?52m981')
+               format('woff'),
+      		   url('../../assets/fonts/icon.ttf?52m981')
+               format('truetype'),
+      		   url('../../assets/fonts/icon.svg?52m981#icon')
+               format('svg');
+      	font-weight: normal;
+      	font-style: normal;
+      }
+    </style>
+    <link rel="stylesheet" href="../../assets/stylesheets/application-e576885f03.css">
+    
+    
+      
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu+Mono">
+      <style>
+        body, input {
+          font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+        }
+        pre, code {
+          font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+        }
+      </style>
+    
+    
+    <script src="../../assets/javascripts/modernizr-2216498cab.js"></script>
+    
+  </head>
+  
+  
+  
+  <body class=" ">
+    
+      
+      
+    
+    <div class="backdrop">
+      <div class="backdrop-paper"></div>
+    </div>
+    <input class="toggle" type="checkbox" id="toggle-drawer">
+    <input class="toggle" type="checkbox" id="toggle-search">
+    <label class="toggle-button overlay" for="toggle-drawer"></label>
+    <header class="header">
+      <nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        
+          <span class="path">
+            
+              
+                Linux <i class="icon icon-link"></i>
+              
+            
+          </span>
+        
+        Arch post install
+      </div>
+    </div>
+    
+      
+      <div class="button button-twitter" role="button" aria-label="Twitter">
+        <a href="https://twitter.com/squirroloo" title="@squirroloo on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+      </div>
+    
+    
+      
+      <div class="button button-github" role="button" aria-label="GitHub">
+        <a href="https://github.com/thej" title="@thej on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+      </div>
+    
+    <div class="button button-search" role="button" aria-label="Search">
+      <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
+    </div>
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+    </header>
+    <main class="main">
+      
+      <div class="drawer">
+        <nav aria-label="Navigation">
+  
+  <a href="https://github.com/thej/know-to" class="project">
+    <div class="banner">
+      
+      <div class="name">
+        <strong>
+          KnowTo
+          <span class="version">
+            0.1.0
+          </span>
+        </strong>
+        
+          <br>
+          thej/know-to
+        
+      </div>
+    </div>
+  </a>
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            
+              
+              <a href="https://github.com/thej/know-to/releases/tag/0.1.0" target="_blank" title="Download" data-action="download">
+                <i class="icon icon-download"></i> Download
+              </a>
+            
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/thej/know-to/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+      <div class="toc">
+        <ul>
+          
+            
+  <li>
+    <a class="" title="Home" href="../..">
+      Home
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="Security of networked cars" href="../../security_of_networked_cars/">
+      Security of networked cars
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Homeserver</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Haproxy" href="../../homeserver/haproxy/">
+      Haproxy
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Haproxy old" href="../../homeserver/haproxy_old/">
+      Haproxy old
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Homeserver" href="../../homeserver/homeserver/">
+      Homeserver
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Network plan" href="../../homeserver/network_plan/">
+      Network plan
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Samba" href="../../homeserver/samba/">
+      Samba
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Linux</span>
+    <ul>
+      
+        
+  <li>
+    <a class="current" title="Arch post install" href="./">
+      Arch post install
+    </a>
+    
+      
+        
+      
+      
+        <ul>
+          
+            <li class="anchor">
+              <a title="Packages to install" href="#packages-to-install">
+                Packages to install
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="profile-sync-daemon" href="#profile-sync-daemon">
+                profile-sync-daemon
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Watson" href="#watson">
+                Watson
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Locale settings" href="#locale-settings">
+                Locale settings
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Automount encfs" href="#automount-encfs">
+                Automount encfs
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Dark theme for GIMP and Inkscape" href="#dark-theme-for-gimp-and-inkscape">
+                Dark theme for GIMP and Inkscape
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Gnome-shell extensions" href="#gnome-shell-extensions">
+                Gnome-shell extensions
+              </a>
+            </li>
+          
+        </ul>
+      
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Docker" href="../docker/">
+      Docker
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Encrypt system ssd" href="../encrypt_system_ssd/">
+      Encrypt system ssd
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Iptables" href="../iptables/">
+      Iptables
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Linux on dell xps 13" href="../linux_on_dell_xps_13/">
+      Linux on dell xps 13
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Lxc" href="../lxc/">
+      Lxc
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Raid+lvm" href="../raid+lvm/">
+      Raid+lvm
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Raspberry pi" href="../raspberry_pi/">
+      Raspberry pi
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sync configs with mackup" href="../sync_configs_with_mackup/">
+      Sync configs with mackup
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Ubuntu touch on nexus 5" href="../ubuntu_touch_on_nexus_5/">
+      Ubuntu touch on nexus 5
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Rails</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Snippet flash messages" href="../../rails/snippet_flash_messages/">
+      Snippet flash messages
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+        </ul>
+        
+          <hr>
+          <span class="section">The author</span>
+          <ul>
+            
+              
+              <li>
+                <a href="https://twitter.com/squirroloo" target="_blank" title="@squirroloo on Twitter">
+                  @squirroloo on Twitter
+                </a>
+              </li>
+            
+            
+              
+              <li>
+                <a href="https://github.com/thej" target="_blank" title="@thej on GitHub">
+                  @thej on GitHub
+                </a>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+      </div>
+      <article class="article">
+        <div class="wrapper">
+          
+          <h1 id="post-installation-tips-for-archantergos-linux">Post-installation tips for Arch/Antergos Linux<a class="headerlink" href="#post-installation-tips-for-archantergos-linux" title="Permanent link">#</a></h1>
+<h2 id="packages-to-install">Packages to install<a class="headerlink" href="#packages-to-install" title="Permanent link">#</a></h2>
+<p>yaourt -S mackup inkscape gimp owncloud-client firefox vivaldi sublime-text-dev ttf-google-fonts otf-fira-mono otf-fira-sans ttf-ms-fonts rhythmbox thunderbird filezilla keepassx calibre homebank smplayer dropbox encfs electrum qownnotes wine winetricks nxt mariadb watson steam tor-browser-en meld python-pip libreoffice-fresh xskat gnome-encfs-hg</p>
+<h2 id="profile-sync-daemon">profile-sync-daemon<a class="headerlink" href="#profile-sync-daemon" title="Permanent link">#</a></h2>
+<p>yaourt -S profile-sync-daemon</p>
+<h2 id="watson">Watson<a class="headerlink" href="#watson" title="Permanent link">#</a></h2>
+<ul>
+<li>Copy or symlink <em>~.watson.cfg</em> from owncloud</li>
+<li><code>watson restore</code> </li>
+</ul>
+<h2 id="locale-settings">Locale settings<a class="headerlink" href="#locale-settings" title="Permanent link">#</a></h2>
+<p><em>/etc/locale.conf</em>:</p>
+<div class="code"><pre><span></span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+<span class="nv">LC_NUMERIC</span><span class="o">=</span>de_DE.UTF-8
+<span class="nv">LC_TIME</span><span class="o">=</span>de_DE.UTF-8
+<span class="nv">LC_COLLATE</span><span class="o">=</span>de_DE.UTF-8
+<span class="nv">LC_MONETARY</span><span class="o">=</span>de_DE.UTF-8
+<span class="nv">LC_NAME</span><span class="o">=</span>de_DE.UTF-8
+<span class="nv">LC_ADDRESS</span><span class="o">=</span>de_DE.UTF-8
+<span class="nv">LC_TELEPHONE</span><span class="o">=</span>de_DE.UTF-8
+<span class="nv">LC_MEASUREMENT</span><span class="o">=</span>de_DE.UTF-8
+<span class="nv">LC_MESSAGES</span><span class="o">=</span>en_US.utf8
+</pre></div>
+
+
+<p>If using GNOME3, these variables also have to be set in the <em>~/.profile</em>.startup.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul>
+<li>bash doesn't read .profile if a .bash_profile is found</li>
+<li>Therefore created a .bash_profile which reads .profile and .bashrc afterwards, so gnome can read .profile without interfering with bash.</li>
+<li>If a .bash_profile exists, nash won't read .profile -&gt; source .profile from .bash_profile</li>
+</ul>
+</div>
+<div class="code"><pre><span></span><span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+<span class="nb">export</span> <span class="nv">LC_NUMERIC</span><span class="o">=</span>de_DE.UTF-8
+<span class="nb">export</span> <span class="nv">LC_TIME</span><span class="o">=</span>de_DE.UTF-8
+<span class="nb">export</span> <span class="nv">LC_COLLATE</span><span class="o">=</span>de_DE.UTF-8
+<span class="nb">export</span> <span class="nv">LC_MONETARY</span><span class="o">=</span>de_DE.UTF-8
+<span class="nb">export</span> <span class="nv">LC_NAME</span><span class="o">=</span>de_DE.UTF-8
+<span class="nb">export</span> <span class="nv">LC_ADDRESS</span><span class="o">=</span>de_DE.UTF-8
+<span class="nb">export</span> <span class="nv">LC_TELEPHONE</span><span class="o">=</span>de_DE.UTF-8
+<span class="nb">export</span> <span class="nv">LC_MEASUREMENT</span><span class="o">=</span>de_DE.UTF-8
+<span class="nb">export</span> <span class="nv">LC_MESSAGES</span><span class="o">=</span>en_US.utf8
+</pre></div>
+
+
+<p>Activate nodeadkeys:</p>
+<p><code>echo KEYMAP=de-latin1-nodeadkeys &gt; /etc/vconsole.conf</code></p>
+<div class="code"><pre><span></span>localectl --no-convert set-keymap de-latin1-nodeadkeys
+<span class="c1">#localectl --no-convert set-x11-keymap de pc105 nodeadkeys</span>
+localectl set-x11-keymap de pc105 nodeadkeys
+</pre></div>
+
+
+<h2 id="automount-encfs">Automount encfs<a class="headerlink" href="#automount-encfs" title="Permanent link">#</a></h2>
+<ul>
+<li>Install <code>libreoffice-fresh</code></li>
+<li><code>gnome-encfs -a ~/ownCloud/.private ~/crypt</code></li>
+</ul>
+<h2 id="dark-theme-for-gimp-and-inkscape">Dark theme for GIMP and Inkscape<a class="headerlink" href="#dark-theme-for-gimp-and-inkscape" title="Permanent link">#</a></h2>
+<h3 id="inkscape">Inkscape<a class="headerlink" href="#inkscape" title="Permanent link">#</a></h3>
+<p>Install either Vertex or FlatStudioDark Theme:</p>
+<div class="code"><pre><span></span>yaourt -S gtk-theme-flatstudio
+yaourt -S vertex-themes
+</pre></div>
+
+
+<p>Create custom launcher script <em>~/bin/inkscape</em>:</p>
+<div class="code"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="nb">export</span> <span class="nv">GTK2_RC_FILES</span><span class="o">=</span>/usr/share/themes/FlatStudioDark/gtk-2.0/gtkrc 
+/usr/bin/inkscape
+</pre></div>
+
+
+<p><code>chmod u+x ~/bin/inkscape</code></p>
+<p>Create an application launcher <em>~/.local/share/applications/inkscape.desktop</em>:</p>
+<div class="code"><pre><span></span><span class="ch">#!/usr/bin/env xdg-open</span>
+
+<span class="o">[</span>Desktop Entry<span class="o">]</span>
+<span class="nv">Version</span><span class="o">=</span>1.0
+<span class="nv">Name</span><span class="o">=</span>InkscapeDark
+<span class="nv">GenericName</span><span class="o">=</span>Vector Graphics Editor
+X-GNOME-FullName<span class="o">=</span>Inkscape Vector Graphics Editor
+<span class="nv">Comment</span><span class="o">=</span>Create and edit Scalable Vector Graphics images
+<span class="nv">Type</span><span class="o">=</span>Application
+<span class="nv">Categories</span><span class="o">=</span>Graphics<span class="p">;</span>VectorGraphics<span class="p">;</span>GTK<span class="p">;</span>
+<span class="nv">MimeType</span><span class="o">=</span>image/svg+xml<span class="p">;</span>image/svg+xml-compressed<span class="p">;</span>application/vnd.corel-draw<span class="p">;</span>application/pdf<span class="p">;</span>application/postscript<span class="p">;</span>image/x-eps<span class="p">;</span>application/illustrator<span class="p">;</span>
+<span class="nv">Exec</span><span class="o">=</span>/home/&lt;USERNAME&gt;/bin/inkscape %F 
+<span class="nv">Path</span><span class="o">=</span>/home/&lt;USERNAME&gt;/bin
+<span class="nv">Terminal</span><span class="o">=</span><span class="nb">false</span>
+<span class="nv">StartupNotify</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">Icon</span><span class="o">=</span>inkscape
+X-Ayatana-Desktop-Shortcuts<span class="o">=</span>Drawing
+</pre></div>
+
+
+<p>Replace <USERNAME> with your username ;)</p>
+<h3 id="gimp">GIMP<a class="headerlink" href="#gimp" title="Permanent link">#</a></h3>
+<p>Just place your desired theme inside the <em>~/.gimp-2.8/themes</em> directory. Start Gimp and Select yout theme under the "Theme" tab.</p>
+<p>Example Theme: https://www.gnome-look.org/content/show.php?content=160952</p>
+<h2 id="gnome-shell-extensions">Gnome-shell extensions<a class="headerlink" href="#gnome-shell-extensions" title="Permanent link">#</a></h2>
+<div class="code"><pre><span></span><span class="c1"># ~/.local/share/gnome-shell/extensions/</span>
+
+<span class="s1">&#39;hide-legacy-tray@shell-extensions.jonnylamb.com&#39;</span>/
+<span class="s1">&#39;maximus@luis.pabon.auronconsulting.co.uk&#39;</span>/
+<span class="s1">&#39;mediaplayer@patapon.info&#39;</span>/
+<span class="s1">&#39;openweather-extension@jenslody.de&#39;</span>/
+<span class="s1">&#39;scroll-workspaces@gfxmonk.net&#39;</span>/
+<span class="s1">&#39;shellshape@gfxmonk.net&#39;</span>/
+<span class="s1">&#39;shell-volume-mixer@derhofbauer.at&#39;</span>/
+<span class="s1">&#39;TeaTime@oleid.mescharet.de&#39;</span>/
+<span class="s1">&#39;topIcons@adel.gadllah@gmail.com&#39;</span>/
+<span class="s1">&#39;workspaces-to-dock@passingthru67.gmail.com&#39;</span>/
+</pre></div>
+
+
+<p>Download as tarball and extract into <em>~/.local/share/gnome-shell/extensions/</em>:</p>
+<p><a href="../gnome-shell-extensions.tar.gz">gnome-shell-extensions.tar.gz</a></p>
+          <aside class="copyright" role="note">
+            
+              Copyright (c) 2016 Jochen Greif &ndash;
+            
+            Documentation built with
+            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
+            using the
+            <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">
+              Material
+            </a>
+            theme.
+          </aside>
+          
+            <footer class="footer">
+              
+  <nav class="pagination" aria-label="Footer">
+    <div class="previous">
+      
+        <a href="../../homeserver/samba/" title="Samba">
+          <span class="direction">
+            Previous
+          </span>
+          <div class="page">
+            <div class="button button-previous" role="button" aria-label="Previous">
+              <i class="icon icon-back"></i>
+            </div>
+            <div class="stretch">
+              <div class="title">
+                Samba
+              </div>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+    <div class="next">
+      
+        <a href="../docker/" title="Docker">
+          <span class="direction">
+            Next
+          </span>
+          <div class="page">
+            <div class="stretch">
+              <div class="title">
+                Docker
+              </div>
+            </div>
+            <div class="button button-next" role="button" aria-label="Next">
+              <i class="icon icon-forward"></i>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+  </nav>
+
+            </footer>
+          
+        </div>
+      </article>
+      <div class="results" role="status" aria-live="polite">
+        <div class="scrollable">
+          <div class="wrapper">
+            <div class="meta"></div>
+            <div class="list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      var base_url = '../..';
+      var repo_id  = 'thej/know-to';
+    </script>
+    <script src="../../assets/javascripts/application-d10e0693ea.js"></script>
+    
+    
+  </body>
+</html>

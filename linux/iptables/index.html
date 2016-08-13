@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    
+      
+        <title>Iptables - KnowTo</title>
+      
+      
+      
+      
+        <meta name="author" content="Jochen Greif">
+      
+    
+    <meta property="og:url" content="None">
+    <meta property="og:title" content="KnowTo">
+    <meta property="og:image" content="None/../../None">
+    <meta name="apple-mobile-web-app-title" content="KnowTo">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon-e565ddfa3b.ico">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon-e565ddfa3b.ico">
+    <style>
+      @font-face {
+      	font-family: 'Icon';
+      	src: url('../../assets/fonts/icon.eot?52m981');
+      	src: url('../../assets/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+      		   url('../../assets/fonts/icon.woff?52m981')
+               format('woff'),
+      		   url('../../assets/fonts/icon.ttf?52m981')
+               format('truetype'),
+      		   url('../../assets/fonts/icon.svg?52m981#icon')
+               format('svg');
+      	font-weight: normal;
+      	font-style: normal;
+      }
+    </style>
+    <link rel="stylesheet" href="../../assets/stylesheets/application-e576885f03.css">
+    
+    
+      
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu+Mono">
+      <style>
+        body, input {
+          font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+        }
+        pre, code {
+          font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+        }
+      </style>
+    
+    
+    <script src="../../assets/javascripts/modernizr-2216498cab.js"></script>
+    
+  </head>
+  
+  
+  
+  <body class=" ">
+    
+      
+      
+    
+    <div class="backdrop">
+      <div class="backdrop-paper"></div>
+    </div>
+    <input class="toggle" type="checkbox" id="toggle-drawer">
+    <input class="toggle" type="checkbox" id="toggle-search">
+    <label class="toggle-button overlay" for="toggle-drawer"></label>
+    <header class="header">
+      <nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        
+          <span class="path">
+            
+              
+                Linux <i class="icon icon-link"></i>
+              
+            
+          </span>
+        
+        Iptables
+      </div>
+    </div>
+    
+      
+      <div class="button button-twitter" role="button" aria-label="Twitter">
+        <a href="https://twitter.com/squirroloo" title="@squirroloo on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+      </div>
+    
+    
+      
+      <div class="button button-github" role="button" aria-label="GitHub">
+        <a href="https://github.com/thej" title="@thej on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+      </div>
+    
+    <div class="button button-search" role="button" aria-label="Search">
+      <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
+    </div>
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+    </header>
+    <main class="main">
+      
+      <div class="drawer">
+        <nav aria-label="Navigation">
+  
+  <a href="https://github.com/thej/know-to" class="project">
+    <div class="banner">
+      
+      <div class="name">
+        <strong>
+          KnowTo
+          <span class="version">
+            0.1.0
+          </span>
+        </strong>
+        
+          <br>
+          thej/know-to
+        
+      </div>
+    </div>
+  </a>
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            
+              
+              <a href="https://github.com/thej/know-to/releases/tag/0.1.0" target="_blank" title="Download" data-action="download">
+                <i class="icon icon-download"></i> Download
+              </a>
+            
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/thej/know-to/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+      <div class="toc">
+        <ul>
+          
+            
+  <li>
+    <a class="" title="Home" href="../..">
+      Home
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="Security of networked cars" href="../../security_of_networked_cars/">
+      Security of networked cars
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Homeserver</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Haproxy" href="../../homeserver/haproxy/">
+      Haproxy
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Haproxy old" href="../../homeserver/haproxy_old/">
+      Haproxy old
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Homeserver" href="../../homeserver/homeserver/">
+      Homeserver
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Network plan" href="../../homeserver/network_plan/">
+      Network plan
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Samba" href="../../homeserver/samba/">
+      Samba
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Linux</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Arch post install" href="../arch_post_install/">
+      Arch post install
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Docker" href="../docker/">
+      Docker
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Encrypt system ssd" href="../encrypt_system_ssd/">
+      Encrypt system ssd
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="current" title="Iptables" href="./">
+      Iptables
+    </a>
+    
+      
+        
+      
+      
+        <ul>
+          
+            <li class="anchor">
+              <a title="Basic concepts" href="#basic-concepts">
+                Basic concepts
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Best practices" href="#best-practices">
+                Best practices
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Example basic configuration" href="#example-basic-configuration">
+                Example basic configuration
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Stop the firewall" href="#stop-the-firewall">
+                Stop the firewall
+              </a>
+            </li>
+          
+        </ul>
+      
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Linux on dell xps 13" href="../linux_on_dell_xps_13/">
+      Linux on dell xps 13
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Lxc" href="../lxc/">
+      Lxc
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Raid+lvm" href="../raid+lvm/">
+      Raid+lvm
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Raspberry pi" href="../raspberry_pi/">
+      Raspberry pi
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sync configs with mackup" href="../sync_configs_with_mackup/">
+      Sync configs with mackup
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Ubuntu touch on nexus 5" href="../ubuntu_touch_on_nexus_5/">
+      Ubuntu touch on nexus 5
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Rails</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Snippet flash messages" href="../../rails/snippet_flash_messages/">
+      Snippet flash messages
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+        </ul>
+        
+          <hr>
+          <span class="section">The author</span>
+          <ul>
+            
+              
+              <li>
+                <a href="https://twitter.com/squirroloo" target="_blank" title="@squirroloo on Twitter">
+                  @squirroloo on Twitter
+                </a>
+              </li>
+            
+            
+              
+              <li>
+                <a href="https://github.com/thej" target="_blank" title="@thej on GitHub">
+                  @thej on GitHub
+                </a>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+      </div>
+      <article class="article">
+        <div class="wrapper">
+          
+          <h1 id="firewall">Firewall<a class="headerlink" href="#firewall" title="Permanent link">#</a></h1>
+<h2 id="basic-concepts">Basic concepts<a class="headerlink" href="#basic-concepts" title="Permanent link">#</a></h2>
+<div class="code"><pre><span></span>                               <span class="n">XXXXXXXXXXXXXXXXXX</span>
+                             <span class="n">XXX</span>     <span class="n">Network</span>    <span class="n">XXX</span>
+                               <span class="n">XXXXXXXXXXXXXXXXXX</span>
+                                       <span class="o">+</span>
+                                       <span class="o">|</span>
+                                       <span class="n">v</span>
+ <span class="o">+-------------+</span>              <span class="o">+------------------+</span>
+ <span class="o">|</span><span class="nl">table</span><span class="p">:</span> <span class="n">filter</span><span class="o">|</span> <span class="o">&lt;---+</span>        <span class="o">|</span> <span class="nl">table</span><span class="p">:</span> <span class="n">nat</span>       <span class="o">|</span>
+ <span class="o">|</span><span class="nl">chain</span><span class="p">:</span> <span class="n">INPUT</span> <span class="o">|</span>     <span class="o">|</span>        <span class="o">|</span> <span class="nl">chain</span><span class="p">:</span> <span class="n">PREROUTING</span><span class="o">|</span>
+ <span class="o">+-----+-------+</span>     <span class="o">|</span>        <span class="o">+--------+---------+</span>
+       <span class="o">|</span>             <span class="o">|</span>                 <span class="o">|</span>
+       <span class="n">v</span>             <span class="o">|</span>                 <span class="n">v</span>
+ <span class="p">[</span><span class="n">local</span> <span class="n">process</span><span class="p">]</span>     <span class="o">|</span>           <span class="o">****************</span>          <span class="o">+--------------+</span>
+       <span class="o">|</span>             <span class="o">+---------+</span> <span class="n">Routing</span> <span class="n">decision</span> <span class="o">+------&gt;</span> <span class="o">|</span><span class="nl">table</span><span class="p">:</span> <span class="n">filter</span> <span class="o">|</span>
+       <span class="n">v</span>                         <span class="o">****************</span>          <span class="o">|</span><span class="nl">chain</span><span class="p">:</span> <span class="n">FORWARD</span><span class="o">|</span>
+<span class="o">****************</span>                                           <span class="o">+------+-------+</span>
+<span class="n">Routing</span> <span class="n">decision</span>                                                  <span class="o">|</span>
+<span class="o">****************</span>                                                  <span class="o">|</span>
+       <span class="o">|</span>                                                          <span class="o">|</span>
+       <span class="n">v</span>                        <span class="o">****************</span>                  <span class="o">|</span>
+<span class="o">+-------------+</span>       <span class="o">+------&gt;</span>  <span class="n">Routing</span> <span class="n">decision</span>  <span class="o">&lt;---------------+</span>
+<span class="o">|</span><span class="nl">table</span><span class="p">:</span> <span class="n">nat</span>   <span class="o">|</span>       <span class="o">|</span>         <span class="o">****************</span>
+<span class="o">|</span><span class="nl">chain</span><span class="p">:</span> <span class="n">OUTPUT</span><span class="o">|</span>       <span class="o">|</span>               <span class="o">+</span>
+<span class="o">+-----+-------+</span>       <span class="o">|</span>               <span class="o">|</span>
+      <span class="o">|</span>               <span class="o">|</span>               <span class="n">v</span>
+      <span class="n">v</span>               <span class="o">|</span>      <span class="o">+-------------------+</span>
+<span class="o">+--------------+</span>      <span class="o">|</span>      <span class="o">|</span> <span class="nl">table</span><span class="p">:</span> <span class="n">nat</span>        <span class="o">|</span>
+<span class="o">|</span><span class="nl">table</span><span class="p">:</span> <span class="n">filter</span> <span class="o">|</span> <span class="o">+----+</span>      <span class="o">|</span> <span class="nl">chain</span><span class="p">:</span> <span class="n">POSTROUTING</span><span class="o">|</span>
+<span class="o">|</span><span class="nl">chain</span><span class="p">:</span> <span class="n">OUTPUT</span> <span class="o">|</span>             <span class="o">+--------+----------+</span>
+<span class="o">+--------------+</span>                      <span class="o">|</span>
+                                      <span class="n">v</span>
+                               <span class="n">XXXXXXXXXXXXXXXXXX</span>
+                             <span class="n">XXX</span>    <span class="n">Network</span>     <span class="n">XXX</span>
+                               <span class="n">XXXXXXXXXXXXXXXXXX</span>
+</pre></div>
+
+
+<h2 id="best-practices">Best practices<a class="headerlink" href="#best-practices" title="Permanent link">#</a></h2>
+<ul>
+<li>place loopback rules as early as possible</li>
+<li>place forwading rules as early as possible</li>
+<li>use state and connection tracking to bypass firewall for established connections</li>
+<li>combine rules using port lists</li>
+<li>place rues for heavy traffic services as early as possible</li>
+</ul>
+<h2 id="example-basic-configuration">Example basic configuration<a class="headerlink" href="#example-basic-configuration" title="Permanent link">#</a></h2>
+<h3 id="interfaces-used">Interfaces used:<a class="headerlink" href="#interfaces-used" title="Permanent link">#</a></h3>
+<ul>
+<li>lan0: internal network</li>
+<li>wan0: external network/internet</li>
+<li>lxcbr0: DMZ</li>
+</ul>
+<h3 id="firewall-script">Firewall Script<a class="headerlink" href="#firewall-script" title="Permanent link">#</a></h3>
+<div class="code"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="c1"># CONFIG</span>
+<span class="c1">##############################</span>
+<span class="c1"># Where to find iptables command</span>
+<span class="nv">IPT</span><span class="o">=</span>/sbin/iptables
+
+<span class="nv">SERVER_IP</span><span class="o">=</span><span class="s2">&quot;192.168.222.28&quot;</span>
+<span class="nv">WAN_IP</span><span class="o">=</span><span class="s2">&quot;192.168.188.84&quot;</span>
+<span class="nv">DMZ_IP</span><span class="o">=</span><span class="s2">&quot;10.200.200.222&quot;</span>
+
+<span class="nv">WAN_IF</span><span class="o">=</span><span class="s2">&quot;wan0&quot;</span>
+<span class="nv">LAN_IF</span><span class="o">=</span><span class="s2">&quot;lan0&quot;</span>
+<span class="nv">DMZ_IF</span><span class="o">=</span><span class="s2">&quot;br0&quot;</span>
+
+<span class="nv">LAN_NET</span><span class="o">=</span><span class="s2">&quot;192.168.222.0/24&quot;</span>
+<span class="nv">WAN_NET</span><span class="o">=</span><span class="s2">&quot;192.168.188.0/24&quot;</span>
+<span class="nv">DMZ_NET</span><span class="o">=</span><span class="s2">&quot;10.0.0.0/8&quot;</span>
+
+<span class="c1"># Private, multicast, loopback and reserved networks</span>
+<span class="nv">LOOPBACK</span><span class="o">=</span><span class="s2">&quot;127.0.0.0/8&quot;</span>
+<span class="nv">CLASS_A</span><span class="o">=</span><span class="s2">&quot;10.0.0.0/8&quot;</span>
+<span class="nv">CLASS_B</span><span class="o">=</span><span class="s2">&quot;172.16.0.0/12&quot;</span>
+<span class="nv">CLASS_C</span><span class="o">=</span><span class="s2">&quot;192.168.0.0/16&quot;</span>
+<span class="nv">CLASS_D_MULTICAST</span><span class="o">=</span><span class="s2">&quot;224.0.0.0/4&quot;</span>
+<span class="nv">CLASS_E_RESERVED</span><span class="o">=</span><span class="s2">&quot;240.0.0.0/5&quot;</span>
+
+
+<span class="c1">###############################</span>
+
+<span class="c1"># Flush all existing rules</span>
+<span class="nv">$IPT</span> -F
+<span class="nv">$IPT</span> -X
+<span class="nv">$IPT</span> -t nat -F
+<span class="nv">$IPT</span> -t nat -X
+<span class="nv">$IPT</span> -t mangle -F
+<span class="nv">$IPT</span> -t mangle -X
+<span class="nv">$IPT</span> -P INPUT ACCEPT
+<span class="nv">$IPT</span> -P FORWARD ACCEPT
+<span class="nv">$IPT</span> -P OUTPUT ACCEPT
+
+<span class="c1"># Default policies</span>
+<span class="nv">$IPT</span> -P OUTPUT ACCEPT
+<span class="nv">$IPT</span> -P INPUT DROP
+<span class="nv">$IPT</span> -P FORWARD DROP
+
+<span class="c1"># Allow lo interface</span>
+<span class="nv">$IPT</span> -A INPUT -i lo -j ACCEPT
+<span class="nv">$IPT</span> -A OUTPUT -o lo -j ACCEPT 
+
+<span class="c1"># Allow already established sessions</span>
+<span class="nv">$IPT</span> -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+<span class="nv">$IPT</span> -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+<span class="c1"># Drop invalid packages</span>
+<span class="nv">$IPT</span> -A INPUT -m conntrack --ctstate INVALID -j DROP
+
+<span class="c1"># Refuse spoofed packets pretending to be from the external interfaces IP</span>
+<span class="c1"># $IPT -A INPUT -i $WAN_IF -s $IPADDR -j DROP</span>
+
+<span class="c1"># Refuse packets claiming to be from private networks or loopback device</span>
+<span class="nv">$IPT</span> -A INPUT -i <span class="nv">$WAN_IF</span> -s <span class="nv">$CLASS_A</span> -j DROP
+<span class="nv">$IPT</span> -A INPUT -i <span class="nv">$WAN_IF</span> -s <span class="nv">$CLASS_B</span> -j DROP
+<span class="c1">#$IPT -A INPUT -i $WAN_IF -s $CLASS_C -j DROP</span>
+<span class="nv">$IPT</span> -A INPUT -i <span class="nv">$WAN_IF</span> -s <span class="nv">$LOOPBACK</span> -j DROP
+
+<span class="c1"># Allow SSH to $SERVER_IP</span>
+<span class="nv">$IPT</span> -A INPUT -p tcp -s <span class="nv">$LAN_NET</span> -d <span class="nv">$SERVER_IP</span> --dport <span class="m">22</span> -i <span class="nv">$LAN_IF</span> -j ACCEPT
+<span class="nv">$IPT</span> -A INPUT -p tcp -s <span class="nv">$WAN_NET</span> -d <span class="nv">$WAN_IP</span> --dport <span class="m">22</span> -i <span class="nv">$WAN_IF</span> -j ACCEPT
+<span class="c1">#$IPT -A INPUT -p tcp -s 0/0 -d $SERVER_IP --dport 22 -i $WAN_IF -j ACCEPT</span>
+
+<span class="c1"># Enable masquerading for lan0/br0</span>
+<span class="nv">$IPT</span> -t nat -A POSTROUTING -o <span class="nv">$LAN_IF</span> -j MASQUERADE
+<span class="nv">$IPT</span> -t nat -A POSTROUTING -s <span class="nv">$DMZ_NET</span> -j MASQUERADE
+
+<span class="c1"># Allow forwarding on bridge interface</span>
+<span class="nv">$IPT</span> -A FORWARD -p all -i <span class="nv">$DMZ_IF</span> -j ACCEPT
+
+<span class="c1"># allow traffic from internal ($LAN_IF) to DMZ ($DMZ_IF)</span>
+<span class="nv">$IPT</span> -A FORWARD -i <span class="nv">$LAN_IF</span> -o <span class="nv">$DMZ_IF</span> -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+<span class="nv">$IPT</span> -A FORWARD -i <span class="nv">$DMZ_IF</span> -o <span class="nv">$LAN_IF</span> -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+<span class="c1"># allow traffic from internet ($WAN_IF) to DMZ ($DMZ_IF)</span>
+<span class="nv">$IPT</span> -A FORWARD -i <span class="nv">$WAN_IF</span> -o <span class="nv">$DMZ_IF</span> -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+<span class="nv">$IPT</span> -A FORWARD -i <span class="nv">$DMZ_IF</span> -o <span class="nv">$WAN_IF</span> -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+
+<span class="c1">########################</span>
+<span class="c1">### PORT FORWARDING ####</span>
+<span class="c1">########################</span>
+
+<span class="c1"># redirect incoming web requests (port 80,443) at $WAN_IF ($WAN_IP) of FIREWALL to web server at $DMZ_IP</span>
+<span class="nv">$IPT</span> -t nat -A PREROUTING -p tcp -i <span class="nv">$WAN_IF</span> -d <span class="nv">$WAN_IP</span> --dport <span class="m">80</span> -j DNAT --to-dest <span class="nv">$DMZ_IP</span>
+<span class="nv">$IPT</span> -t nat -A PREROUTING -p tcp -i <span class="nv">$WAN_IF</span> -d <span class="nv">$WAN_IP</span> --dport <span class="m">443</span> -j DNAT --to-dest <span class="nv">$DMZ_IP</span>
+
+<span class="c1"># redirect port 2345 to $DMZ_IP</span>
+<span class="nv">$IPT</span> -t nat -A PREROUTING -p tcp -i <span class="nv">$LAN_IF</span> -d <span class="nv">$SERVER_IP</span> --dport <span class="m">2345</span> -j DNAT --to-dest <span class="nv">$DMZ_IP</span>:22
+<span class="nv">$IPT</span> -t nat -A PREROUTING -p tcp -i <span class="nv">$WAN_IF</span> -d <span class="nv">$WAN_IP</span> --dport <span class="m">2345</span> -j DNAT --to-dest <span class="nv">$DMZ_IP</span>:22
+
+<span class="c1"># redirect incoming mail (SMTP) requests at $WAN_IF ($WAN_IP) of FIREWALL to Mail server at 192.168.20.3</span>
+<span class="c1">#iptables -t nat -A PREROUTING -p tcp -i $WAN_IF -d $WAN_IP --dport 25 -j DNAT --to-dest 192.168.20.3</span>
+
+<span class="c1"># redirect incoming DNS requests at $WAN_IF ($WAN_IP) of FIREWALL to DNS server at 192.168.20.4</span>
+<span class="c1">#iptables -t nat -A PREROUTING -p udp -i $WAN_IF -d $WAN_IP --dport 53 -j DNAT --to-dest 192.168.20.4</span>
+<span class="c1">#iptables -t nat -A PREROUTING -p tcp -i $WAN_IF -d $WAN_IP --dport 53 -j DNAT --to-dest 192.168.20.4</span>
+</pre></div>
+
+
+<h2 id="stop-the-firewall">Stop the firewall<a class="headerlink" href="#stop-the-firewall" title="Permanent link">#</a></h2>
+<div class="code"><pre><span></span><span class="ch">#!/bin/sh</span>
+iptables -F
+iptables -X
+iptables -t nat -F
+iptables -t nat -X
+iptables -t mangle -F
+iptables -t mangle -X
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+</pre></div>
+          <aside class="copyright" role="note">
+            
+              Copyright (c) 2016 Jochen Greif &ndash;
+            
+            Documentation built with
+            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
+            using the
+            <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">
+              Material
+            </a>
+            theme.
+          </aside>
+          
+            <footer class="footer">
+              
+  <nav class="pagination" aria-label="Footer">
+    <div class="previous">
+      
+        <a href="../encrypt_system_ssd/" title="Encrypt system ssd">
+          <span class="direction">
+            Previous
+          </span>
+          <div class="page">
+            <div class="button button-previous" role="button" aria-label="Previous">
+              <i class="icon icon-back"></i>
+            </div>
+            <div class="stretch">
+              <div class="title">
+                Encrypt system ssd
+              </div>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+    <div class="next">
+      
+        <a href="../linux_on_dell_xps_13/" title="Linux on dell xps 13">
+          <span class="direction">
+            Next
+          </span>
+          <div class="page">
+            <div class="stretch">
+              <div class="title">
+                Linux on dell xps 13
+              </div>
+            </div>
+            <div class="button button-next" role="button" aria-label="Next">
+              <i class="icon icon-forward"></i>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+  </nav>
+
+            </footer>
+          
+        </div>
+      </article>
+      <div class="results" role="status" aria-live="polite">
+        <div class="scrollable">
+          <div class="wrapper">
+            <div class="meta"></div>
+            <div class="list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      var base_url = '../..';
+      var repo_id  = 'thej/know-to';
+    </script>
+    <script src="../../assets/javascripts/application-d10e0693ea.js"></script>
+    
+    
+  </body>
+</html>

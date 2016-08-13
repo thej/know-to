@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    
+      
+        <title>Docker - KnowTo</title>
+      
+      
+      
+      
+        <meta name="author" content="Jochen Greif">
+      
+    
+    <meta property="og:url" content="None">
+    <meta property="og:title" content="KnowTo">
+    <meta property="og:image" content="None/../../None">
+    <meta name="apple-mobile-web-app-title" content="KnowTo">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon-e565ddfa3b.ico">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon-e565ddfa3b.ico">
+    <style>
+      @font-face {
+      	font-family: 'Icon';
+      	src: url('../../assets/fonts/icon.eot?52m981');
+      	src: url('../../assets/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+      		   url('../../assets/fonts/icon.woff?52m981')
+               format('woff'),
+      		   url('../../assets/fonts/icon.ttf?52m981')
+               format('truetype'),
+      		   url('../../assets/fonts/icon.svg?52m981#icon')
+               format('svg');
+      	font-weight: normal;
+      	font-style: normal;
+      }
+    </style>
+    <link rel="stylesheet" href="../../assets/stylesheets/application-e576885f03.css">
+    
+    
+      
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu+Mono">
+      <style>
+        body, input {
+          font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+        }
+        pre, code {
+          font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+        }
+      </style>
+    
+    
+    <script src="../../assets/javascripts/modernizr-2216498cab.js"></script>
+    
+  </head>
+  
+  
+  
+  <body class=" ">
+    
+      
+      
+    
+    <div class="backdrop">
+      <div class="backdrop-paper"></div>
+    </div>
+    <input class="toggle" type="checkbox" id="toggle-drawer">
+    <input class="toggle" type="checkbox" id="toggle-search">
+    <label class="toggle-button overlay" for="toggle-drawer"></label>
+    <header class="header">
+      <nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        
+          <span class="path">
+            
+              
+                Linux <i class="icon icon-link"></i>
+              
+            
+          </span>
+        
+        Docker
+      </div>
+    </div>
+    
+      
+      <div class="button button-twitter" role="button" aria-label="Twitter">
+        <a href="https://twitter.com/squirroloo" title="@squirroloo on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+      </div>
+    
+    
+      
+      <div class="button button-github" role="button" aria-label="GitHub">
+        <a href="https://github.com/thej" title="@thej on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+      </div>
+    
+    <div class="button button-search" role="button" aria-label="Search">
+      <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
+    </div>
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+    </header>
+    <main class="main">
+      
+      <div class="drawer">
+        <nav aria-label="Navigation">
+  
+  <a href="https://github.com/thej/know-to" class="project">
+    <div class="banner">
+      
+      <div class="name">
+        <strong>
+          KnowTo
+          <span class="version">
+            0.1.0
+          </span>
+        </strong>
+        
+          <br>
+          thej/know-to
+        
+      </div>
+    </div>
+  </a>
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            
+              
+              <a href="https://github.com/thej/know-to/releases/tag/0.1.0" target="_blank" title="Download" data-action="download">
+                <i class="icon icon-download"></i> Download
+              </a>
+            
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/thej/know-to/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+      <div class="toc">
+        <ul>
+          
+            
+  <li>
+    <a class="" title="Home" href="../..">
+      Home
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="Security of networked cars" href="../../security_of_networked_cars/">
+      Security of networked cars
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Homeserver</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Haproxy" href="../../homeserver/haproxy/">
+      Haproxy
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Haproxy old" href="../../homeserver/haproxy_old/">
+      Haproxy old
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Homeserver" href="../../homeserver/homeserver/">
+      Homeserver
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Network plan" href="../../homeserver/network_plan/">
+      Network plan
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Samba" href="../../homeserver/samba/">
+      Samba
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Linux</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Arch post install" href="../arch_post_install/">
+      Arch post install
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="current" title="Docker" href="./">
+      Docker
+    </a>
+    
+      
+        
+      
+      
+        <ul>
+          
+            <li class="anchor">
+              <a title="What is docker?" href="#what-is-docker">
+                What is docker?
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Benefits of Docker" href="#benefits-of-docker">
+                Benefits of Docker
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Docker concepts and terminology" href="#docker-concepts-and-terminology">
+                Docker concepts and terminology
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Docker Orchastration" href="#docker-orchastration">
+                Docker Orchastration
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Docker Images" href="#docker-images">
+                Docker Images
+              </a>
+            </li>
+          
+        </ul>
+      
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Encrypt system ssd" href="../encrypt_system_ssd/">
+      Encrypt system ssd
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Iptables" href="../iptables/">
+      Iptables
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Linux on dell xps 13" href="../linux_on_dell_xps_13/">
+      Linux on dell xps 13
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Lxc" href="../lxc/">
+      Lxc
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Raid+lvm" href="../raid+lvm/">
+      Raid+lvm
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Raspberry pi" href="../raspberry_pi/">
+      Raspberry pi
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sync configs with mackup" href="../sync_configs_with_mackup/">
+      Sync configs with mackup
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Ubuntu touch on nexus 5" href="../ubuntu_touch_on_nexus_5/">
+      Ubuntu touch on nexus 5
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Rails</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Snippet flash messages" href="../../rails/snippet_flash_messages/">
+      Snippet flash messages
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+        </ul>
+        
+          <hr>
+          <span class="section">The author</span>
+          <ul>
+            
+              
+              <li>
+                <a href="https://twitter.com/squirroloo" target="_blank" title="@squirroloo on Twitter">
+                  @squirroloo on Twitter
+                </a>
+              </li>
+            
+            
+              
+              <li>
+                <a href="https://github.com/thej" target="_blank" title="@thej on GitHub">
+                  @thej on GitHub
+                </a>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+      </div>
+      <article class="article">
+        <div class="wrapper">
+          
+          <h1 id="docker-overview">Docker Overview<a class="headerlink" href="#docker-overview" title="Permanent link">#</a></h1>
+<h2 id="what-is-docker">What is docker?<a class="headerlink" href="#what-is-docker" title="Permanent link">#</a></h2>
+<ul>
+<li>container based virtualization, uses the kernel on the host's OS to run multiple guest instances</li>
+<li>each guest instance is called a <strong>container</strong></li>
+<li>each container has its own:</li>
+<li>root filesystem</li>
+<li>processes</li>
+<li>memory</li>
+<li>devices</li>
+<li>network ports</li>
+<li>each container has its own libraries</li>
+</ul>
+<h2 id="benefits-of-docker">Benefits of Docker<a class="headerlink" href="#benefits-of-docker" title="Permanent link">#</a></h2>
+<ul>
+<li>portable between platforms</li>
+<li>not a VM: only contains the application + required libraries</li>
+<li>Scalability: easily spin uo new containers if needed</li>
+<li>run more apss on one host machine</li>
+</ul>
+<h2 id="docker-concepts-and-terminology">Docker concepts and terminology<a class="headerlink" href="#docker-concepts-and-terminology" title="Permanent link">#</a></h2>
+<h3 id="docker-engine">Docker Engine<a class="headerlink" href="#docker-engine" title="Permanent link">#</a></h3>
+<ul>
+<li>daemon that enables containers to be built, shipped and run</li>
+<li>uses Linux kernel namespaces and control groups (cgroups)</li>
+<li>namespaces give us the isolated workspace</li>
+</ul>
+<h4 id="namespaces-used">Namespaces used:<a class="headerlink" href="#namespaces-used" title="Permanent link">#</a></h4>
+<ul>
+<li>pid</li>
+<li>net</li>
+<li>ipc</li>
+<li>mnt</li>
+<li>uts</li>
+</ul>
+<h3 id="docker-containers-and-images">Docker containers and images<a class="headerlink" href="#docker-containers-and-images" title="Permanent link">#</a></h3>
+<h4 id="images">Images<a class="headerlink" href="#images" title="Permanent link">#</a></h4>
+<ul>
+<li>read-only template to create containers</li>
+<li>built by you or other Docker-users</li>
+<li>stored in the Docker Hub or local registry</li>
+<li>inside a registry are multiple repositories, that can contain multiple images</li>
+</ul>
+<h4 id="containers">Containers<a class="headerlink" href="#containers" title="Permanent link">#</a></h4>
+<ul>
+<li>Isolated application platform</li>
+<li>Contains everything needed to run your application</li>
+<li>base on one or more images</li>
+</ul>
+<h3 id="docker-hub">Docker Hub<a class="headerlink" href="#docker-hub" title="Permanent link">#</a></h3>
+<ul>
+<li>App store for docker </li>
+</ul>
+<h2 id="docker-orchastration">Docker Orchastration<a class="headerlink" href="#docker-orchastration" title="Permanent link">#</a></h2>
+<p>3 tools for orchastrating distributed applications:</p>
+<ol>
+<li><strong>Docker Machine</strong>: Tool that provisions Docker hosts and installs the Docker engine on them</li>
+<li><strong>Docker Swarm</strong>: Tool that clusters many Engines and schedules containers</li>
+<li><strong>Docker Compose</strong>: Tool to create and manage multi-container applications</li>
+</ol>
+<h2 id="docker-images">Docker Images<a class="headerlink" href="#docker-images" title="Permanent link">#</a></h2>
+<h1 id="docker-fundamentals">Docker Fundamentals<a class="headerlink" href="#docker-fundamentals" title="Permanent link">#</a></h1>
+<p><code>docker commit [options] [container ID] [repository[:tag]]</code> saves changes to a container</p>
+<p>Example:</p>
+<p><code>docker commit 25442324 thej/myapplication:1.0</code></p>
+<p>Show docker containers
+<code>docker ps -a</code></p>
+<p>Start image as daemon:
+<code>docker run -d nginx</code></p>
+<p>Start a container using container ID
+<code>docker start &lt;container ID&gt;</code></p>
+<p>Stop a container using container ID
+<code>docker stop &lt;container ID&gt;</code></p>
+<p>Start another process within a container:
+<code>docker exec -ti [container ID] /bin/bash</code> starts a bash shell
+Note: Exiting from the terminal will not terminate the container</p>
+<p>Delete container
+<code>docker rm &lt;container ID&gt;</code></p>
+<p>Delete images
+<code>docker rmi [imageID|repo]</code></p>
+<h2 id="dockerfile">Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">#</a></h2>
+<ul>
+<li>each <code>RUN</code> forces a new commit</li>
+<li>no new commit if you chain commands with <code>&amp;&amp;</code></li>
+<li><code>ENTRYPOINT</code> runs command that cant't be overwritten by paramaters. Instead, paramaters are passed as parameters to the ENTRYPOINT instruction</li>
+</ul>
+<p>Build:</p>
+<p><code>docker build [options] [path]</code></p>
+<p>Examples to build:</p>
+<p><code>docker build -t [repository:tag] [path]</code> to build specific tag
+<code>docker build -t thej/myimage:1.0 .</code> to build from the current path as context
+<code>docker build -t thej/myimage:1.0 myproject</code> to build from <em>myproject</em> path as context</p>
+<h2 id="docker-volumes">Docker Volumes<a class="headerlink" href="#docker-volumes" title="Permanent link">#</a></h2>
+<p>A <em>Volume</em> is a designated directory in a container, which is designed to persist data, independent of the container's life cylce</p>
+<ul>
+<li>Volume changes are excluded when updating an image</li>
+<li>persist when a container is deleted</li>
+<li>Can be mapped to host a directory</li>
+<li>Can be shared between containers</li>
+</ul>
+<h3 id="mount-a-volume">Mount a volume<a class="headerlink" href="#mount-a-volume" title="Permanent link">#</a></h3>
+<ul>
+<li>Volumes are mounted when creating or executing a container</li>
+<li>can be mapped to a host directory</li>
+<li>volume paths specified must be absolute</li>
+</ul>
+<p>Execute a new container and mount the directory /myvolume into its filesystem
+<code>docker run -d -P -v /myvolume nginx:latest</code></p>
+<p>Execute a new container an mape <em>/data/src</em> directory from the host into the <em>/test/src</em> directory in the container
+<code>docker run -i -t -v /data/src:/test/src nginx:latest</code></p>
+<h3 id="volumes-in-dockerfile">Volumes in Dockerfile<a class="headerlink" href="#volumes-in-dockerfile" title="Permanent link">#</a></h3>
+<ul>
+<li>VOLUME instruction creates a mountpoint</li>
+<li>can specify arguments a JSON array or string</li>
+<li>cannot map volumes to host directories</li>
+<li>volumes are initialized when the container is executed</li>
+</ul>
+<p>String example:
+<code>VOLUME /myvol</code></p>
+<p>String examples with multiple volumes:
+<code>VOLUME /myvol1 /test/src</code></p>
+<p>JSON example
+<code>VOLUME ["myvol", "myvl2"]</code></p>
+<h3 id="uses-of-volumes">Uses of volumes<a class="headerlink" href="#uses-of-volumes" title="Permanent link">#</a></h3>
+<ul>
+<li>de-couple the data that is stored from the container which created the data</li>
+<li>good for sharing data between containers<ul>
+<li>can setup a data container which has a volume you mount in other containers</li>
+</ul>
+</li>
+<li>mounting directories from the host is good for testing purposes but generally not recommended for production use</li>
+</ul>
+<h2 id="networking">Networking<a class="headerlink" href="#networking" title="Permanent link">#</a></h2>
+<h3 id="mapping-ports">Mapping ports<a class="headerlink" href="#mapping-ports" title="Permanent link">#</a></h3>
+<ul>
+<li>containers have their own network and IP address</li>
+<li>map exposed container ports to ports on the host machine</li>
+<li>ports can be manually mapped or auto mapped</li>
+<li>uses the -p and -P parameters in <code>docker run</code></li>
+</ul>
+<p>Maps port 80 on the container to 8080 on the host:
+<code>docker run -d -p 8080:80 nginx</code></p>
+<h3 id="automapping-ports">Automapping ports<a class="headerlink" href="#automapping-ports" title="Permanent link">#</a></h3>
+<ul>
+<li>use the <em>-P</em> option in <code>docker run</code></li>
+<li>automatically maps exposed ports in the container to a port number in the host</li>
+<li>host port numbers used go from 49154 to 65535</li>
+<li>only works for ports defined in the EXPOSE instruction </li>
+</ul>
+<p>Auto map ports exposed by the NGINX contaoner to a port value on the host:
+<code>docker run -d -P nginx</code></p>
+<h3 id="expose-instruction">EXPOSE instruction<a class="headerlink" href="#expose-instruction" title="Permanent link">#</a></h3>
+<ul>
+<li>configures which ports a container will listen on at runtime</li>
+<li>ports still need to me mapped when container is executed</li>
+</ul>
+<div class="code"><pre><span></span>FROM ubuntu:14.04
+RUN apt-get update &amp; apt-get install -y nginx
+
+EXPOSE 80 443
+
+CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]
+</pre></div>
+
+
+<h2 id="linking-containers">Linking containers<a class="headerlink" href="#linking-containers" title="Permanent link">#</a></h2>
+<p>Linking is a communication method between containers which allows them to securely transfer data from one to antoher</p>
+<ul>
+<li>source and recipient containers</li>
+<li>recipient containers have access to data on source containers</li>
+<li>links are established based on container names</li>
+</ul>
+<div class="code"><pre><span></span>---------------------------------------
+|                                     |   
+|  -------------    ---------------   |
+|  | --------  |    |  ---------- |   |
+|  | |webapp|  |    |  |database| |   |
+|  | --------  | -&gt; |  ---------- |   |
+|  | container |    |  container  |   |
+|  -------------    ---------------   |
+|    recipient           source       |
+|                                     |
+|               host                  |
+---------------------------------------
+</pre></div>
+
+
+<h3 id="creating-a-link">creating a link<a class="headerlink" href="#creating-a-link" title="Permanent link">#</a></h3>
+<ol>
+<li>create soruce container first</li>
+<li>
+<p>create the recipient container using the <em>--link</em> option</p>
+</li>
+<li>
+<p>Bets practice: give the containers meaningful names</p>
+</li>
+</ol>
+<p>Create source container using postgres:
+<code>docker run -d --name database postgres</code></p>
+<p>Create the recipient container and link it:
+<code>docker run -d -p 8080:80 --name website --link database:db nginx</code>
+note: <em>db</em> is the alias</p>
+<h4 id="uses-of-linking">Uses of linking<a class="headerlink" href="#uses-of-linking" title="Permanent link">#</a></h4>
+<ul>
+<li>containers can talk to each others without having to epose ports to the host</li>
+<li>essential for micro service applicatin architecture</li>
+<li>Example:<ul>
+<li>container with tomcat running</li>
+<li>container with MySQL running</li>
+<li>application on tomcat need to connect to MySQL</li>
+</ul>
+</li>
+</ul>
+          <aside class="copyright" role="note">
+            
+              Copyright (c) 2016 Jochen Greif &ndash;
+            
+            Documentation built with
+            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
+            using the
+            <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">
+              Material
+            </a>
+            theme.
+          </aside>
+          
+            <footer class="footer">
+              
+  <nav class="pagination" aria-label="Footer">
+    <div class="previous">
+      
+        <a href="../arch_post_install/" title="Arch post install">
+          <span class="direction">
+            Previous
+          </span>
+          <div class="page">
+            <div class="button button-previous" role="button" aria-label="Previous">
+              <i class="icon icon-back"></i>
+            </div>
+            <div class="stretch">
+              <div class="title">
+                Arch post install
+              </div>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+    <div class="next">
+      
+        <a href="../encrypt_system_ssd/" title="Encrypt system ssd">
+          <span class="direction">
+            Next
+          </span>
+          <div class="page">
+            <div class="stretch">
+              <div class="title">
+                Encrypt system ssd
+              </div>
+            </div>
+            <div class="button button-next" role="button" aria-label="Next">
+              <i class="icon icon-forward"></i>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+  </nav>
+
+            </footer>
+          
+        </div>
+      </article>
+      <div class="results" role="status" aria-live="polite">
+        <div class="scrollable">
+          <div class="wrapper">
+            <div class="meta"></div>
+            <div class="list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      var base_url = '../..';
+      var repo_id  = 'thej/know-to';
+    </script>
+    <script src="../../assets/javascripts/application-d10e0693ea.js"></script>
+    
+    
+  </body>
+</html>

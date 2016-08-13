@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    
+      
+        <title>Encrypt system ssd - KnowTo</title>
+      
+      
+      
+      
+        <meta name="author" content="Jochen Greif">
+      
+    
+    <meta property="og:url" content="None">
+    <meta property="og:title" content="KnowTo">
+    <meta property="og:image" content="None/../../None">
+    <meta name="apple-mobile-web-app-title" content="KnowTo">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon-e565ddfa3b.ico">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon-e565ddfa3b.ico">
+    <style>
+      @font-face {
+      	font-family: 'Icon';
+      	src: url('../../assets/fonts/icon.eot?52m981');
+      	src: url('../../assets/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+      		   url('../../assets/fonts/icon.woff?52m981')
+               format('woff'),
+      		   url('../../assets/fonts/icon.ttf?52m981')
+               format('truetype'),
+      		   url('../../assets/fonts/icon.svg?52m981#icon')
+               format('svg');
+      	font-weight: normal;
+      	font-style: normal;
+      }
+    </style>
+    <link rel="stylesheet" href="../../assets/stylesheets/application-e576885f03.css">
+    
+    
+      
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu+Mono">
+      <style>
+        body, input {
+          font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+        }
+        pre, code {
+          font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+        }
+      </style>
+    
+    
+    <script src="../../assets/javascripts/modernizr-2216498cab.js"></script>
+    
+  </head>
+  
+  
+  
+  <body class=" ">
+    
+      
+      
+    
+    <div class="backdrop">
+      <div class="backdrop-paper"></div>
+    </div>
+    <input class="toggle" type="checkbox" id="toggle-drawer">
+    <input class="toggle" type="checkbox" id="toggle-search">
+    <label class="toggle-button overlay" for="toggle-drawer"></label>
+    <header class="header">
+      <nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        
+          <span class="path">
+            
+              
+                Linux <i class="icon icon-link"></i>
+              
+            
+          </span>
+        
+        Encrypt system ssd
+      </div>
+    </div>
+    
+      
+      <div class="button button-twitter" role="button" aria-label="Twitter">
+        <a href="https://twitter.com/squirroloo" title="@squirroloo on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+      </div>
+    
+    
+      
+      <div class="button button-github" role="button" aria-label="GitHub">
+        <a href="https://github.com/thej" title="@thej on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+      </div>
+    
+    <div class="button button-search" role="button" aria-label="Search">
+      <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
+    </div>
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+    </header>
+    <main class="main">
+      
+      <div class="drawer">
+        <nav aria-label="Navigation">
+  
+  <a href="https://github.com/thej/know-to" class="project">
+    <div class="banner">
+      
+      <div class="name">
+        <strong>
+          KnowTo
+          <span class="version">
+            0.1.0
+          </span>
+        </strong>
+        
+          <br>
+          thej/know-to
+        
+      </div>
+    </div>
+  </a>
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            
+              
+              <a href="https://github.com/thej/know-to/releases/tag/0.1.0" target="_blank" title="Download" data-action="download">
+                <i class="icon icon-download"></i> Download
+              </a>
+            
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/thej/know-to/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+      <div class="toc">
+        <ul>
+          
+            
+  <li>
+    <a class="" title="Home" href="../..">
+      Home
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="Security of networked cars" href="../../security_of_networked_cars/">
+      Security of networked cars
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Homeserver</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Haproxy" href="../../homeserver/haproxy/">
+      Haproxy
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Haproxy old" href="../../homeserver/haproxy_old/">
+      Haproxy old
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Homeserver" href="../../homeserver/homeserver/">
+      Homeserver
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Network plan" href="../../homeserver/network_plan/">
+      Network plan
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Samba" href="../../homeserver/samba/">
+      Samba
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Linux</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Arch post install" href="../arch_post_install/">
+      Arch post install
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Docker" href="../docker/">
+      Docker
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="current" title="Encrypt system ssd" href="./">
+      Encrypt system ssd
+    </a>
+    
+      
+        
+      
+      
+        <ul>
+          
+            <li class="anchor">
+              <a title="IMPORTANT NOTES" href="#important-notes">
+                IMPORTANT NOTES
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Partition table" href="#partition-table">
+                Partition table
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Prepare encrypted LUKS space" href="#prepare-encrypted-luks-space">
+                Prepare encrypted LUKS space
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Setup LVM space" href="#setup-lvm-space">
+                Setup LVM space
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Configure block devices, filesystems, and mountpoints" href="#configure-block-devices-filesystems-and-mountpoints">
+                Configure block devices, filesystems, and mountpoints
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Installation" href="#installation">
+                Installation
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Mount  and  chroot into newly installed  system" href="#mount-and-chroot-into-newly-installed-system">
+                Mount  and  chroot into newly installed  system
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Configure and build ramdisk" href="#configure-and-build-ramdisk">
+                Configure and build ramdisk
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Adjust GRUB config" href="#adjust-grub-config">
+                Adjust GRUB config
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Mount Flags" href="#mount-flags">
+                Mount Flags
+              </a>
+            </li>
+          
+        </ul>
+      
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Iptables" href="../iptables/">
+      Iptables
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Linux on dell xps 13" href="../linux_on_dell_xps_13/">
+      Linux on dell xps 13
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Lxc" href="../lxc/">
+      Lxc
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Raid+lvm" href="../raid+lvm/">
+      Raid+lvm
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Raspberry pi" href="../raspberry_pi/">
+      Raspberry pi
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sync configs with mackup" href="../sync_configs_with_mackup/">
+      Sync configs with mackup
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Ubuntu touch on nexus 5" href="../ubuntu_touch_on_nexus_5/">
+      Ubuntu touch on nexus 5
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Rails</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Snippet flash messages" href="../../rails/snippet_flash_messages/">
+      Snippet flash messages
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+        </ul>
+        
+          <hr>
+          <span class="section">The author</span>
+          <ul>
+            
+              
+              <li>
+                <a href="https://twitter.com/squirroloo" target="_blank" title="@squirroloo on Twitter">
+                  @squirroloo on Twitter
+                </a>
+              </li>
+            
+            
+              
+              <li>
+                <a href="https://github.com/thej" target="_blank" title="@thej on GitHub">
+                  @thej on GitHub
+                </a>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+      </div>
+      <article class="article">
+        <div class="wrapper">
+          
+          <h1 id="encrypt-ssd-with-luks-and-lvm">Encrypt SSD with LUKS and LVM<a class="headerlink" href="#encrypt-ssd-with-luks-and-lvm" title="Permanent link">#</a></h1>
+<h2 id="important-notes">IMPORTANT NOTES<a class="headerlink" href="#important-notes" title="Permanent link">#</a></h2>
+<p>Some important notes to consider before encryption.</p>
+<h3 id="use-hdparm-instead-of-bios-password-for-hardware-self-encryption">Use hdparm instead of BIOS password for hardware self-encryption<a class="headerlink" href="#use-hdparm-instead-of-bios-password-for-hardware-self-encryption" title="Permanent link">#</a></h3>
+<p>Since BIOS passwords can make encryption keys unusable on other systems (due to hashes etc.), you should use hdparm.</p>
+<p>See https://www.zeitgeist.se/2014/09/07/enabling-ata-security-on-a-self-encrypting-ssd/ for detailed explanations.</p>
+<h2 id="partition-table">Partition table<a class="headerlink" href="#partition-table" title="Permanent link">#</a></h2>
+<ul>
+<li>200MB, type EF00 (EFI partition). This is used by GRUB2/BIOS-GPT. (/dev/sda1)</li>
+<li>100MB, type 8300 (Linux). This will store /boot (/dev/sda2)</li>
+<li>8GB, type 8200 (swap). This is our dedicated swap partition (not part of lvm). (/dev/sda3)</li>
+<li>Remaining space, type 8E00 (LVM). Store both / and /home. (/dev/sda4).</li>
+</ul>
+<p>So we get the following partition table:</p>
+<div class="code"><pre><span></span>sudo fdisk -l /dev/sda
+Disk /dev/sdb: 238.5 GiB, 256060514304 bytes, 500118192 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 2745CF02-2F53-4647-9EDF-0D7FA8DA3110
+
+Device        Start       End   Sectors   Size Type
+/dev/sda1      2048   1026047   1024000   500M EFI System
+/dev/sda2   1026048   1435647    409600   200M Linux filesystem
+/dev/sda3   1435648  18212863  16777216     8G Linux swap
+/dev/sda4  18212864 500118158 481905295 229.8G Linux LVM
+</pre></div>
+
+
+<h2 id="prepare-encrypted-luks-space">Prepare encrypted LUKS space<a class="headerlink" href="#prepare-encrypted-luks-space" title="Permanent link">#</a></h2>
+<p>We need to align, enable TRIM and use the right payload for SSD.</p>
+<p>sudo  cryptsetup  benchmark
+  sudo cryptsetup -c aes-xts-plain --key-size 512 -y -h sha512 --align-payload=8192 luksFormat /dev/sda4
+  sudo cryptsetup luksOpen --allow-discards /dev/sda4 enc-lvm</p>
+<h2 id="setup-lvm-space">Setup LVM space<a class="headerlink" href="#setup-lvm-space" title="Permanent link">#</a></h2>
+<div class="code"><pre><span></span>sudo lvm pvcreate --dataalignment 4M /dev/mapper/enc-lvm
+sudo lvm vgcreate vgroup /dev/mapper/enc-lvm
+sudo lvm lvcreate -L 30GB -n root vgroup
+sudo lvm lvcreate -n root -L 30G vgroup
+### sudo lvm lvcreate -n home -l 100%FREE vgroup  ## not recommended if you want  to  keep  some free space for snapshots
+### sudo lvm lvcreate -n home -L 400GB -n home vgroup
+</pre></div>
+
+
+<h2 id="configure-block-devices-filesystems-and-mountpoints">Configure block devices, filesystems, and mountpoints<a class="headerlink" href="#configure-block-devices-filesystems-and-mountpoints" title="Permanent link">#</a></h2>
+<h3 id="format-boot-root-and-home">Format /boot, /root and /home<a class="headerlink" href="#format-boot-root-and-home" title="Permanent link">#</a></h3>
+<p>Format and enable TRIM support.</p>
+<div class="code"><pre><span></span>sudo mkfs.ext2 /dev/sda2
+sudo mkfs.ext4 -E discard /dev/mapper/vgroup-root
+sudo mkfs.ext4 -E discard /dev/mapper/vgroup-home
+</pre></div>
+
+
+<h3 id="get-5-space-from-home-partition">Get 5% space from /home partition<a class="headerlink" href="#get-5-space-from-home-partition" title="Permanent link">#</a></h3>
+<p>5% space are by default hidden on ext4 partitions. This is typically used on root partition as a safeguard when the disk gets full. On non-root partition this hidden space can be easily and safely reclaimed back by using the following command.</p>
+<p>sudo tune2fs -m 0 /dev/mapper/vgroup-home</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
+<p>Install your system via CLI or  GUI installer.</p>
+<p>Do  not reboot after installation is finnished.</p>
+<h2 id="mount-and-chroot-into-newly-installed-system">Mount  and  chroot into newly installed  system<a class="headerlink" href="#mount-and-chroot-into-newly-installed-system" title="Permanent link">#</a></h2>
+<div class="code"><pre><span></span>sudo cryptsetup luksOpen --allow-discards /dev/sda4 enc-lvm
+sudo mount /dev/mapper/vgroup-root /mnt/
+sudo mount /dev/mapper/vgroup-home /mnt/home/
+sudo  mount  /dev/sda2 /mnt/boot/
+sudo  mount  /dev/sda1 /mnt/boot/efi/
+sudo  mount -t proc proc /mnt/proc
+sudo  mount -t sysfs sys /mnt/sys
+sudo mount -o bind /dev /mnt/dev
+sudo  mount -t devpts pts /mnt/dev/pts/
+sudo chroot /mnt/
+</pre></div>
+
+
+<h2 id="configure-and-build-ramdisk">Configure and build ramdisk<a class="headerlink" href="#configure-and-build-ramdisk" title="Permanent link">#</a></h2>
+<p>Edit MODULES and HOOKS in <em>/etc/mkinitcpio.conf</em></p>
+<p>MODULES="dm_mod dm_crypt ext4 aes_x86_64 sha256 sha512"</p>
+<p>Aadd <em>encrypt</em> and <em>lvm2</em> prior to <em>filesystem</em> and <em>resume</em> under the HOOKS section:</p>
+<p>HOOKS="base udev autodetect modconf block keyboard keymap plymouth plymouth-encrypt lvm2 resume filesystems fsck"</p>
+<p>Rebuild kernel's ramdisk:</p>
+<p>mkinitcpio -p linux<version></p>
+<p>The version string represents your current kernel. For example "linux318" if you're running kernel 3.18</p>
+<p>mkinitcpio -p linux318</p>
+<h2 id="adjust-grub-config">Adjust GRUB config<a class="headerlink" href="#adjust-grub-config" title="Permanent link">#</a></h2>
+<p>Edit <em>/etc/defaults/grub</em> and adjust as follows:</p>
+<div class="code"><pre><span></span>GRUB_CMDLINE_LINUX=&quot;cryptdevice=/dev/sda4:vgroup:allow-discards&quot;
+# if your want to use UUIDs (get with &quot;blkid /dev/sda&quot;):
+# GRUB_CMDLINE_LINUX=&quot;cryptdevice=/dev/disk/by-uuid/8c57b57b-9714-40eb-9b4d-13f8a67c164b:vgroup:allow-discards&quot;
+</pre></div>
+
+
+<p>If you don't want to enable TRIM support, leave out the <em>allow-discards</em> option.</p>
+<h2 id="mount-flags">Mount Flags<a class="headerlink" href="#mount-flags" title="Permanent link">#</a></h2>
+<p>Edit /mnt/etc/fstab to add TRIM support</p>
+<div class="code"><pre><span></span># &lt;file system&gt;                           &lt;mount point&gt;  &lt;type&gt;  &lt;options&gt;  &lt;dump&gt;  &lt;pass&gt;
+/dev/mapper/vgroup-home            /home      ext4    defaults,noatime,discard 0 2
+/dev/mapper/vgroup-root            /          ext4    defaults,noatime,discard 0 1
+# using UUIDs (blkid /dev/mapper/vgroup-root)
+# UUID=cc323893-0ee3-42b1-af8c-9f3bdde904e7 /home          ext4    defaults,noatime 0       2
+# UUID=8c57b57b-9714-40eb-9b4d-13f8a67c164b /              ext4    defaults,noatime,discard 0       1
+
+UUID=f6c7a434-278b-4e65-baea-5b8baffec853 swap           swap    defaults,noatime,discard 0       2
+UUID=CA3B-BF7A                            /boot/efi      vfat    defaults,noatime 0       2
+UUID=15197f00-0536-4847-96f0-2d33204adf0f /boot          ext2    defaults,noatime 0       2
+</pre></div>
+
+
+<p>We're done und you finally can safely reboot into your new system ;)</p>
+          <aside class="copyright" role="note">
+            
+              Copyright (c) 2016 Jochen Greif &ndash;
+            
+            Documentation built with
+            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
+            using the
+            <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">
+              Material
+            </a>
+            theme.
+          </aside>
+          
+            <footer class="footer">
+              
+  <nav class="pagination" aria-label="Footer">
+    <div class="previous">
+      
+        <a href="../docker/" title="Docker">
+          <span class="direction">
+            Previous
+          </span>
+          <div class="page">
+            <div class="button button-previous" role="button" aria-label="Previous">
+              <i class="icon icon-back"></i>
+            </div>
+            <div class="stretch">
+              <div class="title">
+                Docker
+              </div>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+    <div class="next">
+      
+        <a href="../iptables/" title="Iptables">
+          <span class="direction">
+            Next
+          </span>
+          <div class="page">
+            <div class="stretch">
+              <div class="title">
+                Iptables
+              </div>
+            </div>
+            <div class="button button-next" role="button" aria-label="Next">
+              <i class="icon icon-forward"></i>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+  </nav>
+
+            </footer>
+          
+        </div>
+      </article>
+      <div class="results" role="status" aria-live="polite">
+        <div class="scrollable">
+          <div class="wrapper">
+            <div class="meta"></div>
+            <div class="list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      var base_url = '../..';
+      var repo_id  = 'thej/know-to';
+    </script>
+    <script src="../../assets/javascripts/application-d10e0693ea.js"></script>
+    
+    
+  </body>
+</html>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+    <url>
+     <loc>None/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/security_of_networked_cars/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+        
+    <url>
+     <loc>None/homeserver/haproxy/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/homeserver/haproxy_old/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/homeserver/homeserver/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/homeserver/network_plan/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/homeserver/samba/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>None/linux/arch_post_install/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/linux/docker/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/linux/encrypt_system_ssd/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/linux/iptables/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/linux/linux_on_dell_xps_13/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/linux/lxc/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/linux/raid+lvm/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/linux/raspberry_pi/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/linux/sync_configs_with_mackup/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/linux/ubuntu_touch_on_nexus_5/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>None/rails/snippet_flash_messages/</loc>
+     <lastmod>2016-08-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+</urlset>
