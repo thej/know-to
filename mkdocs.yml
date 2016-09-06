@@ -1,6 +1,32 @@
 site_name: KnowTo
-# theme_dir: docoloo
-#theme: material
-theme_dir: mkdocs-docoloo
+theme_dir: docoloo
+site_author: Jochen Greif
+site_url: https://thej.github.io/know-to/
+
+# Repository
+repo_name: GitHub
+repo_url: https://github.com/thej/know-to
+
+# Copyright
+copyright: Copyright (c) 2016 Jochen Greif
+
+# Documentation and theme
+#theme_dir: docoloo
+
+# Options
+extra:
+  version: 0.1.0
+  logo: 
+  github:
+    download_release: true
+  author:
+    github: thej
+    twitter: squirroloo
+
+# Extensions
 markdown_extensions:
+  - codehilite(css_class=code)
   - admonition
+  - toc:
+      permalink: '#'
+
