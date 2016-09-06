@@ -3,8 +3,11 @@
 
 ## Packages to install
 
-yaourt -S mackup inkscape gimp owncloud-client firefox vivaldi sublime-text-dev ttf-google-fonts otf-fira-mono otf-fira-sans ttf-ms-fonts rhythmbox thunderbird filezilla keepassx calibre homebank smplayer dropbox encfs electrum qownnotes wine winetricks nxt mariadb watson steam tor-browser-en meld python-pip libreoffice-fresh xskat gnome-encfs-hg arch-install-scripts android-tools android-udev
+yaourt -S mackup inkscape gimp owncloud-client firefox vivaldi sublime-text-dev ttf-google-fonts otf-fira-mono otf-fira-sans ttf-ms-fonts rhythmbox thunderbird filezilla keepassx calibre homebank smplayer dropbox encfs electrum qownnotes wine winetricks nxt mariadb watson steam tor-browser-en meld python-pip libreoffice-fresh xskat gnome-encfs-hg arch-install-scripts android-tools android-udev abs base-devel
 
+### Imageoptim requirements:
+
+yaourt -S jpegoptim pngcrush advancecomp gifsicle jhead optipng pngquant
 
 ## profile-sync-daemon
 
