@@ -9,19 +9,19 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     
       
-        <title>Sync configs with mackup - KnowTo</title>
+        <title>Time management - KnowTo</title>
       
       
       
-        <link rel="canonical" href="https://thej.github.io/know-to/linux/sync_configs_with_mackup/">
+        <link rel="canonical" href="https://thej.github.io/know-to/management/time_management/">
       
       
         <meta name="author" content="Jochen Greif">
       
     
-    <meta property="og:url" content="https://thej.github.io/know-to/linux/sync_configs_with_mackup/">
+    <meta property="og:url" content="https://thej.github.io/know-to/management/time_management/">
     <meta property="og:title" content="KnowTo">
-    <meta property="og:image" content="https://thej.github.io/know-to/linux/sync_configs_with_mackup//../../None">
+    <meta property="og:image" content="https://thej.github.io/know-to/management/time_management//../../None">
     <meta name="apple-mobile-web-app-title" content="KnowTo">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -93,12 +93,12 @@
           <span class="path">
             
               
-                Linux <i class="icon icon-link"></i>
+                Management <i class="icon icon-link"></i>
               
             
           </span>
         
-        Sync configs with mackup
+        Time management
       </div>
     </div>
     
@@ -257,7 +257,7 @@
       
         
   <li>
-    <a class="" title="Arch post install" href="../arch_post_install/">
+    <a class="" title="Arch post install" href="../../linux/arch_post_install/">
       Arch post install
     </a>
     
@@ -266,7 +266,7 @@
       
         
   <li>
-    <a class="" title="Docker" href="../docker/">
+    <a class="" title="Docker" href="../../linux/docker/">
       Docker
     </a>
     
@@ -275,7 +275,7 @@
       
         
   <li>
-    <a class="" title="Encrypt system ssd" href="../encrypt_system_ssd/">
+    <a class="" title="Encrypt system ssd" href="../../linux/encrypt_system_ssd/">
       Encrypt system ssd
     </a>
     
@@ -284,7 +284,7 @@
       
         
   <li>
-    <a class="" title="Iptables" href="../iptables/">
+    <a class="" title="Iptables" href="../../linux/iptables/">
       Iptables
     </a>
     
@@ -293,7 +293,7 @@
       
         
   <li>
-    <a class="" title="Linux on dell xps 13" href="../linux_on_dell_xps_13/">
+    <a class="" title="Linux on dell xps 13" href="../../linux/linux_on_dell_xps_13/">
       Linux on dell xps 13
     </a>
     
@@ -302,7 +302,7 @@
       
         
   <li>
-    <a class="" title="Lxc" href="../lxc/">
+    <a class="" title="Lxc" href="../../linux/lxc/">
       Lxc
     </a>
     
@@ -311,7 +311,7 @@
       
         
   <li>
-    <a class="" title="Raid+lvm" href="../raid+lvm/">
+    <a class="" title="Raid+lvm" href="../../linux/raid+lvm/">
       Raid+lvm
     </a>
     
@@ -320,7 +320,7 @@
       
         
   <li>
-    <a class="" title="Raspberry pi" href="../raspberry_pi/">
+    <a class="" title="Raspberry pi" href="../../linux/raspberry_pi/">
       Raspberry pi
     </a>
     
@@ -329,21 +329,16 @@
       
         
   <li>
-    <a class="current" title="Sync configs with mackup" href="./">
+    <a class="" title="Sync configs with mackup" href="../../linux/sync_configs_with_mackup/">
       Sync configs with mackup
     </a>
-    
-      
-        
-      
-      
     
   </li>
 
       
         
   <li>
-    <a class="" title="Ubuntu touch on nexus 5" href="../ubuntu_touch_on_nexus_5/">
+    <a class="" title="Ubuntu touch on nexus 5" href="../../linux/ubuntu_touch_on_nexus_5/">
       Ubuntu touch on nexus 5
     </a>
     
@@ -361,9 +356,14 @@
       
         
   <li>
-    <a class="" title="Time management" href="../../management/time_management/">
+    <a class="current" title="Time management" href="./">
       Time management
     </a>
+    
+      
+        
+      
+      
     
   </li>
 
@@ -421,30 +421,35 @@
       <article class="article">
         <div class="wrapper">
           
-          <h1 id="sync-configs-across-systems-with-mackup">Sync configs across systems with Mackup<a class="headerlink" href="#sync-configs-across-systems-with-mackup" title="Permanent link">#</a></h1>
-<p>Sources: https://github.com/lra/mackup</p>
-<p>Place your .mackup.cfg on a synchronized directory and symlink to the file:</p>
-<p><code>nn -sf /path/to/your/.mackup.cfg ~/.mackup.cfg</code></p>
-<p>Example .mackup.cfg:</p>
-<div class="code"><pre><span></span><span class="k">[configuration_files]</span>
-<span class="err">.mackup.cfg</span>
-
-<span class="k">[storage]</span>
-<span class="na">engine</span> <span class="o">=</span> <span class="s">file_system</span>
-<span class="na">path</span> <span class="o">=</span> <span class="s">ownCloud/</span>
-<span class="na">directory</span> <span class="o">=</span> <span class="s">mackup</span>
-
-<span class="k">[applications_to_sync]</span>
-<span class="err">watson</span>
-<span class="err">mackup</span>
-<span class="err">sublime-text-3</span>
-<span class="err">git</span>
-<span class="err">bundler</span>
-
-
-<span class="k">[applications_to_ignore]</span>
-<span class="err">ssh</span>
-</pre></div>
+          <h1 id="26-time-management-hacks">26 Time management hacks<a class="headerlink" href="#26-time-management-hacks" title="Permanent link">#</a></h1>
+<ol>
+<li>Work less, have more fun</li>
+<li>Only plan for 4-5 hours of <em>real</em> work per day. Days <em>always</em> fil up</li>
+<li>It's normal to have days where you just can't work and days where you'll work 12 hours straight. Work more when you're <em>in the zone</em>. <em>Relax</em> when you're not.</li>
+<li>Stop multitasking. It merely kills your focus.</li>
+<li>Set up a work routine and stick with it. Your body will adapt.</li>
+<li>We're always more <em>focused</em> and <em>productive</em> with limited time.</li>
+<li>Work is the best way to get working. Start with short tasks to get the ball rolling</li>
+<li><em>Doing</em> is better than <em>perfect</em>. Work iteratively. Expectations to do things perfectly are stifling.</li>
+<li>More work hours <em>doesn't</em> mean more productivity. Use constraints tas opportunities.</li>
+<li>Seperate thinking and execution to execute faster and think better. Seperate <em>brainless</em> and <em>strategic</em> tasks to become motre productive.</li>
+<li>Organize meetings early during the day. Time leading up to an event is often wasted.</li>
+<li>Group meetings and communication (email or phone) to create blocks of uninterrupted work.</li>
+<li>Keep the same context throughout the day. Switching between projects/clients is unproductive.</li>
+<li>Work <em>around</em> procrastination. Procrastinate <em>between</em> intense sprints of work (Pomodoro)</li>
+<li>Break the unreasonable down into reasonable chunks. A big goal is only achieved when every little thing that you do everyday, gets you closer to that goal.</li>
+<li>No 2 tasks ever hold the same importance. Always prioritize. Be realy careful with to-do lists....</li>
+<li>Only work on the thing that will have the biggest impact. Always know the <em>one</em> thing you really need to get done during the day.</li>
+<li>Break tasks into hour increments. Long tasks are hard to get into; feels like it needs to get done.</li>
+<li>If something can be done 80% as well by someone else, delegate. Delegate and learn how to make use of other people.</li>
+<li>Turn the page on yesterday. Only ever think about today and tomorrow.</li>
+<li>Set deadlines for everything. Don't led tasks go on indefinitely.</li>
+<li>Set end dates for intense or stressful activities. Everythign ends at some point.</li>
+<li>"Get a remidner app for everything. Do not trust your brain for your memory". <em>Always</em> take notes.</li>
+<li>Write down anything that distracts you - Google searches, random thoughts, new ideas, whatever. The point is, if you write them down, they'll stop bubbling up when you're in the zone.</li>
+<li>Take breaks. <em>Sometimes</em>.</li>
+</ol>
+<p>References: www.slideshare.net/egarbugli/26-time-management-hacks-i-wish-id-known-at-20/14-Keep_the_same_context_throughout</p>
           <aside class="copyright" role="note">
             
               Copyright (c) 2016 Jochen Greif &ndash;
@@ -463,7 +468,7 @@
   <nav class="pagination" aria-label="Footer">
     <div class="previous">
       
-        <a href="../raspberry_pi/" title="Raspberry pi">
+        <a href="../../linux/ubuntu_touch_on_nexus_5/" title="Ubuntu touch on nexus 5">
           <span class="direction">
             Previous
           </span>
@@ -473,7 +478,7 @@
             </div>
             <div class="stretch">
               <div class="title">
-                Raspberry pi
+                Ubuntu touch on nexus 5
               </div>
             </div>
           </div>
@@ -482,14 +487,14 @@
     </div>
     <div class="next">
       
-        <a href="../ubuntu_touch_on_nexus_5/" title="Ubuntu touch on nexus 5">
+        <a href="../../rails/snippet_flash_messages/" title="Snippet flash messages">
           <span class="direction">
             Next
           </span>
           <div class="page">
             <div class="stretch">
               <div class="title">
-                Ubuntu touch on nexus 5
+                Snippet flash messages
               </div>
             </div>
             <div class="button button-next" role="button" aria-label="Next">
