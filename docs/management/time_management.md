@@ -26,4 +26,4 @@
 24. Write down anything that distracts you - Google searches, random thoughts, new ideas, whatever. The point is, if you write them down, they'll stop bubbling up when you're in the zone.
 25. Take breaks. _Sometimes_.
 
-References: www.slideshare.net/egarbugli/26-time-management-hacks-i-wish-id-known-at-20/14-Keep_the_same_context_throughout
+References: [Slideshare by Etienne Garbugli](https://www.slideshare.net/egarbugli/26-time-management-hacks-i-wish-id-known-at-20/14-Keep_the_same_context_throughout)
