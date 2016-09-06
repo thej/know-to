@@ -1,4 +1,4 @@
-# 26 Time management hacks
+# 25 Time management hacks
 
 1. Work less, have more fun
 2. Only plan for 4-5 hours of _real_ work per day. Days _always_ fil up
