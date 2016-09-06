@@ -26,12 +26,6 @@
     </url>
         
     <url>
-     <loc>https://thej.github.io/know-to//homeserver/haproxy_old/</loc>
-     <lastmod>2016-09-06</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
      <loc>https://thej.github.io/know-to//homeserver/homeserver/</loc>
      <lastmod>2016-09-06</lastmod>
      <changefreq>daily</changefreq>
