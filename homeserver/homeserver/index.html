@@ -338,6 +338,15 @@
       
         
   <li>
+    <a class="" title="Install ubuntu touch on nexus 5" href="../../linux/install_ubuntu_touch_on_nexus_5/">
+      Install ubuntu touch on nexus 5
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
     <a class="" title="Iptables" href="../../linux/iptables/">
       Iptables
     </a>
@@ -477,8 +486,7 @@
 <p>See <a href="../../linux/raid+lvm/">RAID + LVM</a></p>
 <h2 id="change-lan-device-name">Change LAN device name<a class="headerlink" href="#change-lan-device-name" title="Permanent link">#</a></h2>
 <p>Edit <em>/etc/udev/rules.d/10-network.rules</em>:</p>
-<div class="code"><pre><span></span>SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;&lt;YOUR MAC ADDRESS GOES HERE&gt;&quot;, NAME=&quot;lan0&quot;
-</pre></div>
+<pre class="code"><code>SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;&lt;YOUR MAC ADDRESS GOES HERE&gt;&quot;, NAME=&quot;lan0&quot;</code></pre>
 
 
 <h2 id="remote-ssh-shell-into-initram-to-unlock-encrypted-devices">Remote SSH shell into initram to unlock encrypted devices<a class="headerlink" href="#remote-ssh-shell-into-initram-to-unlock-encrypted-devices" title="Permanent link">#</a></h2>
@@ -490,16 +498,14 @@
 - <a href="../mkinitcpio-utils">https://aur.archlinux.org/packages/mkinitcpio-utils/</a> (AUR)</p>
 <p>Copy your SSH pubkey to <em>/etc/dropbear/root_key</em>.</p>
 <p>Add the <em>netconf</em>, <em>dropbear</em> and <em>encryptssh</em> hooks before filesystems within the "HOOKS" array in <em>/etc/mkinitcpio.conf</em> (the encryptssh can be used to replace the encrypt hook).</p>
-<div class="code"><pre><span></span># /etc/mkinitcpio.conf
+<pre class="code"><code># /etc/mkinitcpio.conf
 MODULES=&quot;dm_mod dm_crypt ext4 aes_x86_64 sha256 sha512 r8169 i915&quot;
-HOOKS=&quot;base udev autodetect modconf block mdadm lvm2 netconf dropbear encryptssh filesystems keyboard fsck&quot;
-</pre></div>
+HOOKS=&quot;base udev autodetect modconf block mdadm lvm2 netconf dropbear encryptssh filesystems keyboard fsck&quot;</code></pre>
 
 
 <p>Rebuild with <code>mkinitcpio -p linux</code>.</p>
 <p>Provide networking by adding <em>ip</em> kernel parameter to GRUB config <em>/etc/default/grub</em>:</p>
-<div class="code"><pre><span></span>GRUB_CMDLINE_LINUX=&quot;cryptdevice=/dev/sda3:vgroup:allow-discards ip=:::::eth0:dhcp&quot;
-</pre></div>
+<pre class="code"><code>GRUB_CMDLINE_LINUX=&quot;cryptdevice=/dev/sda3:vgroup:allow-discards ip=:::::eth0:dhcp&quot;</code></pre>
 
 
 <p>Rebuild grub config:

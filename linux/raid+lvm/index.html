@@ -275,6 +275,15 @@
       
         
   <li>
+    <a class="" title="Install ubuntu touch on nexus 5" href="../install_ubuntu_touch_on_nexus_5/">
+      Install ubuntu touch on nexus 5
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
     <a class="" title="Iptables" href="../iptables/">
       Iptables
     </a>
@@ -452,37 +461,33 @@
 </ul>
 <h2 id="partitioning">Partitioning<a class="headerlink" href="#partitioning" title="Permanent link">#</a></h2>
 <h3 id="preparing-first-hd">Preparing first HD<a class="headerlink" href="#preparing-first-hd" title="Permanent link">#</a></h3>
-<div class="code"><pre><span></span>gdisk /dev/sdb
+<pre class="code"><code>gdisk /dev/sdb
 # create partition with type fd00 (Raid)
-# write and exit
-</pre></div>
+# write and exit</code></pre>
 
 
 <h3 id="clone-partition-table-to-devsdc">Clone partition table to /dev/sdc<a class="headerlink" href="#clone-partition-table-to-devsdc" title="Permanent link">#</a></h3>
 <p>Clone partitions with <em>sgdisk</em>:</p>
-<div class="code"><pre><span></span>sgdisk --backup=table /dev/sdb
-sgdisk --load-backup=table /dev/sdc
-</pre></div>
+<pre class="code"><code>sgdisk --backup=table /dev/sdb
+sgdisk --load-backup=table /dev/sdc</code></pre>
 
 
 <h3 id="create-raid-array">Create RAID array<a class="headerlink" href="#create-raid-array" title="Permanent link">#</a></h3>
 <p><code>mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sd[bc]1</code></p>
 <h2 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permanent link">#</a></h2>
-<div class="code"><pre><span></span>cryptsetup luksFormat -c aes-xts-plain64 -s 512 /dev/md0
-cryptsetup luksOpen /dev/md0 cryptdisk
-</pre></div>
+<pre class="code"><code>cryptsetup luksFormat -c aes-xts-plain64 -s 512 /dev/md0
+cryptsetup luksOpen /dev/md0 cryptdisk</code></pre>
 
 
 <h2 id="lvm">LVM<a class="headerlink" href="#lvm" title="Permanent link">#</a></h2>
 <p>The three next steps create, in this order, the physical volume (the container, if you will), the group and then the individual volumes contained in the group. Choose simple, memorable names and do not hypenate them. The {pv,vg,lv}display commands print out the details of the devices once created.</p>
-<div class="code"><pre><span></span>pvcreate /dev/mapper/cryptdisk
+<pre class="code"><code>pvcreate /dev/mapper/cryptdisk
 pvdisplay
 
 vgcreate vgraid /dev/mapper/cryptdisk
 vgdisplay
 
-lvcreate -l +100%FREE  vgraid -n data
-</pre></div>
+lvcreate -l +100%FREE  vgraid -n data</code></pre>
 
 
 <h3 id="format-volume">Format volume<a class="headerlink" href="#format-volume" title="Permanent link">#</a></h3>
@@ -499,13 +504,11 @@ lvcreate -l +100%FREE  vgraid -n data
 <p>Add keyfile to key slot:
 <code>cryptsetup luksAddKey /dev/md0 /etc/keyfile_cryptdisk</code></p>
 <p>Add <em>/etc/crypttab</em> entry: </p>
-<div class="code"><pre><span></span>cryptdisk       /dev/md0                /etc/keyfile_cryptdisk
-</pre></div>
+<pre class="code"><code>cryptdisk       /dev/md0                /etc/keyfile_cryptdisk</code></pre>
 
 
 <p>Add <em>/etc/fstab</em> entry</p>
-<div class="code"><pre><span></span>/dev/vgraid/data        /data           ext4            defaults,relatime       0 1
-</pre></div>
+<pre class="code"><code>/dev/vgraid/data        /data           ext4            defaults,relatime       0 1</code></pre>
           <aside class="copyright" role="note">
             
               Copyright (c) 2016 Jochen Greif &ndash;

@@ -275,6 +275,15 @@
       
         
   <li>
+    <a class="" title="Install ubuntu touch on nexus 5" href="../install_ubuntu_touch_on_nexus_5/">
+      Install ubuntu touch on nexus 5
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
     <a class="current" title="Iptables" href="./">
       Iptables
     </a>
@@ -442,41 +451,40 @@
           
           <h1 id="firewall">Firewall<a class="headerlink" href="#firewall" title="Permanent link">#</a></h1>
 <h2 id="basic-concepts">Basic concepts<a class="headerlink" href="#basic-concepts" title="Permanent link">#</a></h2>
-<div class="code"><pre><span></span>                               <span class="n">XXXXXXXXXXXXXXXXXX</span>
-                             <span class="n">XXX</span>     <span class="n">Network</span>    <span class="n">XXX</span>
-                               <span class="n">XXXXXXXXXXXXXXXXXX</span>
-                                       <span class="o">+</span>
-                                       <span class="o">|</span>
-                                       <span class="n">v</span>
- <span class="o">+-------------+</span>              <span class="o">+------------------+</span>
- <span class="o">|</span><span class="nl">table</span><span class="p">:</span> <span class="n">filter</span><span class="o">|</span> <span class="o">&lt;---+</span>        <span class="o">|</span> <span class="nl">table</span><span class="p">:</span> <span class="n">nat</span>       <span class="o">|</span>
- <span class="o">|</span><span class="nl">chain</span><span class="p">:</span> <span class="n">INPUT</span> <span class="o">|</span>     <span class="o">|</span>        <span class="o">|</span> <span class="nl">chain</span><span class="p">:</span> <span class="n">PREROUTING</span><span class="o">|</span>
- <span class="o">+-----+-------+</span>     <span class="o">|</span>        <span class="o">+--------+---------+</span>
-       <span class="o">|</span>             <span class="o">|</span>                 <span class="o">|</span>
-       <span class="n">v</span>             <span class="o">|</span>                 <span class="n">v</span>
- <span class="p">[</span><span class="n">local</span> <span class="n">process</span><span class="p">]</span>     <span class="o">|</span>           <span class="o">****************</span>          <span class="o">+--------------+</span>
-       <span class="o">|</span>             <span class="o">+---------+</span> <span class="n">Routing</span> <span class="n">decision</span> <span class="o">+------&gt;</span> <span class="o">|</span><span class="nl">table</span><span class="p">:</span> <span class="n">filter</span> <span class="o">|</span>
-       <span class="n">v</span>                         <span class="o">****************</span>          <span class="o">|</span><span class="nl">chain</span><span class="p">:</span> <span class="n">FORWARD</span><span class="o">|</span>
-<span class="o">****************</span>                                           <span class="o">+------+-------+</span>
-<span class="n">Routing</span> <span class="n">decision</span>                                                  <span class="o">|</span>
-<span class="o">****************</span>                                                  <span class="o">|</span>
-       <span class="o">|</span>                                                          <span class="o">|</span>
-       <span class="n">v</span>                        <span class="o">****************</span>                  <span class="o">|</span>
-<span class="o">+-------------+</span>       <span class="o">+------&gt;</span>  <span class="n">Routing</span> <span class="n">decision</span>  <span class="o">&lt;---------------+</span>
-<span class="o">|</span><span class="nl">table</span><span class="p">:</span> <span class="n">nat</span>   <span class="o">|</span>       <span class="o">|</span>         <span class="o">****************</span>
-<span class="o">|</span><span class="nl">chain</span><span class="p">:</span> <span class="n">OUTPUT</span><span class="o">|</span>       <span class="o">|</span>               <span class="o">+</span>
-<span class="o">+-----+-------+</span>       <span class="o">|</span>               <span class="o">|</span>
-      <span class="o">|</span>               <span class="o">|</span>               <span class="n">v</span>
-      <span class="n">v</span>               <span class="o">|</span>      <span class="o">+-------------------+</span>
-<span class="o">+--------------+</span>      <span class="o">|</span>      <span class="o">|</span> <span class="nl">table</span><span class="p">:</span> <span class="n">nat</span>        <span class="o">|</span>
-<span class="o">|</span><span class="nl">table</span><span class="p">:</span> <span class="n">filter</span> <span class="o">|</span> <span class="o">+----+</span>      <span class="o">|</span> <span class="nl">chain</span><span class="p">:</span> <span class="n">POSTROUTING</span><span class="o">|</span>
-<span class="o">|</span><span class="nl">chain</span><span class="p">:</span> <span class="n">OUTPUT</span> <span class="o">|</span>             <span class="o">+--------+----------+</span>
-<span class="o">+--------------+</span>                      <span class="o">|</span>
-                                      <span class="n">v</span>
-                               <span class="n">XXXXXXXXXXXXXXXXXX</span>
-                             <span class="n">XXX</span>    <span class="n">Network</span>     <span class="n">XXX</span>
-                               <span class="n">XXXXXXXXXXXXXXXXXX</span>
-</pre></div>
+<pre class="code"><code>                               XXXXXXXXXXXXXXXXXX
+                             XXX     Network    XXX
+                               XXXXXXXXXXXXXXXXXX
+                                       +
+                                       |
+                                       v
+ +-------------+              +------------------+
+ |table: filter| &lt;---+        | table: nat       |
+ |chain: INPUT |     |        | chain: PREROUTING|
+ +-----+-------+     |        +--------+---------+
+       |             |                 |
+       v             |                 v
+ [local process]     |           ****************          +--------------+
+       |             +---------+ Routing decision +------&gt; |table: filter |
+       v                         ****************          |chain: FORWARD|
+****************                                           +------+-------+
+Routing decision                                                  |
+****************                                                  |
+       |                                                          |
+       v                        ****************                  |
++-------------+       +------&gt;  Routing decision  &lt;---------------+
+|table: nat   |       |         ****************
+|chain: OUTPUT|       |               +
++-----+-------+       |               |
+      |               |               v
+      v               |      +-------------------+
++--------------+      |      | table: nat        |
+|table: filter | +----+      | chain: POSTROUTING|
+|chain: OUTPUT |             +--------+----------+
++--------------+                      |
+                                      v
+                               XXXXXXXXXXXXXXXXXX
+                             XXX    Network     XXX
+                               XXXXXXXXXXXXXXXXXX</code></pre>
 
 
 <h2 id="best-practices">Best practices<a class="headerlink" href="#best-practices" title="Permanent link">#</a></h2>
@@ -495,116 +503,115 @@
 <li>lxcbr0: DMZ</li>
 </ul>
 <h3 id="firewall-script">Firewall Script<a class="headerlink" href="#firewall-script" title="Permanent link">#</a></h3>
-<div class="code"><pre><span></span><span class="ch">#!/bin/sh</span>
+<pre class="code"><code class="language-sh">#!/bin/sh
 
-<span class="c1"># CONFIG</span>
-<span class="c1">##############################</span>
-<span class="c1"># Where to find iptables command</span>
-<span class="nv">IPT</span><span class="o">=</span>/sbin/iptables
+# CONFIG
+##############################
+# Where to find iptables command
+IPT=/sbin/iptables
 
-<span class="nv">SERVER_IP</span><span class="o">=</span><span class="s2">&quot;192.168.222.28&quot;</span>
-<span class="nv">WAN_IP</span><span class="o">=</span><span class="s2">&quot;192.168.188.84&quot;</span>
-<span class="nv">DMZ_IP</span><span class="o">=</span><span class="s2">&quot;10.200.200.222&quot;</span>
+SERVER_IP=&quot;192.168.222.28&quot;
+WAN_IP=&quot;192.168.188.84&quot;
+DMZ_IP=&quot;10.200.200.222&quot;
 
-<span class="nv">WAN_IF</span><span class="o">=</span><span class="s2">&quot;wan0&quot;</span>
-<span class="nv">LAN_IF</span><span class="o">=</span><span class="s2">&quot;lan0&quot;</span>
-<span class="nv">DMZ_IF</span><span class="o">=</span><span class="s2">&quot;br0&quot;</span>
+WAN_IF=&quot;wan0&quot;
+LAN_IF=&quot;lan0&quot;
+DMZ_IF=&quot;br0&quot;
 
-<span class="nv">LAN_NET</span><span class="o">=</span><span class="s2">&quot;192.168.222.0/24&quot;</span>
-<span class="nv">WAN_NET</span><span class="o">=</span><span class="s2">&quot;192.168.188.0/24&quot;</span>
-<span class="nv">DMZ_NET</span><span class="o">=</span><span class="s2">&quot;10.0.0.0/8&quot;</span>
+LAN_NET=&quot;192.168.222.0/24&quot;
+WAN_NET=&quot;192.168.188.0/24&quot;
+DMZ_NET=&quot;10.0.0.0/8&quot;
 
-<span class="c1"># Private, multicast, loopback and reserved networks</span>
-<span class="nv">LOOPBACK</span><span class="o">=</span><span class="s2">&quot;127.0.0.0/8&quot;</span>
-<span class="nv">CLASS_A</span><span class="o">=</span><span class="s2">&quot;10.0.0.0/8&quot;</span>
-<span class="nv">CLASS_B</span><span class="o">=</span><span class="s2">&quot;172.16.0.0/12&quot;</span>
-<span class="nv">CLASS_C</span><span class="o">=</span><span class="s2">&quot;192.168.0.0/16&quot;</span>
-<span class="nv">CLASS_D_MULTICAST</span><span class="o">=</span><span class="s2">&quot;224.0.0.0/4&quot;</span>
-<span class="nv">CLASS_E_RESERVED</span><span class="o">=</span><span class="s2">&quot;240.0.0.0/5&quot;</span>
-
-
-<span class="c1">###############################</span>
-
-<span class="c1"># Flush all existing rules</span>
-<span class="nv">$IPT</span> -F
-<span class="nv">$IPT</span> -X
-<span class="nv">$IPT</span> -t nat -F
-<span class="nv">$IPT</span> -t nat -X
-<span class="nv">$IPT</span> -t mangle -F
-<span class="nv">$IPT</span> -t mangle -X
-<span class="nv">$IPT</span> -P INPUT ACCEPT
-<span class="nv">$IPT</span> -P FORWARD ACCEPT
-<span class="nv">$IPT</span> -P OUTPUT ACCEPT
-
-<span class="c1"># Default policies</span>
-<span class="nv">$IPT</span> -P OUTPUT ACCEPT
-<span class="nv">$IPT</span> -P INPUT DROP
-<span class="nv">$IPT</span> -P FORWARD DROP
-
-<span class="c1"># Allow lo interface</span>
-<span class="nv">$IPT</span> -A INPUT -i lo -j ACCEPT
-<span class="nv">$IPT</span> -A OUTPUT -o lo -j ACCEPT 
-
-<span class="c1"># Allow already established sessions</span>
-<span class="nv">$IPT</span> -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-<span class="nv">$IPT</span> -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-
-<span class="c1"># Drop invalid packages</span>
-<span class="nv">$IPT</span> -A INPUT -m conntrack --ctstate INVALID -j DROP
-
-<span class="c1"># Refuse spoofed packets pretending to be from the external interfaces IP</span>
-<span class="c1"># $IPT -A INPUT -i $WAN_IF -s $IPADDR -j DROP</span>
-
-<span class="c1"># Refuse packets claiming to be from private networks or loopback device</span>
-<span class="nv">$IPT</span> -A INPUT -i <span class="nv">$WAN_IF</span> -s <span class="nv">$CLASS_A</span> -j DROP
-<span class="nv">$IPT</span> -A INPUT -i <span class="nv">$WAN_IF</span> -s <span class="nv">$CLASS_B</span> -j DROP
-<span class="c1">#$IPT -A INPUT -i $WAN_IF -s $CLASS_C -j DROP</span>
-<span class="nv">$IPT</span> -A INPUT -i <span class="nv">$WAN_IF</span> -s <span class="nv">$LOOPBACK</span> -j DROP
-
-<span class="c1"># Allow SSH to $SERVER_IP</span>
-<span class="nv">$IPT</span> -A INPUT -p tcp -s <span class="nv">$LAN_NET</span> -d <span class="nv">$SERVER_IP</span> --dport <span class="m">22</span> -i <span class="nv">$LAN_IF</span> -j ACCEPT
-<span class="nv">$IPT</span> -A INPUT -p tcp -s <span class="nv">$WAN_NET</span> -d <span class="nv">$WAN_IP</span> --dport <span class="m">22</span> -i <span class="nv">$WAN_IF</span> -j ACCEPT
-<span class="c1">#$IPT -A INPUT -p tcp -s 0/0 -d $SERVER_IP --dport 22 -i $WAN_IF -j ACCEPT</span>
-
-<span class="c1"># Enable masquerading for lan0/br0</span>
-<span class="nv">$IPT</span> -t nat -A POSTROUTING -o <span class="nv">$LAN_IF</span> -j MASQUERADE
-<span class="nv">$IPT</span> -t nat -A POSTROUTING -s <span class="nv">$DMZ_NET</span> -j MASQUERADE
-
-<span class="c1"># Allow forwarding on bridge interface</span>
-<span class="nv">$IPT</span> -A FORWARD -p all -i <span class="nv">$DMZ_IF</span> -j ACCEPT
-
-<span class="c1"># allow traffic from internal ($LAN_IF) to DMZ ($DMZ_IF)</span>
-<span class="nv">$IPT</span> -A FORWARD -i <span class="nv">$LAN_IF</span> -o <span class="nv">$DMZ_IF</span> -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
-<span class="nv">$IPT</span> -A FORWARD -i <span class="nv">$DMZ_IF</span> -o <span class="nv">$LAN_IF</span> -m state --state ESTABLISHED,RELATED -j ACCEPT
-
-<span class="c1"># allow traffic from internet ($WAN_IF) to DMZ ($DMZ_IF)</span>
-<span class="nv">$IPT</span> -A FORWARD -i <span class="nv">$WAN_IF</span> -o <span class="nv">$DMZ_IF</span> -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
-<span class="nv">$IPT</span> -A FORWARD -i <span class="nv">$DMZ_IF</span> -o <span class="nv">$WAN_IF</span> -m state --state ESTABLISHED,RELATED -j ACCEPT
+# Private, multicast, loopback and reserved networks
+LOOPBACK=&quot;127.0.0.0/8&quot;
+CLASS_A=&quot;10.0.0.0/8&quot;
+CLASS_B=&quot;172.16.0.0/12&quot;
+CLASS_C=&quot;192.168.0.0/16&quot;
+CLASS_D_MULTICAST=&quot;224.0.0.0/4&quot;
+CLASS_E_RESERVED=&quot;240.0.0.0/5&quot;
 
 
-<span class="c1">########################</span>
-<span class="c1">### PORT FORWARDING ####</span>
-<span class="c1">########################</span>
+###############################
 
-<span class="c1"># redirect incoming web requests (port 80,443) at $WAN_IF ($WAN_IP) of FIREWALL to web server at $DMZ_IP</span>
-<span class="nv">$IPT</span> -t nat -A PREROUTING -p tcp -i <span class="nv">$WAN_IF</span> -d <span class="nv">$WAN_IP</span> --dport <span class="m">80</span> -j DNAT --to-dest <span class="nv">$DMZ_IP</span>
-<span class="nv">$IPT</span> -t nat -A PREROUTING -p tcp -i <span class="nv">$WAN_IF</span> -d <span class="nv">$WAN_IP</span> --dport <span class="m">443</span> -j DNAT --to-dest <span class="nv">$DMZ_IP</span>
+# Flush all existing rules
+$IPT -F
+$IPT -X
+$IPT -t nat -F
+$IPT -t nat -X
+$IPT -t mangle -F
+$IPT -t mangle -X
+$IPT -P INPUT ACCEPT
+$IPT -P FORWARD ACCEPT
+$IPT -P OUTPUT ACCEPT
 
-<span class="c1"># redirect port 2345 to $DMZ_IP</span>
-<span class="nv">$IPT</span> -t nat -A PREROUTING -p tcp -i <span class="nv">$LAN_IF</span> -d <span class="nv">$SERVER_IP</span> --dport <span class="m">2345</span> -j DNAT --to-dest <span class="nv">$DMZ_IP</span>:22
-<span class="nv">$IPT</span> -t nat -A PREROUTING -p tcp -i <span class="nv">$WAN_IF</span> -d <span class="nv">$WAN_IP</span> --dport <span class="m">2345</span> -j DNAT --to-dest <span class="nv">$DMZ_IP</span>:22
+# Default policies
+$IPT -P OUTPUT ACCEPT
+$IPT -P INPUT DROP
+$IPT -P FORWARD DROP
 
-<span class="c1"># redirect incoming mail (SMTP) requests at $WAN_IF ($WAN_IP) of FIREWALL to Mail server at 192.168.20.3</span>
-<span class="c1">#iptables -t nat -A PREROUTING -p tcp -i $WAN_IF -d $WAN_IP --dport 25 -j DNAT --to-dest 192.168.20.3</span>
+# Allow lo interface
+$IPT -A INPUT -i lo -j ACCEPT
+$IPT -A OUTPUT -o lo -j ACCEPT 
 
-<span class="c1"># redirect incoming DNS requests at $WAN_IF ($WAN_IP) of FIREWALL to DNS server at 192.168.20.4</span>
-<span class="c1">#iptables -t nat -A PREROUTING -p udp -i $WAN_IF -d $WAN_IP --dport 53 -j DNAT --to-dest 192.168.20.4</span>
-<span class="c1">#iptables -t nat -A PREROUTING -p tcp -i $WAN_IF -d $WAN_IP --dport 53 -j DNAT --to-dest 192.168.20.4</span>
-</pre></div>
+# Allow already established sessions
+$IPT -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+$IPT -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+# Drop invalid packages
+$IPT -A INPUT -m conntrack --ctstate INVALID -j DROP
+
+# Refuse spoofed packets pretending to be from the external interfaces IP
+# $IPT -A INPUT -i $WAN_IF -s $IPADDR -j DROP
+
+# Refuse packets claiming to be from private networks or loopback device
+$IPT -A INPUT -i $WAN_IF -s $CLASS_A -j DROP
+$IPT -A INPUT -i $WAN_IF -s $CLASS_B -j DROP
+#$IPT -A INPUT -i $WAN_IF -s $CLASS_C -j DROP
+$IPT -A INPUT -i $WAN_IF -s $LOOPBACK -j DROP
+
+# Allow SSH to $SERVER_IP
+$IPT -A INPUT -p tcp -s $LAN_NET -d $SERVER_IP --dport 22 -i $LAN_IF -j ACCEPT
+$IPT -A INPUT -p tcp -s $WAN_NET -d $WAN_IP --dport 22 -i $WAN_IF -j ACCEPT
+#$IPT -A INPUT -p tcp -s 0/0 -d $SERVER_IP --dport 22 -i $WAN_IF -j ACCEPT
+
+# Enable masquerading for lan0/br0
+$IPT -t nat -A POSTROUTING -o $LAN_IF -j MASQUERADE
+$IPT -t nat -A POSTROUTING -s $DMZ_NET -j MASQUERADE
+
+# Allow forwarding on bridge interface
+$IPT -A FORWARD -p all -i $DMZ_IF -j ACCEPT
+
+# allow traffic from internal ($LAN_IF) to DMZ ($DMZ_IF)
+$IPT -A FORWARD -i $LAN_IF -o $DMZ_IF -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+$IPT -A FORWARD -i $DMZ_IF -o $LAN_IF -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# allow traffic from internet ($WAN_IF) to DMZ ($DMZ_IF)
+$IPT -A FORWARD -i $WAN_IF -o $DMZ_IF -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+$IPT -A FORWARD -i $DMZ_IF -o $WAN_IF -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+
+########################
+### PORT FORWARDING ####
+########################
+
+# redirect incoming web requests (port 80,443) at $WAN_IF ($WAN_IP) of FIREWALL to web server at $DMZ_IP
+$IPT -t nat -A PREROUTING -p tcp -i $WAN_IF -d $WAN_IP --dport 80 -j DNAT --to-dest $DMZ_IP
+$IPT -t nat -A PREROUTING -p tcp -i $WAN_IF -d $WAN_IP --dport 443 -j DNAT --to-dest $DMZ_IP
+
+# redirect port 2345 to $DMZ_IP
+$IPT -t nat -A PREROUTING -p tcp -i $LAN_IF -d $SERVER_IP --dport 2345 -j DNAT --to-dest $DMZ_IP:22
+$IPT -t nat -A PREROUTING -p tcp -i $WAN_IF -d $WAN_IP --dport 2345 -j DNAT --to-dest $DMZ_IP:22
+
+# redirect incoming mail (SMTP) requests at $WAN_IF ($WAN_IP) of FIREWALL to Mail server at 192.168.20.3
+#iptables -t nat -A PREROUTING -p tcp -i $WAN_IF -d $WAN_IP --dport 25 -j DNAT --to-dest 192.168.20.3
+
+# redirect incoming DNS requests at $WAN_IF ($WAN_IP) of FIREWALL to DNS server at 192.168.20.4
+#iptables -t nat -A PREROUTING -p udp -i $WAN_IF -d $WAN_IP --dport 53 -j DNAT --to-dest 192.168.20.4
+#iptables -t nat -A PREROUTING -p tcp -i $WAN_IF -d $WAN_IP --dport 53 -j DNAT --to-dest 192.168.20.4</code></pre>
 
 
 <h2 id="stop-the-firewall">Stop the firewall<a class="headerlink" href="#stop-the-firewall" title="Permanent link">#</a></h2>
-<div class="code"><pre><span></span><span class="ch">#!/bin/sh</span>
+<pre class="code"><code class="language-bash">#!/bin/sh
 iptables -F
 iptables -X
 iptables -t nat -F
@@ -613,8 +620,7 @@ iptables -t mangle -F
 iptables -t mangle -X
 iptables -P INPUT ACCEPT
 iptables -P FORWARD ACCEPT
-iptables -P OUTPUT ACCEPT
-</pre></div>
+iptables -P OUTPUT ACCEPT</code></pre>
           <aside class="copyright" role="note">
             
               Copyright (c) 2016 Jochen Greif &ndash;
@@ -633,7 +639,7 @@ iptables -P OUTPUT ACCEPT
   <nav class="pagination" aria-label="Footer">
     <div class="previous">
       
-        <a href="../encrypt_system_ssd/" title="Encrypt system ssd">
+        <a href="../install_ubuntu_touch_on_nexus_5/" title="Install ubuntu touch on nexus 5">
           <span class="direction">
             Previous
           </span>
@@ -643,7 +649,7 @@ iptables -P OUTPUT ACCEPT
             </div>
             <div class="stretch">
               <div class="title">
-                Encrypt system ssd
+                Install ubuntu touch on nexus 5
               </div>
             </div>
           </div>

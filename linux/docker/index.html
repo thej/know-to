@@ -314,6 +314,15 @@
       
         
   <li>
+    <a class="" title="Install ubuntu touch on nexus 5" href="../install_ubuntu_touch_on_nexus_5/">
+      Install ubuntu touch on nexus 5
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
     <a class="" title="Iptables" href="../iptables/">
       Iptables
     </a>
@@ -602,13 +611,12 @@ Note: Exiting from the terminal will not terminate the container</p>
 <li>configures which ports a container will listen on at runtime</li>
 <li>ports still need to me mapped when container is executed</li>
 </ul>
-<div class="code"><pre><span></span>FROM ubuntu:14.04
+<pre class="code"><code>FROM ubuntu:14.04
 RUN apt-get update &amp; apt-get install -y nginx
 
 EXPOSE 80 443
 
-CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]
-</pre></div>
+CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]</code></pre>
 
 
 <h2 id="linking-containers">Linking containers<a class="headerlink" href="#linking-containers" title="Permanent link">#</a></h2>
@@ -618,7 +626,7 @@ CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]
 <li>recipient containers have access to data on source containers</li>
 <li>links are established based on container names</li>
 </ul>
-<div class="code"><pre><span></span>---------------------------------------
+<pre class="code"><code>---------------------------------------
 |                                     |   
 |  -------------    ---------------   |
 |  | --------  |    |  ---------- |   |
@@ -629,8 +637,7 @@ CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]
 |    recipient           source       |
 |                                     |
 |               host                  |
----------------------------------------
-</pre></div>
+---------------------------------------</code></pre>
 
 
 <h3 id="creating-a-link">creating a link<a class="headerlink" href="#creating-a-link" title="Permanent link">#</a></h3>

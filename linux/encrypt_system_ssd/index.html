@@ -344,6 +344,15 @@
       
         
   <li>
+    <a class="" title="Install ubuntu touch on nexus 5" href="../install_ubuntu_touch_on_nexus_5/">
+      Install ubuntu touch on nexus 5
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
     <a class="" title="Iptables" href="../iptables/">
       Iptables
     </a>
@@ -490,7 +499,7 @@
 <li>Remaining space, type 8E00 (LVM). Store both / and /home. (/dev/sda4).</li>
 </ul>
 <p>So we get the following partition table:</p>
-<div class="code"><pre><span></span>sudo fdisk -l /dev/sda
+<pre class="code"><code>sudo fdisk -l /dev/sda
 Disk /dev/sdb: 238.5 GiB, 256060514304 bytes, 500118192 sectors
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
@@ -502,8 +511,7 @@ Device        Start       End   Sectors   Size Type
 /dev/sda1      2048   1026047   1024000   500M EFI System
 /dev/sda2   1026048   1435647    409600   200M Linux filesystem
 /dev/sda3   1435648  18212863  16777216     8G Linux swap
-/dev/sda4  18212864 500118158 481905295 229.8G Linux LVM
-</pre></div>
+/dev/sda4  18212864 500118158 481905295 229.8G Linux LVM</code></pre>
 
 
 <h2 id="prepare-encrypted-luks-space">Prepare encrypted LUKS space<a class="headerlink" href="#prepare-encrypted-luks-space" title="Permanent link">#</a></h2>
@@ -512,22 +520,20 @@ Device        Start       End   Sectors   Size Type
   sudo cryptsetup -c aes-xts-plain --key-size 512 -y -h sha512 --align-payload=8192 luksFormat /dev/sda4
   sudo cryptsetup luksOpen --allow-discards /dev/sda4 enc-lvm</p>
 <h2 id="setup-lvm-space">Setup LVM space<a class="headerlink" href="#setup-lvm-space" title="Permanent link">#</a></h2>
-<div class="code"><pre><span></span>sudo lvm pvcreate --dataalignment 4M /dev/mapper/enc-lvm
+<pre class="code"><code>sudo lvm pvcreate --dataalignment 4M /dev/mapper/enc-lvm
 sudo lvm vgcreate vgroup /dev/mapper/enc-lvm
 sudo lvm lvcreate -L 30GB -n root vgroup
 sudo lvm lvcreate -n root -L 30G vgroup
 ### sudo lvm lvcreate -n home -l 100%FREE vgroup  ## not recommended if you want  to  keep  some free space for snapshots
-### sudo lvm lvcreate -n home -L 400GB -n home vgroup
-</pre></div>
+### sudo lvm lvcreate -n home -L 400GB -n home vgroup</code></pre>
 
 
 <h2 id="configure-block-devices-filesystems-and-mountpoints">Configure block devices, filesystems, and mountpoints<a class="headerlink" href="#configure-block-devices-filesystems-and-mountpoints" title="Permanent link">#</a></h2>
 <h3 id="format-boot-root-and-home">Format /boot, /root and /home<a class="headerlink" href="#format-boot-root-and-home" title="Permanent link">#</a></h3>
 <p>Format and enable TRIM support.</p>
-<div class="code"><pre><span></span>sudo mkfs.ext2 /dev/sda2
+<pre class="code"><code>sudo mkfs.ext2 /dev/sda2
 sudo mkfs.ext4 -E discard /dev/mapper/vgroup-root
-sudo mkfs.ext4 -E discard /dev/mapper/vgroup-home
-</pre></div>
+sudo mkfs.ext4 -E discard /dev/mapper/vgroup-home</code></pre>
 
 
 <h3 id="get-5-space-from-home-partition">Get 5% space from /home partition<a class="headerlink" href="#get-5-space-from-home-partition" title="Permanent link">#</a></h3>
@@ -537,7 +543,7 @@ sudo mkfs.ext4 -E discard /dev/mapper/vgroup-home
 <p>Install your system via CLI or  GUI installer.</p>
 <p>Do  not reboot after installation is finnished.</p>
 <h2 id="mount-and-chroot-into-newly-installed-system">Mount  and  chroot into newly installed  system<a class="headerlink" href="#mount-and-chroot-into-newly-installed-system" title="Permanent link">#</a></h2>
-<div class="code"><pre><span></span>sudo cryptsetup luksOpen --allow-discards /dev/sda4 enc-lvm
+<pre class="code"><code>sudo cryptsetup luksOpen --allow-discards /dev/sda4 enc-lvm
 sudo mount /dev/mapper/vgroup-root /mnt/
 sudo mount /dev/mapper/vgroup-home /mnt/home/
 sudo  mount  /dev/sda2 /mnt/boot/
@@ -546,8 +552,7 @@ sudo  mount -t proc proc /mnt/proc
 sudo  mount -t sysfs sys /mnt/sys
 sudo mount -o bind /dev /mnt/dev
 sudo  mount -t devpts pts /mnt/dev/pts/
-sudo chroot /mnt/
-</pre></div>
+sudo chroot /mnt/</code></pre>
 
 
 <h2 id="configure-and-build-ramdisk">Configure and build ramdisk<a class="headerlink" href="#configure-and-build-ramdisk" title="Permanent link">#</a></h2>
@@ -561,16 +566,15 @@ sudo chroot /mnt/
 <p>mkinitcpio -p linux318</p>
 <h2 id="adjust-grub-config">Adjust GRUB config<a class="headerlink" href="#adjust-grub-config" title="Permanent link">#</a></h2>
 <p>Edit <em>/etc/defaults/grub</em> and adjust as follows:</p>
-<div class="code"><pre><span></span>GRUB_CMDLINE_LINUX=&quot;cryptdevice=/dev/sda4:vgroup:allow-discards&quot;
+<pre class="code"><code>GRUB_CMDLINE_LINUX=&quot;cryptdevice=/dev/sda4:vgroup:allow-discards&quot;
 # if your want to use UUIDs (get with &quot;blkid /dev/sda&quot;):
-# GRUB_CMDLINE_LINUX=&quot;cryptdevice=/dev/disk/by-uuid/8c57b57b-9714-40eb-9b4d-13f8a67c164b:vgroup:allow-discards&quot;
-</pre></div>
+# GRUB_CMDLINE_LINUX=&quot;cryptdevice=/dev/disk/by-uuid/8c57b57b-9714-40eb-9b4d-13f8a67c164b:vgroup:allow-discards&quot;</code></pre>
 
 
 <p>If you don't want to enable TRIM support, leave out the <em>allow-discards</em> option.</p>
 <h2 id="mount-flags">Mount Flags<a class="headerlink" href="#mount-flags" title="Permanent link">#</a></h2>
 <p>Edit /mnt/etc/fstab to add TRIM support</p>
-<div class="code"><pre><span></span># &lt;file system&gt;                           &lt;mount point&gt;  &lt;type&gt;  &lt;options&gt;  &lt;dump&gt;  &lt;pass&gt;
+<pre class="code"><code># &lt;file system&gt;                           &lt;mount point&gt;  &lt;type&gt;  &lt;options&gt;  &lt;dump&gt;  &lt;pass&gt;
 /dev/mapper/vgroup-home            /home      ext4    defaults,noatime,discard 0 2
 /dev/mapper/vgroup-root            /          ext4    defaults,noatime,discard 0 1
 # using UUIDs (blkid /dev/mapper/vgroup-root)
@@ -579,8 +583,7 @@ sudo chroot /mnt/
 
 UUID=f6c7a434-278b-4e65-baea-5b8baffec853 swap           swap    defaults,noatime,discard 0       2
 UUID=CA3B-BF7A                            /boot/efi      vfat    defaults,noatime 0       2
-UUID=15197f00-0536-4847-96f0-2d33204adf0f /boot          ext2    defaults,noatime 0       2
-</pre></div>
+UUID=15197f00-0536-4847-96f0-2d33204adf0f /boot          ext2    defaults,noatime 0       2</code></pre>
 
 
 <p>We're done und you finally can safely reboot into your new system ;)</p>
@@ -621,14 +624,14 @@ UUID=15197f00-0536-4847-96f0-2d33204adf0f /boot          ext2    defaults,noatim
     </div>
     <div class="next">
       
-        <a href="../iptables/" title="Iptables">
+        <a href="../install_ubuntu_touch_on_nexus_5/" title="Install ubuntu touch on nexus 5">
           <span class="direction">
             Next
           </span>
           <div class="page">
             <div class="stretch">
               <div class="title">
-                Iptables
+                Install ubuntu touch on nexus 5
               </div>
             </div>
             <div class="button button-next" role="button" aria-label="Next">

@@ -275,6 +275,15 @@
       
         
   <li>
+    <a class="" title="Install ubuntu touch on nexus 5" href="../install_ubuntu_touch_on_nexus_5/">
+      Install ubuntu touch on nexus 5
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
     <a class="" title="Iptables" href="../iptables/">
       Iptables
     </a>
@@ -417,25 +426,24 @@
 <p>Place your .mackup.cfg on a synchronized directory and symlink to the file:</p>
 <p><code>nn -sf /path/to/your/.mackup.cfg ~/.mackup.cfg</code></p>
 <p>Example .mackup.cfg:</p>
-<div class="code"><pre><span></span><span class="k">[configuration_files]</span>
-<span class="err">.mackup.cfg</span>
+<pre class="code"><code>[configuration_files]
+.mackup.cfg
 
-<span class="k">[storage]</span>
-<span class="na">engine</span> <span class="o">=</span> <span class="s">file_system</span>
-<span class="na">path</span> <span class="o">=</span> <span class="s">ownCloud/</span>
-<span class="na">directory</span> <span class="o">=</span> <span class="s">mackup</span>
+[storage]
+engine = file_system
+path = ownCloud/
+directory = mackup
 
-<span class="k">[applications_to_sync]</span>
-<span class="err">watson</span>
-<span class="err">mackup</span>
-<span class="err">sublime-text-3</span>
-<span class="err">git</span>
-<span class="err">bundler</span>
+[applications_to_sync]
+watson
+mackup
+sublime-text-3
+git
+bundler
 
 
-<span class="k">[applications_to_ignore]</span>
-<span class="err">ssh</span>
-</pre></div>
+[applications_to_ignore]
+ssh</code></pre>
           <aside class="copyright" role="note">
             
               Copyright (c) 2016 Jochen Greif &ndash;

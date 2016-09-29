@@ -296,6 +296,15 @@
       
         
   <li>
+    <a class="" title="Install ubuntu touch on nexus 5" href="../../linux/install_ubuntu_touch_on_nexus_5/">
+      Install ubuntu touch on nexus 5
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
     <a class="" title="Iptables" href="../../linux/iptables/">
       Iptables
     </a>
@@ -450,9 +459,8 @@
 <p>Domain: <em>hephaistos.local</em></p>
 <h2 id="persistan-device-names-for-interfaces">Persistan device names for interfaces<a class="headerlink" href="#persistan-device-names-for-interfaces" title="Permanent link">#</a></h2>
 <p><em>/etc/udev/rules.d/10-network.rules</em>:</p>
-<div class="code"><pre><span></span>SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;&lt;YOUR MAC GOES HERE&gt;&quot;, NAME=&quot;lan0&quot;
-SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;&lt;YOUR MAC GOES HERE&gt;&quot;, NAME=&quot;wan0&quot;
-</pre></div>
+<pre class="code"><code>SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;&lt;YOUR MAC GOES HERE&gt;&quot;, NAME=&quot;lan0&quot;
+SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;&lt;YOUR MAC GOES HERE&gt;&quot;, NAME=&quot;wan0&quot;</code></pre>
           <aside class="copyright" role="note">
             
               Copyright (c) 2016 Jochen Greif &ndash;
