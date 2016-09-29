@@ -9,19 +9,19 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     
       
-        <title>Encrypt system ssd - KnowTo</title>
+        <title>Pure nexus rom on nexus 5 - KnowTo</title>
       
       
       
-        <link rel="canonical" href="https://thej.github.io/know-to/linux/encrypt_system_ssd/">
+        <link rel="canonical" href="https://thej.github.io/know-to/linux/pure_nexus_rom_on_nexus_5/">
       
       
         <meta name="author" content="Jochen Greif">
       
     
-    <meta property="og:url" content="https://thej.github.io/know-to/linux/encrypt_system_ssd/">
+    <meta property="og:url" content="https://thej.github.io/know-to/linux/pure_nexus_rom_on_nexus_5/">
     <meta property="og:title" content="KnowTo">
-    <meta property="og:image" content="https://thej.github.io/know-to/linux/encrypt_system_ssd//../../None">
+    <meta property="og:image" content="https://thej.github.io/know-to/linux/pure_nexus_rom_on_nexus_5//../../None">
     <meta name="apple-mobile-web-app-title" content="KnowTo">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -98,7 +98,7 @@
             
           </span>
         
-        Encrypt system ssd
+        Pure nexus rom on nexus 5
       </div>
     </div>
     
@@ -266,78 +266,9 @@
       
         
   <li>
-    <a class="current" title="Encrypt system ssd" href="./">
+    <a class="" title="Encrypt system ssd" href="../encrypt_system_ssd/">
       Encrypt system ssd
     </a>
-    
-      
-        
-      
-      
-        <ul>
-          
-            <li class="anchor">
-              <a title="IMPORTANT NOTES" href="#important-notes">
-                IMPORTANT NOTES
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="Partition table" href="#partition-table">
-                Partition table
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="Prepare encrypted LUKS space" href="#prepare-encrypted-luks-space">
-                Prepare encrypted LUKS space
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="Setup LVM space" href="#setup-lvm-space">
-                Setup LVM space
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="Configure block devices, filesystems, and mountpoints" href="#configure-block-devices-filesystems-and-mountpoints">
-                Configure block devices, filesystems, and mountpoints
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="Installation" href="#installation">
-                Installation
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="Mount  and  chroot into newly installed  system" href="#mount-and-chroot-into-newly-installed-system">
-                Mount  and  chroot into newly installed  system
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="Configure and build ramdisk" href="#configure-and-build-ramdisk">
-                Configure and build ramdisk
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="Adjust GRUB config" href="#adjust-grub-config">
-                Adjust GRUB config
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="Mount Flags" href="#mount-flags">
-                Mount Flags
-              </a>
-            </li>
-          
-        </ul>
-      
     
   </li>
 
@@ -380,9 +311,30 @@
       
         
   <li>
-    <a class="" title="Pure nexus rom on nexus 5" href="../pure_nexus_rom_on_nexus_5/">
+    <a class="current" title="Pure nexus rom on nexus 5" href="./">
       Pure nexus rom on nexus 5
     </a>
+    
+      
+        
+      
+      
+        <ul>
+          
+            <li class="anchor">
+              <a title="Installation" href="#installation">
+                Installation
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Install XPosed Framework" href="#install-xposed-framework">
+                Install XPosed Framework
+              </a>
+            </li>
+          
+        </ul>
+      
     
   </li>
 
@@ -494,108 +446,42 @@
       <article class="article">
         <div class="wrapper">
           
-          <h1 id="encrypt-ssd-with-luks-and-lvm">Encrypt SSD with LUKS and LVM<a class="headerlink" href="#encrypt-ssd-with-luks-and-lvm" title="Permanent link">#</a></h1>
-<h2 id="important-notes">IMPORTANT NOTES<a class="headerlink" href="#important-notes" title="Permanent link">#</a></h2>
-<p>Some important notes to consider before encryption.</p>
-<h3 id="use-hdparm-instead-of-bios-password-for-hardware-self-encryption">Use hdparm instead of BIOS password for hardware self-encryption<a class="headerlink" href="#use-hdparm-instead-of-bios-password-for-hardware-self-encryption" title="Permanent link">#</a></h3>
-<p>Since BIOS passwords can make encryption keys unusable on other systems (due to hashes etc.), you should use hdparm.</p>
-<p>See https://www.zeitgeist.se/2014/09/07/enabling-ata-security-on-a-self-encrypting-ssd/ for detailed explanations.</p>
-<h2 id="partition-table">Partition table<a class="headerlink" href="#partition-table" title="Permanent link">#</a></h2>
-<ul>
-<li>200MB, type EF00 (EFI partition). This is used by GRUB2/BIOS-GPT. (/dev/sda1)</li>
-<li>100MB, type 8300 (Linux). This will store /boot (/dev/sda2)</li>
-<li>8GB, type 8200 (swap). This is our dedicated swap partition (not part of lvm). (/dev/sda3)</li>
-<li>Remaining space, type 8E00 (LVM). Store both / and /home. (/dev/sda4).</li>
-</ul>
-<p>So we get the following partition table:</p>
-<pre class="code"><code>sudo fdisk -l /dev/sda
-Disk /dev/sdb: 238.5 GiB, 256060514304 bytes, 500118192 sectors
-Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disklabel type: gpt
-Disk identifier: 2745CF02-2F53-4647-9EDF-0D7FA8DA3110
-
-Device        Start       End   Sectors   Size Type
-/dev/sda1      2048   1026047   1024000   500M EFI System
-/dev/sda2   1026048   1435647    409600   200M Linux filesystem
-/dev/sda3   1435648  18212863  16777216     8G Linux swap
-/dev/sda4  18212864 500118158 481905295 229.8G Linux LVM</code></pre>
-
-
-<h2 id="prepare-encrypted-luks-space">Prepare encrypted LUKS space<a class="headerlink" href="#prepare-encrypted-luks-space" title="Permanent link">#</a></h2>
-<p>We need to align, enable TRIM and use the right payload for SSD.</p>
-<p>sudo  cryptsetup  benchmark
-  sudo cryptsetup -c aes-xts-plain --key-size 512 -y -h sha512 --align-payload=8192 luksFormat /dev/sda4
-  sudo cryptsetup luksOpen --allow-discards /dev/sda4 enc-lvm</p>
-<h2 id="setup-lvm-space">Setup LVM space<a class="headerlink" href="#setup-lvm-space" title="Permanent link">#</a></h2>
-<pre class="code"><code>sudo lvm pvcreate --dataalignment 4M /dev/mapper/enc-lvm
-sudo lvm vgcreate vgroup /dev/mapper/enc-lvm
-sudo lvm lvcreate -L 30GB -n root vgroup
-sudo lvm lvcreate -n root -L 30G vgroup
-### sudo lvm lvcreate -n home -l 100%FREE vgroup  ## not recommended if you want  to  keep  some free space for snapshots
-### sudo lvm lvcreate -n home -L 400GB -n home vgroup</code></pre>
-
-
-<h2 id="configure-block-devices-filesystems-and-mountpoints">Configure block devices, filesystems, and mountpoints<a class="headerlink" href="#configure-block-devices-filesystems-and-mountpoints" title="Permanent link">#</a></h2>
-<h3 id="format-boot-root-and-home">Format /boot, /root and /home<a class="headerlink" href="#format-boot-root-and-home" title="Permanent link">#</a></h3>
-<p>Format and enable TRIM support.</p>
-<pre class="code"><code>sudo mkfs.ext2 /dev/sda2
-sudo mkfs.ext4 -E discard /dev/mapper/vgroup-root
-sudo mkfs.ext4 -E discard /dev/mapper/vgroup-home</code></pre>
-
-
-<h3 id="get-5-space-from-home-partition">Get 5% space from /home partition<a class="headerlink" href="#get-5-space-from-home-partition" title="Permanent link">#</a></h3>
-<p>5% space are by default hidden on ext4 partitions. This is typically used on root partition as a safeguard when the disk gets full. On non-root partition this hidden space can be easily and safely reclaimed back by using the following command.</p>
-<p>sudo tune2fs -m 0 /dev/mapper/vgroup-home</p>
+          <h1 id="nexus-5-rom">Nexus 5 ROM<a class="headerlink" href="#nexus-5-rom" title="Permanent link">#</a></h1>
+<p>https://www.reddit.com/r/Nexus5/comments/5103sr/since_n5_has_reached_eol_what_roms_are_you_using/</p>
+<p>PureNexus + ElementalX or Franco Kernel</p>
+<p>Purenexus: http://forum.xda-developers.com/google-nexus-5/development/rom-pure-nexus-project-layers-t3158484
+ElementaX: http://forum.xda-developers.com/google-nexus-5/orig-development/kernel-elementalx-n5-0-44-t2519607
+EX Kernel manager: https://play.google.com/store/apps/details?id=flar2.exkernelmanager</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
-<p>Install your system via CLI or  GUI installer.</p>
-<p>Do  not reboot after installation is finnished.</p>
-<h2 id="mount-and-chroot-into-newly-installed-system">Mount  and  chroot into newly installed  system<a class="headerlink" href="#mount-and-chroot-into-newly-installed-system" title="Permanent link">#</a></h2>
-<pre class="code"><code>sudo cryptsetup luksOpen --allow-discards /dev/sda4 enc-lvm
-sudo mount /dev/mapper/vgroup-root /mnt/
-sudo mount /dev/mapper/vgroup-home /mnt/home/
-sudo  mount  /dev/sda2 /mnt/boot/
-sudo  mount  /dev/sda1 /mnt/boot/efi/
-sudo  mount -t proc proc /mnt/proc
-sudo  mount -t sysfs sys /mnt/sys
-sudo mount -o bind /dev /mnt/dev
-sudo  mount -t devpts pts /mnt/dev/pts/
-sudo chroot /mnt/</code></pre>
-
-
-<h2 id="configure-and-build-ramdisk">Configure and build ramdisk<a class="headerlink" href="#configure-and-build-ramdisk" title="Permanent link">#</a></h2>
-<p>Edit MODULES and HOOKS in <em>/etc/mkinitcpio.conf</em></p>
-<p>MODULES="dm_mod dm_crypt ext4 aes_x86_64 sha256 sha512"</p>
-<p>Aadd <em>encrypt</em> and <em>lvm2</em> prior to <em>filesystem</em> and <em>resume</em> under the HOOKS section:</p>
-<p>HOOKS="base udev autodetect modconf block keyboard keymap plymouth plymouth-encrypt lvm2 resume filesystems fsck"</p>
-<p>Rebuild kernel's ramdisk:</p>
-<p>mkinitcpio -p linux<version></p>
-<p>The version string represents your current kernel. For example "linux318" if you're running kernel 3.18</p>
-<p>mkinitcpio -p linux318</p>
-<h2 id="adjust-grub-config">Adjust GRUB config<a class="headerlink" href="#adjust-grub-config" title="Permanent link">#</a></h2>
-<p>Edit <em>/etc/defaults/grub</em> and adjust as follows:</p>
-<pre class="code"><code>GRUB_CMDLINE_LINUX=&quot;cryptdevice=/dev/sda4:vgroup:allow-discards&quot;
-# if your want to use UUIDs (get with &quot;blkid /dev/sda&quot;):
-# GRUB_CMDLINE_LINUX=&quot;cryptdevice=/dev/disk/by-uuid/8c57b57b-9714-40eb-9b4d-13f8a67c164b:vgroup:allow-discards&quot;</code></pre>
-
-
-<p>If you don't want to enable TRIM support, leave out the <em>allow-discards</em> option.</p>
-<h2 id="mount-flags">Mount Flags<a class="headerlink" href="#mount-flags" title="Permanent link">#</a></h2>
-<p>Edit /mnt/etc/fstab to add TRIM support</p>
-<pre class="code"><code># &lt;file system&gt;                           &lt;mount point&gt;  &lt;type&gt;  &lt;options&gt;  &lt;dump&gt;  &lt;pass&gt;
-/dev/mapper/vgroup-home            /home      ext4    defaults,noatime,discard 0 2
-/dev/mapper/vgroup-root            /          ext4    defaults,noatime,discard 0 1
-# using UUIDs (blkid /dev/mapper/vgroup-root)
-# UUID=cc323893-0ee3-42b1-af8c-9f3bdde904e7 /home          ext4    defaults,noatime 0       2
-# UUID=8c57b57b-9714-40eb-9b4d-13f8a67c164b /              ext4    defaults,noatime,discard 0       1
-
-UUID=f6c7a434-278b-4e65-baea-5b8baffec853 swap           swap    defaults,noatime,discard 0       2
-UUID=CA3B-BF7A                            /boot/efi      vfat    defaults,noatime 0       2
-UUID=15197f00-0536-4847-96f0-2d33204adf0f /boot          ext2    defaults,noatime 0       2</code></pre>
-
-
-<p>We're done und you finally can safely reboot into your new system ;)</p>
+<ol>
+<li>Download the latest Pure Nexus zip, latest GApps (recommended ones linked, use others at your own risk), SuperSU (if you want root), and your custom kernel if you have one onto your phone.</li>
+<li>Backup any important data.</li>
+<li>Boot into TWRP and make a backup (optional but HIGHLY recommended).</li>
+<li>Wipe system, data, cache, and dalvik cache in Wipe &gt; Advanced Wipe.</li>
+<li>Flash Pure Nexus zip.</li>
+<li>Flash GApps zip.</li>
+<li>Flash your custom kernel (optional).</li>
+<li>Flash SuperSU (optional).</li>
+<li>Reboot and profit. </li>
+</ol>
+<h2 id="install-xposed-framework">Install XPosed Framework<a class="headerlink" href="#install-xposed-framework" title="Permanent link">#</a></h2>
+<p>http://forum.xda-developers.com/showthread.php?t=3034811</p>
+<h3 id="xposed-modules">XPosed Modules:<a class="headerlink" href="#xposed-modules" title="Permanent link">#</a></h3>
+<ul>
+<li>http://i.imgur.com/LrqByBF.jpg</li>
+<li>http://i.imgur.com/eHYT0mB.jpg</li>
+<li>Android N-ify</li>
+<li>Enable Ambient Display</li>
+<li>Flat Style bar Indicators</li>
+<li>GravitxBox</li>
+<li>Greenify</li>
+<li>Lucky Patcher</li>
+<li>Materialize XPosed Instaler</li>
+<li>MinMinLock</li>
+<li>PoGoIV</li>
+<li>XInstaler</li>
+<li>Xstana</li>
+</ul>
           <aside class="copyright" role="note">
             
               Copyright (c) 2016 Jochen Greif &ndash;
@@ -614,7 +500,7 @@ UUID=15197f00-0536-4847-96f0-2d33204adf0f /boot          ext2    defaults,noatim
   <nav class="pagination" aria-label="Footer">
     <div class="previous">
       
-        <a href="../docker/" title="Docker">
+        <a href="../lxc/" title="Lxc">
           <span class="direction">
             Previous
           </span>
@@ -624,7 +510,7 @@ UUID=15197f00-0536-4847-96f0-2d33204adf0f /boot          ext2    defaults,noatim
             </div>
             <div class="stretch">
               <div class="title">
-                Docker
+                Lxc
               </div>
             </div>
           </div>
@@ -633,14 +519,14 @@ UUID=15197f00-0536-4847-96f0-2d33204adf0f /boot          ext2    defaults,noatim
     </div>
     <div class="next">
       
-        <a href="../install_ubuntu_touch_on_nexus_5/" title="Install ubuntu touch on nexus 5">
+        <a href="../raid+lvm/" title="Raid+lvm">
           <span class="direction">
             Next
           </span>
           <div class="page">
             <div class="stretch">
               <div class="title">
-                Install ubuntu touch on nexus 5
+                Raid+lvm
               </div>
             </div>
             <div class="button button-next" role="button" aria-label="Next">

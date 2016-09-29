@@ -611,6 +611,31 @@
             "title": "Allow docker inside LXC"
         },
         {
+            "location": "/linux/pure_nexus_rom_on_nexus_5/",
+            "text": "Nexus 5 ROM\n#\n\n\nhttps://www.reddit.com/r/Nexus5/comments/5103sr/since_n5_has_reached_eol_what_roms_are_you_using/\n\n\nPureNexus + ElementalX or Franco Kernel\n\n\nPurenexus: http://forum.xda-developers.com/google-nexus-5/development/rom-pure-nexus-project-layers-t3158484\nElementaX: http://forum.xda-developers.com/google-nexus-5/orig-development/kernel-elementalx-n5-0-44-t2519607\nEX Kernel manager: https://play.google.com/store/apps/details?id=flar2.exkernelmanager\n\n\nInstallation\n#\n\n\n\n\nDownload the latest Pure Nexus zip, latest GApps (recommended ones linked, use others at your own risk), SuperSU (if you want root), and your custom kernel if you have one onto your phone.\n\n\nBackup any important data.\n\n\nBoot into TWRP and make a backup (optional but HIGHLY recommended).\n\n\nWipe system, data, cache, and dalvik cache in Wipe > Advanced Wipe.\n\n\nFlash Pure Nexus zip.\n\n\nFlash GApps zip.\n\n\nFlash your custom kernel (optional).\n\n\nFlash SuperSU (optional).\n\n\nReboot and profit. \n\n\n\n\nInstall XPosed Framework\n#\n\n\nhttp://forum.xda-developers.com/showthread.php?t=3034811\n\n\nXPosed Modules:\n#\n\n\n\n\nhttp://i.imgur.com/LrqByBF.jpg\n\n\nhttp://i.imgur.com/eHYT0mB.jpg\n\n\nAndroid N-ify\n\n\nEnable Ambient Display\n\n\nFlat Style bar Indicators\n\n\nGravitxBox\n\n\nGreenify\n\n\nLucky Patcher\n\n\nMaterialize XPosed Instaler\n\n\nMinMinLock\n\n\nPoGoIV\n\n\nXInstaler\n\n\nXstana",
+            "title": "Pure nexus rom on nexus 5"
+        },
+        {
+            "location": "/linux/pure_nexus_rom_on_nexus_5/#nexus-5-rom",
+            "text": "https://www.reddit.com/r/Nexus5/comments/5103sr/since_n5_has_reached_eol_what_roms_are_you_using/  PureNexus + ElementalX or Franco Kernel  Purenexus: http://forum.xda-developers.com/google-nexus-5/development/rom-pure-nexus-project-layers-t3158484\nElementaX: http://forum.xda-developers.com/google-nexus-5/orig-development/kernel-elementalx-n5-0-44-t2519607\nEX Kernel manager: https://play.google.com/store/apps/details?id=flar2.exkernelmanager",
+            "title": "Nexus 5 ROM"
+        },
+        {
+            "location": "/linux/pure_nexus_rom_on_nexus_5/#installation",
+            "text": "Download the latest Pure Nexus zip, latest GApps (recommended ones linked, use others at your own risk), SuperSU (if you want root), and your custom kernel if you have one onto your phone.  Backup any important data.  Boot into TWRP and make a backup (optional but HIGHLY recommended).  Wipe system, data, cache, and dalvik cache in Wipe > Advanced Wipe.  Flash Pure Nexus zip.  Flash GApps zip.  Flash your custom kernel (optional).  Flash SuperSU (optional).  Reboot and profit.",
+            "title": "Installation"
+        },
+        {
+            "location": "/linux/pure_nexus_rom_on_nexus_5/#install-xposed-framework",
+            "text": "http://forum.xda-developers.com/showthread.php?t=3034811",
+            "title": "Install XPosed Framework"
+        },
+        {
+            "location": "/linux/pure_nexus_rom_on_nexus_5/#xposed-modules",
+            "text": "http://i.imgur.com/LrqByBF.jpg  http://i.imgur.com/eHYT0mB.jpg  Android N-ify  Enable Ambient Display  Flat Style bar Indicators  GravitxBox  Greenify  Lucky Patcher  Materialize XPosed Instaler  MinMinLock  PoGoIV  XInstaler  Xstana",
+            "title": "XPosed Modules:"
+        },
+        {
             "location": "/linux/raid+lvm/",
             "text": "RAID + LVM + Encryption\n#\n\n\n\n\n2 identical HDs (/dev/hdb and /dev/hdc)\n\n\n\n\nPartitioning\n#\n\n\nPreparing first HD\n#\n\n\ngdisk /dev/sdb\n# create partition with type fd00 (Raid)\n# write and exit\n\n\n\n\nClone partition table to /dev/sdc\n#\n\n\nClone partitions with \nsgdisk\n:\n\n\nsgdisk --backup=table /dev/sdb\nsgdisk --load-backup=table /dev/sdc\n\n\n\n\nCreate RAID array\n#\n\n\nmdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sd[bc]1\n\n\nEncryption\n#\n\n\ncryptsetup luksFormat -c aes-xts-plain64 -s 512 /dev/md0\ncryptsetup luksOpen /dev/md0 cryptdisk\n\n\n\n\nLVM\n#\n\n\nThe three next steps create, in this order, the physical volume (the container, if you will), the group and then the individual volumes contained in the group. Choose simple, memorable names and do not hypenate them. The {pv,vg,lv}display commands print out the details of the devices once created.\n\n\npvcreate /dev/mapper/cryptdisk\npvdisplay\n\nvgcreate vgraid /dev/mapper/cryptdisk\nvgdisplay\n\nlvcreate -l +100%FREE  vgraid -n data\n\n\n\n\nFormat volume\n#\n\n\nmkfs.ext4 -L data -m 0 /dev/vgraid/data\n\n\nGet 5% space from data volume\n#\n\n\n5% space are by default hidden on ext4 partitions. This is typically used on root partition as a safeguard when the disk gets full. On non-root partition this hidden space can be easily and safely reclaimed back by using the following command.\n\n\ntune2fs -m 0 /dev/mapper/data\n\n\nUpdate RAID configuration\n#\n\n\nSince the installer builds the initrd using /etc/mdadm.conf in the target system, you should update that file with your RAID configuration. The original file can simply be deleted because it contains comments on how to fill it correctly, and that is something mdadm can do automatically for you. So let us delete the original and have mdadm create you a new one with the current setup:\n\n\nmdadm --examine --scan >> /etc/mdadm.conf\n\n\ncrypttap and fstab\n#\n\n\nGenerate a keyfile:\n\ndd bs=512 count=4 if=/dev/urandom of=/etc/keyfile_cryptdisk iflag=fullblock\n\n\nAdd keyfile to key slot:\n\ncryptsetup luksAddKey /dev/md0 /etc/keyfile_cryptdisk\n\n\nAdd \n/etc/crypttab\n entry: \n\n\ncryptdisk       /dev/md0                /etc/keyfile_cryptdisk\n\n\n\n\nAdd \n/etc/fstab\n entry\n\n\n/dev/vgraid/data        /data           ext4            defaults,relatime       0 1",
             "title": "Raid+lvm"
