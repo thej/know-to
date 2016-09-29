@@ -54,6 +54,12 @@
     </url>
         
     <url>
+     <loc>https://thej.github.io/know-to//linux/compile_arch_kernel/</loc>
+     <lastmod>2016-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>https://thej.github.io/know-to//linux/docker/</loc>
      <lastmod>2016-09-29</lastmod>
      <changefreq>daily</changefreq>
