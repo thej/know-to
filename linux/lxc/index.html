@@ -463,12 +463,13 @@
           
           <h1 id="lxc-containers-arch">LXC Containers (ARCH)<a class="headerlink" href="#lxc-containers-arch" title="Permanent link">#</a></h1>
 <h2 id="create-container">Create container<a class="headerlink" href="#create-container" title="Permanent link">#</a></h2>
-<pre class="code"><code>lxc-create -n &lt;containername&gt; -t download</code></pre>
+<div class="code"><pre><span></span>lxc-create -n &lt;containername&gt; -t download
+</pre></div>
 
 
 <h2 id="default-container-config">Default container config<a class="headerlink" href="#default-container-config" title="Permanent link">#</a></h2>
 <h3 id="arch-container">Arch Container<a class="headerlink" href="#arch-container" title="Permanent link">#</a></h3>
-<pre class="code"><code>lxc.network.type = veth
+<div class="code"><pre><span></span>lxc.network.type = veth
 lxc.network.name = eth0
 lxc.network.link = br0
 lxc.network.flags = up
@@ -496,11 +497,12 @@ lxc.cap.drop =
 # Allow tun/tap
 lxc.cgroup.devices.allow = c 10:200 rwm
 
-lxc.start.auto = 1</code></pre>
+lxc.start.auto = 1
+</pre></div>
 
 
 <h3 id="alpine-container">Alpine Container<a class="headerlink" href="#alpine-container" title="Permanent link">#</a></h3>
-<pre class="code"><code>lxc.network.type = veth
+<div class="code"><pre><span></span>lxc.network.type = veth
 lxc.network.name = eth0
 lxc.network.link = br0
 lxc.network.flags = up
@@ -515,7 +517,7 @@ lxc.arch = x86_64
 # Set hostname.
 lxc.utsname = alpinetemplate
 
-# If something doesn't work, try to comment this out.
+# If something doesn&#39;t work, try to comment this out.
 # Dropping sys_admin disables container root from doing a lot of things
 # that could be bad like re-mounting lxc fstab entries rw for example,
 # but also disables some useful things like being able to nfs mount, and
@@ -526,22 +528,25 @@ lxc.cap.drop = sys_admin
 # Include common configuration.
 lxc.include = /usr/share/lxc/config/alpine.common.conf
 
-lxc.start.auto = 1</code></pre>
+lxc.start.auto = 1
+</pre></div>
 
 
 <h2 id="allow-docker-inside-lxc">Allow docker inside LXC<a class="headerlink" href="#allow-docker-inside-lxc" title="Permanent link">#</a></h2>
 <p>Allow tun/tap inside lxc config:</p>
-<pre class="code"><code>lxc.cgroup.devices.allow = c 10:200 rwm</code></pre>
+<div class="code"><pre><span></span>lxc.cgroup.devices.allow = c 10:200 rwm
+</pre></div>
 
 
 <p>Create device inside LXC container:</p>
-<pre class="code"><code>if ! [ -d /dev/net ];then
+<div class="code"><pre><span></span>if ! [ -d /dev/net ];then
  mkdir /dev/net
 fi
 if ! [ -c /dev/net/tun ]; then
  mknod /dev/net/tun c 10 200
  chmod 666 /dev/net/tun
-fi</code></pre>
+fi
+</pre></div>
           <aside class="copyright" role="note">
             
               Copyright (c) 2016 Jochen Greif &ndash;

@@ -629,12 +629,13 @@ Note: Exiting from the terminal will not terminate the container</p>
 <li>configures which ports a container will listen on at runtime</li>
 <li>ports still need to me mapped when container is executed</li>
 </ul>
-<pre class="code"><code>FROM ubuntu:14.04
+<div class="code"><pre><span></span>FROM ubuntu:14.04
 RUN apt-get update &amp; apt-get install -y nginx
 
 EXPOSE 80 443
 
-CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]</code></pre>
+CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]
+</pre></div>
 
 
 <h2 id="linking-containers">Linking containers<a class="headerlink" href="#linking-containers" title="Permanent link">#</a></h2>
@@ -644,7 +645,7 @@ CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]</code></pre>
 <li>recipient containers have access to data on source containers</li>
 <li>links are established based on container names</li>
 </ul>
-<pre class="code"><code>---------------------------------------
+<div class="code"><pre><span></span>---------------------------------------
 |                                     |   
 |  -------------    ---------------   |
 |  | --------  |    |  ---------- |   |
@@ -655,7 +656,8 @@ CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]</code></pre>
 |    recipient           source       |
 |                                     |
 |               host                  |
----------------------------------------</code></pre>
+---------------------------------------
+</pre></div>
 
 
 <h3 id="creating-a-link">creating a link<a class="headerlink" href="#creating-a-link" title="Permanent link">#</a></h3>

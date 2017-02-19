@@ -440,21 +440,24 @@
         <div class="wrapper">
           
           <h1 id="compile-kernel-arch">Compile Kernel (Arch)<a class="headerlink" href="#compile-kernel-arch" title="Permanent link">#</a></h1>
-<pre class="code"><code class="language-bash">cd ~/
+<div class="code"><pre><span></span><span class="nb">cd</span> ~/
 mkdir build
-cd build/
+<span class="nb">cd</span> build/
 
-ABSROOT=. abs core/linux</code></pre>
+<span class="nv">ABSROOT</span><span class="o">=</span>. abs core/linux
+</pre></div>
 
 
 <p>Edit PKGBUILD:</p>
-<pre class="code"><code>...
+<div class="code"><pre><span></span>...
 pkgbase=linux-custom
-...</code></pre>
+...
+</pre></div>
 
 
 <p>Use existing Kernel config:</p>
-<pre class="code"><code>zcat /proc/config.gz &gt; config.x86_64</code></pre>
+<div class="code"><pre><span></span>zcat /proc/config.gz &gt; config.x86_64
+</pre></div>
 
 
 <p>Generate new checksums:</p>
@@ -462,8 +465,9 @@ pkgbase=linux-custom
 <p>Compile:</p>
 <p><code>makepkg</code></p>
 <p>Install headers and kernel:</p>
-<pre class="code"><code>pacman -U linux-custom-headers-*
-pacman -u linux-custom-*</code></pre>
+<div class="code"><pre><span></span>pacman -U linux-custom-headers-*
+pacman -u linux-custom-*
+</pre></div>
 
 
 <p>Update Grub:</p>

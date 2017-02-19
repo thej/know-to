@@ -526,19 +526,22 @@
 <p>For detailled instructions, see <a href="../encrypt_system_ssd/">linux/encrypt_system_ssd.md</a></p>
 <h2 id="troubleshooting-black-screen-after-unlock-from-suspend">Troubleshooting black screen after unlock from suspend<a class="headerlink" href="#troubleshooting-black-screen-after-unlock-from-suspend" title="Permanent link">#</a></h2>
 <p>First, install xscreensaver and deinstall lightdm</p>
-<pre class="code"><code>pacman -Rs lightdm
+<div class="code"><pre><span></span>pacman -Rs lightdm
 pacman -Rs lightdm*
-systemctl disable lightm</code></pre>
+systemctl disable lightm
+</pre></div>
 
 
 <p>Install xscreensaver (for locking) and mdm as display manager:</p>
-<pre class="code"><code>pacman -S xscreensaver mdm
-systemctl enable mdm.service -f</code></pre>
+<div class="code"><pre><span></span>pacman -S xscreensaver mdm
+systemctl enable mdm.service -f
+</pre></div>
 
 
 <h2 id="delete-old-and-orphan-packages">Delete old and orphan packages<a class="headerlink" href="#delete-old-and-orphan-packages" title="Permanent link">#</a></h2>
-<pre class="code"><code>  sudo pacman -Sc
-  sudo pacman -Rns $(pacman -Qqdt)</code></pre>
+<div class="code"><pre><span></span>  sudo pacman -Sc
+  sudo pacman -Rns $(pacman -Qqdt)
+</pre></div>
 
 
 <h2 id="use-fastest-mirror-for-pacman">Use fastest mirror for pacman<a class="headerlink" href="#use-fastest-mirror-for-pacman" title="Permanent link">#</a></h2>
@@ -559,10 +562,11 @@ systemctl enable mdm.service -f</code></pre>
 <p>The default I/O scheduler in Manjaro is BFQ . Higher read/write performance for the solid state drives have scheduler noop. You can automate the process of change scheduler disk I/O, depending on whether the disk is rotating (HDD) or not (SSD). Create a new file:</p>
 <p><code>sudo vim /etc/udev/rules.d/60-schedulers.rules</code></p>
 <p>Paste this code into it:</p>
-<pre class="code"><code># set noop scheduler for non-rotating disks
+<div class="code"><pre><span></span># set noop scheduler for non-rotating disks
 ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotational}==&quot;0&quot;, ATTR{queue/scheduler}=&quot;noop&quot;
 # set bfq scheduler for rotating disks
-ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotational}==&quot;1&quot;, ATTR{queue/scheduler}=&quot;bfq&quot;</code></pre>
+ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotational}==&quot;1&quot;, ATTR{queue/scheduler}=&quot;bfq&quot;
+</pre></div>
 
 
 <p>Save changes to a file. Restart the computer.</p>
@@ -570,14 +574,15 @@ ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotation
 <p><code>cat /sys/block/sd*/queue/scheduler</code></p>
 <h2 id="sysctl-settings">Sysctl settings<a class="headerlink" href="#sysctl-settings" title="Permanent link">#</a></h2>
 <p>Edit <em>/etc/sysctl.d/100-manjaro.conf</em>:</p>
-<pre class="code"><code>vm.swappiness = 1
+<div class="code"><pre><span></span>vm.swappiness = 1
 kernel.kptr_restrict = 1
 kernel.sysrq = 0
 net.ipv4.conf.all.log_martians = 1
 net.ipv4.conf.all.send_redirects = 0
 net.ipv4.conf.default.log_martians = 1
 net.ipv4.tcp_syncookies = 1
-net.ipv4.tcp_timestamps = 0</code></pre>
+net.ipv4.tcp_timestamps = 0
+</pre></div>
 
 
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h2>

@@ -451,55 +451,56 @@
           
           <h1 id="samba">Samba<a class="headerlink" href="#samba" title="Permanent link">#</a></h1>
 <h2 id="etcsambasmbconf"><em>/etc/samba/smb.conf</em><a class="headerlink" href="#etcsambasmbconf" title="Permanent link">#</a></h2>
-<pre class="code"><code>[global]
-  workgroup = OLYMPUS
-  server string = HEPHAISTOS
-  netbios name = HEPHAISTOS
-  hosts allow = 192.168.222. 127.
-  deadtime = 60
-  disable netbios = yes
-  dns proxy = no
-  invalid users = root 
-  security = user 
-  map to guest = Bad User
-  max connections = 100
-  log file = /var/log/samba/%m.log
-  max log size = 50
-  encrypt passwords = yes
-  smb passwd file = /etc/samba/smbpasswd
-  unix password sync = no
-  preserve case = yes
-  short preserve case = yes
+<div class="code"><pre><span></span><span class="k">[global]</span>
+  <span class="na">workgroup</span> <span class="o">=</span> <span class="s">OLYMPUS</span>
+<span class="s">  server string = HEPHAISTOS</span>
+<span class="s">  netbios name = HEPHAISTOS</span>
+<span class="s">  hosts allow = 192.168.222. 127.</span>
+<span class="s">  deadtime = 60</span>
+<span class="s">  disable netbios = yes</span>
+<span class="s">  dns proxy = no</span>
+<span class="s">  invalid users = root </span>
+<span class="s">  security = user </span>
+<span class="s">  map to guest = Bad User</span>
+<span class="s">  max connections = 100</span>
+<span class="s">  log file = /var/log/samba/%m.log</span>
+<span class="s">  max log size = 50</span>
+<span class="s">  encrypt passwords = yes</span>
+<span class="s">  smb passwd file = /etc/samba/smbpasswd</span>
+<span class="s">  unix password sync = no</span>
+<span class="s">  preserve case = yes</span>
+<span class="s">  short preserve case = yes</span>
 
-  # Interfaces to listen on
-  ; interfaces = 192.168.222.28/24 192.168.188.84/24 
-  interfaces = 192.168.222.28/24
+  <span class="c1"># Interfaces to listen on</span>
+  <span class="c1">; interfaces = 192.168.222.28/24 192.168.188.84/24 </span>
+  <span class="na">interfaces</span> <span class="o">=</span> <span class="s">192.168.222.28/24</span>
 
-  # Disable printer support
-  load printers = no
-  printing = bsd
-  printcap name = /dev/null
-  disable spoolss = yes
-  show add printer wizard = no
-  print notify backchannel = no
+  <span class="c1"># Disable printer support</span>
+  <span class="na">load printers</span> <span class="o">=</span> <span class="s">no</span>
+<span class="s">  printing = bsd</span>
+<span class="s">  printcap name = /dev/null</span>
+<span class="s">  disable spoolss = yes</span>
+<span class="s">  show add printer wizard = no</span>
+<span class="s">  print notify backchannel = no</span>
 
-  # Unix users can map to different SMB User names
-  ;  username map = /etc/samba/smbusers
+  <span class="c1"># Unix users can map to different SMB User names</span>
+  <span class="c1">;  username map = /etc/samba/smbusers</span>
 
-  # Default permissions for all shares  
-  inherit owner = yes 
-  create mask = 0660 
-  directory mask = 0770
-  force create mode = 0660
-  force directory mode = 0770
+  <span class="c1"># Default permissions for all shares  </span>
+  <span class="na">inherit owner</span> <span class="o">=</span> <span class="s">yes </span>
+<span class="s">  create mask = 0660 </span>
+<span class="s">  directory mask = 0770</span>
+<span class="s">  force create mode = 0660</span>
+<span class="s">  force directory mode = 0770</span>
 
-  # Performance tuning
-  socket options = TCP_NODELAY IPTOS_LOWDELAY
-  write cache size = 262144
-  use sendfile = true
-  getwd cache = yes
-  min receivefile size = 16384
-  max xmit = 65536</code></pre>
+  <span class="c1"># Performance tuning</span>
+  <span class="na">socket options</span> <span class="o">=</span> <span class="s">TCP_NODELAY IPTOS_LOWDELAY</span>
+<span class="s">  write cache size = 262144</span>
+<span class="s">  use sendfile = true</span>
+<span class="s">  getwd cache = yes</span>
+<span class="s">  min receivefile size = 16384</span>
+<span class="s">  max xmit = 65536</span>
+</pre></div>
           <aside class="copyright" role="note">
             
               Copyright (c) 2016 Jochen Greif &ndash;

@@ -479,22 +479,24 @@
 <p>Use Ubuntu docker container and mount usb devices as volumes</p>
 <p><code>docker run -i -t --name ubuntu --privileged -v /dev/bus/usb:/dev/bus/usb ubuntu:latest /bin/bash</code></p>
 <p>Install required software</p>
-<pre class="code"><code class="language-bash">apt-get update
-apt-get install ubuntu-device-flash phablet-tools</code></pre>
+<div class="code"><pre><span></span>apt-get update
+apt-get install ubuntu-device-flash phablet-tools
+</pre></div>
 
 
 <h3 id="method-2-arch-linux">Method 2: Arch Linux<a class="headerlink" href="#method-2-arch-linux" title="Permanent link">#</a></h3>
 <p><code>yaourt -S ubuntu-device-flash</code></p>
 <h2 id="flash-the-rom">Flash the ROM<a class="headerlink" href="#flash-the-rom" title="Permanent link">#</a></h2>
 <p>Flash Ubuntu Touch:</p>
-<pre class="code"><code>ubuntu-device-flash --server=http://system-image.ubports.com touch --channel=ubuntu-touch/stable --device=hammerhead --bootstrap</code></pre>
+<div class="code"><pre><span></span>ubuntu-device-flash --server=http://system-image.ubports.com touch --channel=ubuntu-touch/stable --device=hammerhead --bootstrap
+</pre></div>
 
 
 <h2 id="sync-with-owncloudcarddavwebdav">Sync with owncloud/carddav/webdav<a class="headerlink" href="#sync-with-owncloudcarddavwebdav" title="Permanent link">#</a></h2>
 <p>Login with ADB.</p>
-<pre class="code"><code>sudo -s
+<div class="code"><pre><span></span>sudo -s
 
-syncevolution --configure --template WebDAV username=&lt;username&gt; password=&lt;'password'&gt; syncURL=https://my.example.org/remote.php/ keyring=no target-config@owncloud
+syncevolution --configure --template WebDAV username=&lt;username&gt; password=&lt;&#39;password&#39;&gt; syncURL=https://my.example.org/remote.php/ keyring=no target-config@owncloud
 
 syncevolution --configure database=https://my.example.org/remote.php/carddav/addressbooks/&lt;username&gt;/&lt;addressbookname&gt;/ backend=carddav target-config@owncloud contacts
 
@@ -502,13 +504,15 @@ syncevolution --configure --template SyncEvolution_Client sync=none syncURL=loca
 
 syncevolution --configure sync=two-way backend=addressbook database= owncloud contacts
 
-syncevolution --sync slow owncloud contacts</code></pre>
+syncevolution --sync slow owncloud contacts
+</pre></div>
 
 
 <p>Caldav:</p>
-<pre class="code"><code>syncevolution --configure database=https://my.example.org/remote.php/caldav/calendars/&lt;USERNAME&gt;/personal backend=caldav target-config@owncloud calendar
+<div class="code"><pre><span></span>syncevolution --configure database=https://my.example.org/remote.php/caldav/calendars/&lt;USERNAME&gt;/personal backend=caldav target-config@owncloud calendar
 
-syncevolution --configure sync=two-way backend=events database=&quot;personal&quot; owncloud calendar</code></pre>
+syncevolution --configure sync=two-way backend=events database=&quot;personal&quot; owncloud calendar
+</pre></div>
 
 
 <p>To sync again:</p>

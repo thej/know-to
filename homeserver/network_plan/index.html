@@ -477,8 +477,9 @@
 <p>Domain: <em>hephaistos.local</em></p>
 <h2 id="persistan-device-names-for-interfaces">Persistan device names for interfaces<a class="headerlink" href="#persistan-device-names-for-interfaces" title="Permanent link">#</a></h2>
 <p><em>/etc/udev/rules.d/10-network.rules</em>:</p>
-<pre class="code"><code>SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;&lt;YOUR MAC GOES HERE&gt;&quot;, NAME=&quot;lan0&quot;
-SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;&lt;YOUR MAC GOES HERE&gt;&quot;, NAME=&quot;wan0&quot;</code></pre>
+<div class="code"><pre><span></span>SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;&lt;YOUR MAC GOES HERE&gt;&quot;, NAME=&quot;lan0&quot;
+SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;&lt;YOUR MAC GOES HERE&gt;&quot;, NAME=&quot;wan0&quot;
+</pre></div>
           <aside class="copyright" role="note">
             
               Copyright (c) 2016 Jochen Greif &ndash;
