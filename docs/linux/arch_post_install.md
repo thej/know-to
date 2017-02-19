@@ -19,6 +19,40 @@ yaourt -S profile-sync-daemon
 - Copy or symlink _~.watson.cfg_ from owncloud
 - `watson restore` 
 
+## Grub for Intel driver
+
+_/etc/grub/default_:
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="[...] pcie_aspm=force i915.enable_execlists=0 i915.semaphores=1 intel_idle.max_cstate=1"
+GRUB_TERMINAL_INPUT=console
+GRUB_GFXMODE=auto
+GRUB_GFXPAYLOAD_LINUX=keep
+```
+
+Generate new config file: `sudo grub-mkconfig -o /boot/grub/grb.cfg`
+
+## X config
+
+_/etc/X11/xorg.conf.d/20-intel.conf_:
+
+```
+Section "Device"
+   Identifier   "Intel Graphics"
+   Driver       "intel"
+   Option       "AccelMethod"  "sna" # uxa
+   Option       "DRI" "3" # 2
+EndSection
+```
+
+## Intel module config
+
+_/etc/modprobe.d/i915.conf_:
+
+```
+options i915 modeset=1 enable_rc6=1 enable_fbc=1 enable_execlists=0 semaphores=1
+```
+
 
 ## Locale settings
 
