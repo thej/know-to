@@ -1,5 +1,7 @@
 # KnowTo
 
+https://thej.github.io/know-to/
+
 ## Build documentation
 
 `mkdocs build`
