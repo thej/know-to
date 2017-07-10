@@ -6,7 +6,7 @@ cd ~/
 mkdir build
 cd build/
 
-ABSROOT=. abs core/linux
+ABSROOT=. asp checkout core/linux
 ```
 
 Edit PKGBUILD:
