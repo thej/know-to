@@ -1,7 +1,10 @@
 site_name: KnowTo
-theme_dir: docoloo
 site_author: Jochen Greif
 site_url: https://thej.github.io/know-to/
+
+theme:
+  #name: null
+  #custom_dir: docoloo/
 
 # Repository
 repo_name: GitHub
